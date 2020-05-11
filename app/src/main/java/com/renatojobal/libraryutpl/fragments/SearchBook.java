@@ -16,7 +16,7 @@ import com.renatojobal.libraryutpl.R;
 
 public class SearchBook extends Fragment {
     /**
-     *
+     * SearchBook fragment
      */
 
     private SearchBookViewModel mViewModel;
