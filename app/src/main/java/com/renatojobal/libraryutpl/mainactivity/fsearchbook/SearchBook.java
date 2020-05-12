@@ -1,4 +1,4 @@
-package com.renatojobal.libraryutpl.fragments;
+package com.renatojobal.libraryutpl.mainactivity.fsearchbook;
 
 import androidx.lifecycle.ViewModelProvider;
 
@@ -16,7 +16,7 @@ import com.renatojobal.libraryutpl.R;
 
 public class SearchBook extends Fragment {
     /**
-     *
+     * SearchBook fragment
      */
 
     private SearchBookViewModel mViewModel;
