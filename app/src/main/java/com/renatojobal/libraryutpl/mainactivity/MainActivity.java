@@ -1,4 +1,4 @@
-package com.renatojobal.libraryutpl.activities;
+package com.renatojobal.libraryutpl.mainactivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
