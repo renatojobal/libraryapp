@@ -1,5 +1,6 @@
-package com.renatojobal.libraryutpl.mainactivity.fsearchbook;
+package com.renatojobal.libraryutpl.mainactivity.fsearchbook.ui;
 
+import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
@@ -14,21 +15,23 @@ import android.view.ViewGroup;
 
 import com.renatojobal.libraryutpl.R;
 
-public class SearchBook extends Fragment {
+import com.renatojobal.libraryutpl.databinding.FragmentSearchBookBinding;
+import com.renatojobal.libraryutpl.mainactivity.fsearchbook.SearchBookViewModel;
+
+public class SearchBookFragment extends Fragment {
     /**
      * SearchBook fragment
      */
 
     private SearchBookViewModel mViewModel;
 
-    public static SearchBook newInstance() {
-        return new SearchBook();
-    }
+    FragmentSearchBookBinding binding;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.search_book_fragment, container, false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_search_book, container, false);
+        return binding.getRoot();
     }
 
     @Override
