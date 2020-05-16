@@ -27,7 +27,13 @@ public class SearchBookViewModel extends ViewModel {
 
     public String targetBook;
 
+    private SearchBookPresenter searchBookPresenter;
+
     public SearchBookViewModel() {
+
+        // We could use injection instead
+        searchBookPresenter = new SearchBookPresenter();
+
 
         sampleBookResultList = RoomHelper.getAppDatabaseInstance().sampleBookDao().getLiveDataList();
 
@@ -46,6 +52,7 @@ public class SearchBookViewModel extends ViewModel {
          * Notify the fragment
          */
         // TODO: Do the request to the api and then storage it into the database
+        searchBookPresenter.searchBook(query);
 
     }
 

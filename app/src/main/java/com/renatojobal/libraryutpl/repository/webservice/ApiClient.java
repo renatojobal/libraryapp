@@ -31,7 +31,6 @@ public class ApiClient {
             // Deal with the issues the way we need to
             if (response.code() == 401) {
                 // Unauthorized
-                // TODO: Ask a new refresh token
 
             }
 

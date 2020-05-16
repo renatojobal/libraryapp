@@ -5,6 +5,6 @@ public class ServiceConstants {
      * Constants for the web service
      */
 
-    public static final String BASE_URL = "http://localhost:8000";
+    public static final String BASE_URL = "http://10.0.2.2:8000";
     public static final String SEARCH_BOOK_BY_TITLE_URL = "/api/movilapp/search_book_by_title/";
 }
