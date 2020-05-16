@@ -3,6 +3,8 @@ package com.renatojobal.libraryutpl.repository.model;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import com.google.gson.annotations.SerializedName;
+
 @Entity
 public class ShelfModel {
     /**
@@ -10,25 +12,25 @@ public class ShelfModel {
      */
 
     @PrimaryKey
+    @SerializedName("id")
     private int id;
 
-    private int code;
+    @SerializedName("code")
+    private String code;
 
+    @SerializedName("location")
     private String location;
 
+    @SerializedName("active")
     private boolean active;
 
-    public ShelfModel(int id, int code, String location, boolean active) {
-        /**
-         * Full params constructor
-         */
+    public ShelfModel(int id, String code, String location, boolean active) {
         this.id = id;
         this.code = code;
         this.location = location;
         this.active = active;
     }
 
-    // Getter and setters
     public int getId() {
         return id;
     }
@@ -37,11 +39,11 @@ public class ShelfModel {
         this.id = id;
     }
 
-    public int getCode() {
+    public String getCode() {
         return code;
     }
 
-    public void setCode(int code) {
+    public void setCode(String code) {
         this.code = code;
     }
 

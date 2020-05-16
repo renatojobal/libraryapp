@@ -4,10 +4,12 @@ import android.util.Log;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.renatojobal.libraryutpl.mainactivity.fsearchbook.response.SearchResponse;
 import com.renatojobal.libraryutpl.repository.localdatabase.RoomHelper;
 import com.renatojobal.libraryutpl.repository.webservice.ApiClient;
 
 import java.io.IOException;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -29,22 +31,22 @@ public class SearchBookPresenter {
         searchBookBody.setTitle(query);
         SearchBookRetrofitInterface searchBookRetrofitInterface =
                 ApiClient.getClient().create(SearchBookRetrofitInterface.class);
-        Call<JsonArray> call = searchBookRetrofitInterface.searchBookByTitle(searchBookBody);
+        Call<List<SearchResponse>> call = searchBookRetrofitInterface.searchBookByTitle(searchBookBody);
 
-        call.enqueue(new Callback<JsonArray>() {
+        call.enqueue(new Callback<List<SearchResponse>>() {
             @Override
-            public void onResponse(Call<JsonArray> call, Response<JsonArray> response) {
+            public void onResponse(Call<List<SearchResponse>> call, Response<List<SearchResponse>> response) {
                 Log.d(TAG, "onResponse: "+response.body());
-
-
 
             }
 
             @Override
-            public void onFailure(Call<JsonArray> call, Throwable t) {
+            public void onFailure(Call<List<SearchResponse>> call, Throwable t) {
                 Log.e(TAG, "onFailure: "+t.getMessage().toString());
             }
         });
+
+
 
     }
 

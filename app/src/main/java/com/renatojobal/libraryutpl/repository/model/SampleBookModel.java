@@ -5,6 +5,8 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -33,21 +35,30 @@ public class SampleBookModel implements Serializable {
 
     @PrimaryKey
     @NonNull
+    @SerializedName("id")
     private int id;
 
+    @SerializedName("borrowed_externally")
     private boolean borrowedExternally;
 
+    @SerializedName("borrowed_internally")
     private boolean borrowedInternally;
 
+    @SerializedName("tag")
     private String tag;
 
+    @SerializedName("state")
     private int state;
 
+    @SerializedName("shelf_owner")
     private int fkShelfOwner;
 
+    @SerializedName("actual_shelf")
     private int fkActualShelf;
 
+    @SerializedName("book_info")
     private int fkBookInfo;
+
 
     public SampleBookModel(int id, boolean borrowedExternally, boolean borrowedInternally, String tag, int state, int fkShelfOwner, int fkActualShelf, int fkBookInfo) {
         /**
