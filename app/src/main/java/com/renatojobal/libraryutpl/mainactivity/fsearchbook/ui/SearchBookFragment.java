@@ -23,7 +23,7 @@ public class SearchBookFragment extends Fragment {
      * SearchBook fragment
      */
 
-    private SearchBookViewModel mViewModel;
+    private SearchBookViewModel searchBookViewModel;
 
     FragmentSearchBookBinding binding;
 
@@ -37,8 +37,11 @@ public class SearchBookFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(SearchBookViewModel.class);
-        // TODO: Use the ViewModel
+        searchBookViewModel = new ViewModelProvider(this).get(SearchBookViewModel.class);
+
+
+
+
     }
 
 }

@@ -6,6 +6,7 @@ import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 @Entity(
         foreignKeys = {
@@ -125,5 +126,26 @@ public class SampleBookModel implements Serializable {
 
     public void setFkBookInfo(int fkBookInfo) {
         this.fkBookInfo = fkBookInfo;
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SampleBookModel that = (SampleBookModel) o;
+        return id == that.id &&
+                borrowedExternally == that.borrowedExternally &&
+                borrowedInternally == that.borrowedInternally &&
+                state == that.state &&
+                fkShelfOwner == that.fkShelfOwner &&
+                fkActualShelf == that.fkActualShelf &&
+                fkBookInfo == that.fkBookInfo &&
+                Objects.equals(tag, that.tag);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, borrowedExternally, borrowedInternally, tag, state, fkShelfOwner, fkActualShelf, fkBookInfo);
     }
 }

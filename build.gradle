@@ -3,6 +3,7 @@
 buildscript {
 
     ext {
+        version_paging = "2.1.1"
         version_core = "1.0.1"
         version_coroutine = "1.1.0"
         version_constraint_layout = "1.1.3"
