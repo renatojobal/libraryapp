@@ -9,11 +9,14 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
 
 import com.renatojobal.libraryutpl.R;
 
@@ -27,6 +30,7 @@ public class SearchBookFragment extends Fragment {
     /**
      * SearchBook fragment
      */
+    private static final String TAG = "SearchBookFragment";
 
     private SearchBookViewModel searchBookViewModel;
 
@@ -54,13 +58,30 @@ public class SearchBookFragment extends Fragment {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_search_book, container, false);
 
         samplesBookLiveDataListAdapter = new SamplesBookLiveDataListAdapter(getContext(), searchBookViewModel.getSampleBookResultList());
-
+        binding.recyclerViewResultList.setLayoutManager(new LinearLayoutManager(getContext()));
         searchBookViewModel.getSampleBookResultList().observe(getViewLifecycleOwner(), new Observer<List<SampleBookModel>>() {
             @Override
             public void onChanged(List<SampleBookModel> sampleBookModelList) {
                 binding.recyclerViewResultList.setAdapter(samplesBookLiveDataListAdapter);
             }
         });
+
+        binding.searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                Log.i(TAG, "Query: "+query);
+                searchBookViewModel.setTargetBook(query);
+
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                // We don't care about this for the moment
+                return false;
+            }
+        });
+
 
 
 

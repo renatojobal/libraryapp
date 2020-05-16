@@ -1,4 +1,4 @@
-package com.renatojobal.libraryutpl.mainactivity.fsearchbook;
+package com.renatojobal.libraryutpl.mainactivity.fsearchbook.ui;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -14,15 +14,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.renatojobal.libraryutpl.R;
 import com.renatojobal.libraryutpl.repository.model.SampleBookModel;
 
-public class SampleBookListAdapter
-        extends PagedListAdapter<SampleBookModel, SampleBookListAdapter.SampleBookViewHolder> {
+public class SampleBookPagedListAdapter
+        extends PagedListAdapter<SampleBookModel, SampleBookPagedListAdapter.SampleBookViewHolder> {
     /**
      * Sample book list adapter
      */
 
     Context context;
 
-    protected SampleBookListAdapter(Context context){
+    protected SampleBookPagedListAdapter(Context context){
         /** Constructor */
         super(DIFF_CALLBACK);
         this.context = context;

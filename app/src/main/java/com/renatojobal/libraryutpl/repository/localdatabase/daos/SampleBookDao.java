@@ -10,12 +10,17 @@ import androidx.room.Query;
 
 import com.renatojobal.libraryutpl.repository.model.SampleBookModel;
 
+import java.util.List;
+
 
 @Dao
 public interface SampleBookDao {
 
     @Query("SELECT * FROM samplebookmodel")
     DataSource.Factory<Integer, SampleBookModel> getLiveDataPagedList();
+
+    @Query("SELECT * FROM samplebookmodel")
+    LiveData<List<SampleBookModel>> getLiveDataList();
 
     @Insert
     void insert(SampleBookModel sampleBook);
