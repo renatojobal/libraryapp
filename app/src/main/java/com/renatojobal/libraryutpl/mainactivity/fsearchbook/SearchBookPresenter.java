@@ -37,7 +37,9 @@ public class SearchBookPresenter {
             @Override
             public void onResponse(Call<List<SearchResponse>> call, Response<List<SearchResponse>> response) {
                 Log.d(TAG, "onResponse: "+response.body());
+                for(int i = 0; i < response.body().size(); i++){
 
+                }
             }
 
             @Override
