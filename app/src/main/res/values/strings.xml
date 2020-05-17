@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Biblioteca UTPL</string>
+    <string name="search_book_hint">Buscar un libro</string>
 </resources>

@@ -3,11 +3,15 @@ apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 29
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
     buildToolsVersion "29.0.3"
 
     defaultConfig {
         applicationId "com.renatojobal.libraryutpl"
-        minSdkVersion 23
+        minSdkVersion 24
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -27,21 +31,31 @@ android {
 }
 
 dependencies {
-    def room_version = "2.2.3"
-    def play_services_version = "17.0.0"
+
+
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
 
-    testImplementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.13'
 
     /** Material design */
-    implementation 'com.google.android.material:material:1.2.0-alpha04'
+    implementation 'com.google.android.material:material:1.2.0-alpha06'
+
+    /** Palette */
+    // implementation 'androidx.palette:palette:1.0.0' We are not using this for the moment
 
     /** Play service */
-    implementation "com.google.android.gms:play-services-location:$play_services_version"
-    implementation "com.google.android.gms:play-services-maps:$play_services_version"
-    implementation "com.google.android.gms:play-services-places:$play_services_version"
+//    implementation "com.google.android.gms:play-services-location:$version"
+//    implementation "com.google.android.gms:play-services-maps:$play_services_version"
+//    implementation "com.google.android.gms:play-services-places:$play_services_version"
+    implementation "com.google.firebase:firebase-analytics:$version_play_services"
+
+    /** Retrofit library */
+    implementation "com.squareup.retrofit2:retrofit:$version_retrofit"
+    implementation "com.squareup.retrofit2:converter-gson:$version_retrofit"
+    testImplementation('com.squareup.okhttp3:mockwebserver:4.6.0')
+
 
     /** AndroidX */
     implementation 'androidx.appcompat:appcompat:1.1.0'
@@ -51,15 +65,35 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
+    /** Navigation */
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.0.0-rc02'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.0.0-rc02'
+
 
     /** ROOM */
-    implementation "androidx.room:room-runtime:$room_version"
-    annotationProcessor "androidx.room:room-compiler:$room_version"
+    implementation "androidx.room:room-runtime:$version_room"
+    annotationProcessor "androidx.room:room-compiler:$version_room"
 
     // optional - RxJava support for Room
-    implementation "androidx.room:room-rxjava2:$room_version"
+    implementation "androidx.room:room-rxjava2:$version_room"
 
 
-    /** */
+    /** Recycler view support */
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+
+    /** Card view support */
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.paging:paging-runtime:2.1.0'
+
+    /** Paging */
+    implementation "androidx.paging:paging-runtime:$version_paging" // For Kotlin use paging-runtime-ktx
+
+    // alternatively - without Android dependencies for testing
+    // testImplementation "androidx.paging:paging-common:$version_paging"
+
+    // optional - RxJava support
+    // implementation "androidx.paging:paging-rxjava2:$version_paging"
 
 }
+
+

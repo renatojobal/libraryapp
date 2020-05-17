@@ -3,25 +3,35 @@ package com.renatojobal.libraryutpl.repository.model;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import com.google.gson.annotations.SerializedName;
+
 @Entity
 public class BookInfoModel {
     /**
      * Book_Info model
      */
 
+
     @PrimaryKey
+    @SerializedName("id")
     private int id;
 
+    @SerializedName("title")
     private String title;
 
+    @SerializedName("actual_stock")
     private int actualStock;
 
+    @SerializedName("total_stock")
     private int totalStock;
 
+    @SerializedName("publication_date")
     private Long publicationDate;
 
+    @SerializedName("pages")
     private int pages;
 
+    @SerializedName("editorial")
     private String editorial;
 
     public BookInfoModel(int id, String title, int actualStock, int totalStock, Long publicationDate, int pages, String editorial) {

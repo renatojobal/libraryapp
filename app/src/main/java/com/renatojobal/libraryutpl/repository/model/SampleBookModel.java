@@ -5,7 +5,10 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
+import java.util.Objects;
 
 @Entity(
         foreignKeys = {
@@ -32,21 +35,30 @@ public class SampleBookModel implements Serializable {
 
     @PrimaryKey
     @NonNull
+    @SerializedName("id")
     private int id;
 
+    @SerializedName("borrowed_externally")
     private boolean borrowedExternally;
 
+    @SerializedName("borrowed_internally")
     private boolean borrowedInternally;
 
+    @SerializedName("tag")
     private String tag;
 
+    @SerializedName("state")
     private int state;
 
+    @SerializedName("shelf_owner")
     private int fkShelfOwner;
 
+    @SerializedName("actual_shelf")
     private int fkActualShelf;
 
+    @SerializedName("book_info")
     private int fkBookInfo;
+
 
     public SampleBookModel(int id, boolean borrowedExternally, boolean borrowedInternally, String tag, int state, int fkShelfOwner, int fkActualShelf, int fkBookInfo) {
         /**
@@ -125,5 +137,26 @@ public class SampleBookModel implements Serializable {
 
     public void setFkBookInfo(int fkBookInfo) {
         this.fkBookInfo = fkBookInfo;
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SampleBookModel that = (SampleBookModel) o;
+        return id == that.id &&
+                borrowedExternally == that.borrowedExternally &&
+                borrowedInternally == that.borrowedInternally &&
+                state == that.state &&
+                fkShelfOwner == that.fkShelfOwner &&
+                fkActualShelf == that.fkActualShelf &&
+                fkBookInfo == that.fkBookInfo &&
+                Objects.equals(tag, that.tag);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, borrowedExternally, borrowedInternally, tag, state, fkShelfOwner, fkActualShelf, fkBookInfo);
     }
 }
