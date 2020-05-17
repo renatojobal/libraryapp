@@ -15,6 +15,10 @@ import java.util.List;
 
 @Dao
 public interface SampleBookDao {
+    /**
+     * Dao for SampleBook Model
+     * @return
+     */
 
     @Query("SELECT * FROM samplebookmodel")
     DataSource.Factory<Integer, SampleBookModel> getLiveDataPagedList();

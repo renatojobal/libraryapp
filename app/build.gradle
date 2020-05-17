@@ -43,7 +43,7 @@ dependencies {
     implementation 'com.google.android.material:material:1.2.0-alpha06'
 
     /** Palette */
-    implementation 'androidx.palette:palette:1.0.0'
+    // implementation 'androidx.palette:palette:1.0.0' We are not using this for the moment
 
     /** Play service */
 //    implementation "com.google.android.gms:play-services-location:$version"

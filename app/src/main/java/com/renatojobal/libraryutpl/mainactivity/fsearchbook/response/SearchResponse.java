@@ -1,6 +1,7 @@
 package com.renatojobal.libraryutpl.mainactivity.fsearchbook.response;
 
 import com.google.gson.annotations.SerializedName;
+import com.renatojobal.libraryutpl.repository.model.AuthorModel;
 import com.renatojobal.libraryutpl.repository.model.BookInfoModel;
 import com.renatojobal.libraryutpl.repository.model.SampleBookModel;
 import com.renatojobal.libraryutpl.repository.model.ShelfModel;
@@ -14,7 +15,7 @@ public class SearchResponse{
     private SampleBookModel singularBookInfo;
 
     @SerializedName("authors_info")
-    private String authorsInfo;
+    private AuthorModel authorsInfo;
 
     @SerializedName("book_info")
     private BookInfoModel bookInfo;
@@ -27,7 +28,7 @@ public class SearchResponse{
         return singularBookInfo;
     }
 
-    public String getAuthorsInfo(){
+    public AuthorModel getAuthorsInfo(){
         return authorsInfo;
     }
 

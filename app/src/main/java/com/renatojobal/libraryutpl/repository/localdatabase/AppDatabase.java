@@ -5,7 +5,11 @@ import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 
 import com.renatojobal.libraryutpl.repository.localdatabase.converter.DateConverter;
+import com.renatojobal.libraryutpl.repository.localdatabase.daos.AuthorDao;
+import com.renatojobal.libraryutpl.repository.localdatabase.daos.BookInfoDao;
 import com.renatojobal.libraryutpl.repository.localdatabase.daos.SampleBookDao;
+import com.renatojobal.libraryutpl.repository.localdatabase.daos.ShelfDao;
+import com.renatojobal.libraryutpl.repository.model.AuthorModel;
 import com.renatojobal.libraryutpl.repository.model.BookInfoModel;
 import com.renatojobal.libraryutpl.repository.model.SampleBookModel;
 import com.renatojobal.libraryutpl.repository.model.ShelfModel;
@@ -13,16 +17,19 @@ import com.renatojobal.libraryutpl.repository.model.ShelfModel;
 @Database(entities = {
         BookInfoModel.class,
         SampleBookModel.class,
-        ShelfModel.class
+        ShelfModel.class,
+        AuthorModel.class
 },
-        version = 3)
+        version = 5)
 @TypeConverters({DateConverter.class})
 public abstract class AppDatabase extends RoomDatabase {
     /**
-     * Database
+     * Expose the database data access objects
      */
 
+    public abstract BookInfoDao bookInfoDao();
     public abstract SampleBookDao sampleBookDao();
-
+    public abstract ShelfDao shelfDao();
+    public abstract AuthorDao authorDao();
 
 }

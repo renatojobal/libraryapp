@@ -1,6 +1,7 @@
 package com.renatojobal.libraryutpl.mainactivity.fsearchbook.ui;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +26,8 @@ public class SamplesBookLiveDataListAdapter
      * @param sampleBookLiveData List of books
      * @return
      */
+    private static final String TAG = "SamplesBookLiveDataList";
+
 
     // Attributes
     Context context;
@@ -60,9 +63,17 @@ public class SamplesBookLiveDataListAdapter
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view;
+        try{
+            view = LayoutInflater
+                    .from(parent.getContext())
+                    .inflate(R.layout.card_view_sample_book, parent, false);
+        }catch (Exception e){
+            Log.e(TAG, "onCreateView"+ e.getMessage());
+            view = null;
+            throw e;
+        }
 
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.card_view_sample_book, parent, false);
 
         // Return the view holder with the elements attached
         ViewHolder viewHolder = new ViewHolder(view);
