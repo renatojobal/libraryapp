@@ -129,6 +129,6 @@ public class SearchBookPresenter {
                 RoomHelper.getAppDatabaseInstance().shelfDao().deleteAll();
                 RoomHelper.getAppDatabaseInstance().sampleBookDao().deleteAll();
             }
-        });
+        }).start();
     }
 }
