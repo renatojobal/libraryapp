@@ -1,17 +1,20 @@
 package com.renatojobal.libraryutpl.repository.model;
 
-import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import com.google.gson.annotations.SerializedName;
+
+import java.io.Serializable;
+
 @Entity
-public class AuthorModel {
+public class AuthorModel  implements Serializable {
     /**
      * Author model
      */
 
     @PrimaryKey
-    private int id;
+    private int authorModelId;
 
     private String name;
 
@@ -19,26 +22,27 @@ public class AuthorModel {
 
     private String nationality;
 
-    private int state;
+    @SerializedName("state")
+    private int authorState;
 
-    public AuthorModel(int id, String name, String pseudonym, String nationality, int state) {
+    public AuthorModel(int authorModelId, String name, String pseudonym, String nationality, int authorState) {
         /**
          * Full params constructor
          */
-        this.id = id;
+        this.authorModelId = authorModelId;
         this.name = name;
         this.pseudonym = pseudonym;
         this.nationality = nationality;
-        this.state = state;
+        this.authorState = authorState;
     }
 
     // Getter and setters
-    public int getId() {
-        return id;
+    public int getAuthorModelId() {
+        return authorModelId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setAuthorModelId(int authorModelId) {
+        this.authorModelId = authorModelId;
     }
 
     public String getName() {
@@ -65,11 +69,11 @@ public class AuthorModel {
         this.nationality = nationality;
     }
 
-    public int getState() {
-        return state;
+    public int getAuthorState() {
+        return authorState;
     }
 
-    public void setState(int state) {
-        this.state = state;
+    public void setAuthorState(int authorState) {
+        this.authorState = authorState;
     }
 }

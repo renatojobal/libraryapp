@@ -24,6 +24,7 @@ public class SearchBookViewModel extends ViewModel {
     private static final String TAG = "SearchBookViewModel";
 
     private LiveData<List<SampleBookModel>> sampleBookResultList;
+    private LiveData<List<SampleBookFull>> sampleBookFullList;
 
     public String targetBook;
 
@@ -36,22 +37,39 @@ public class SearchBookViewModel extends ViewModel {
 
 
         sampleBookResultList = RoomHelper.getAppDatabaseInstance().sampleBookDao().getLiveDataList();
+        sampleBookFullList = RoomHelper.getAppDatabaseInstance().resultDao().allResultLiveData();
 
 
     }
+
+
+    /**
+     * Exposing data to the view ---
+     */
 
     public LiveData<List<SampleBookModel>> getSampleBookResultList() {
         /** Expose the result list*/
         return sampleBookResultList;
     }
 
+    public LiveData<List<SampleBookFull>> getSampleBookFullList() {
+        /** EExpose the result list with full data */
+        return sampleBookFullList;
+    }
 
-    // UI interaction
+
+
+
+
+    /**
+     * UI interaction ---
+     */
+
     public void setTargetBook(String query){
         /**
          * Notify the fragment
          */
-        // TODO: Do the request to the api and then storage it into the database
+        // Do the request to the api and then storage it into the database
         searchBookPresenter.searchBook(query);
 
     }

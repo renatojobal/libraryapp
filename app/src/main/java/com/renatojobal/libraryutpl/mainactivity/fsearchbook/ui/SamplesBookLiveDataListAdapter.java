@@ -87,7 +87,7 @@ public class SamplesBookLiveDataListAdapter
         SampleBookModel sampleBook = getItem(position);
 
         // - replace the contents of the view with that element
-        holder.title.setText(sampleBook.getFkBookInfo());
+        holder.title.setText(sampleBook.getBookInfoModelId());
 
     }
 

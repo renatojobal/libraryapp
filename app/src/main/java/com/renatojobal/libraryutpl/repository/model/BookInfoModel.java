@@ -5,8 +5,10 @@ import androidx.room.PrimaryKey;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 @Entity
-public class BookInfoModel {
+public class BookInfoModel implements Serializable {
     /**
      * Book_Info model
      */
@@ -14,7 +16,7 @@ public class BookInfoModel {
 
     @PrimaryKey
     @SerializedName("id")
-    private int id;
+    private int bookInfoModelId;
 
     @SerializedName("title")
     private String title;
@@ -34,11 +36,11 @@ public class BookInfoModel {
     @SerializedName("editorial")
     private String editorial;
 
-    public BookInfoModel(int id, String title, int actualStock, int totalStock, Long publicationDate, int pages, String editorial) {
+    public BookInfoModel(int bookInfoModelId, String title, int actualStock, int totalStock, Long publicationDate, int pages, String editorial) {
         /**
          * Full params constructor
          */
-        this.id = id;
+        this.bookInfoModelId = bookInfoModelId;
         this.title = title;
         this.actualStock = actualStock;
         this.totalStock = totalStock;
@@ -48,12 +50,12 @@ public class BookInfoModel {
     }
 
     // Getter and setters
-    public int getId() {
-        return id;
+    public int getBookInfoModelId() {
+        return bookInfoModelId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setBookInfoModelId(int bookInfoModelId) {
+        this.bookInfoModelId = bookInfoModelId;
     }
 
     public String getTitle() {

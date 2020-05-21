@@ -7,13 +7,13 @@ import androidx.room.PrimaryKey;
 
 @Entity(foreignKeys = {
         @ForeignKey(entity = AuthorModel.class,
-                parentColumns = "id",
-                childColumns = "fkAuthor",
+                parentColumns = "authorModelId",
+                childColumns = "authorModelId",
                 onDelete = ForeignKey.CASCADE
         ),
         @ForeignKey(entity = BookInfoModel.class,
-                parentColumns = "id",
-                childColumns = "fkBookInfo",
+                parentColumns = "bookInfoModelId",
+                childColumns = "bookInfoModelId",
                 onDelete = ForeignKey.CASCADE)
 })
 public class AuthorBookInfoModel {
@@ -27,17 +27,17 @@ public class AuthorBookInfoModel {
     @NonNull
     private int id;
 
-    private int fkAuthor;
+    private int authorModelId;
 
-    private int fkBookInfo;
+    private int bookInfoModelId;
 
-    public AuthorBookInfoModel(int id, int fkAuthor, int fkBookInfo) {
+    public AuthorBookInfoModel(int id, int authorModelId, int bookInfoModelId) {
         /**
          * Full params constructor
          */
         this.id = id;
-        this.fkAuthor = fkAuthor;
-        this.fkBookInfo = fkBookInfo;
+        this.authorModelId = authorModelId;
+        this.bookInfoModelId = bookInfoModelId;
     }
 
     // Getter and setters
@@ -49,19 +49,19 @@ public class AuthorBookInfoModel {
         this.id = id;
     }
 
-    public int getFkAuthor() {
-        return fkAuthor;
+    public int getAuthorModelId() {
+        return authorModelId;
     }
 
-    public void setFkAuthor(int fkAuthor) {
-        this.fkAuthor = fkAuthor;
+    public void setAuthorModelId(int authorModelId) {
+        this.authorModelId = authorModelId;
     }
 
-    public int getFkBookInfo() {
-        return fkBookInfo;
+    public int getBookInfoModelId() {
+        return bookInfoModelId;
     }
 
-    public void setFkBookInfo(int fkBookInfo) {
-        this.fkBookInfo = fkBookInfo;
+    public void setBookInfoModelId(int bookInfoModelId) {
+        this.bookInfoModelId = bookInfoModelId;
     }
 }

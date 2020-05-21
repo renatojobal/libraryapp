@@ -4,6 +4,8 @@ import androidx.room.Database;
 import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 
+import com.renatojobal.libraryutpl.mainactivity.fsearchbook.ResultDao;
+import com.renatojobal.libraryutpl.mainactivity.fsearchbook.SampleBookFull;
 import com.renatojobal.libraryutpl.repository.localdatabase.converter.DateConverter;
 import com.renatojobal.libraryutpl.repository.localdatabase.daos.AuthorDao;
 import com.renatojobal.libraryutpl.repository.localdatabase.daos.BookInfoDao;
@@ -20,7 +22,8 @@ import com.renatojobal.libraryutpl.repository.model.ShelfModel;
         ShelfModel.class,
         AuthorModel.class
 },
-        version = 5)
+        views = {SampleBookFull.class},
+        version = 7)
 @TypeConverters({DateConverter.class})
 public abstract class AppDatabase extends RoomDatabase {
     /**
@@ -31,5 +34,8 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract SampleBookDao sampleBookDao();
     public abstract ShelfDao shelfDao();
     public abstract AuthorDao authorDao();
+
+
+    public abstract ResultDao resultDao();
 
 }

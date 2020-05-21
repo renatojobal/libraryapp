@@ -13,7 +13,7 @@ public class ShelfModel {
 
     @PrimaryKey
     @SerializedName("id")
-    private int id;
+    private int shelfModelId;
 
     @SerializedName("code")
     private String code;
@@ -24,19 +24,19 @@ public class ShelfModel {
     @SerializedName("active")
     private boolean active;
 
-    public ShelfModel(int id, String code, String location, boolean active) {
-        this.id = id;
+    public ShelfModel(int shelfModelId, String code, String location, boolean active) {
+        this.shelfModelId = shelfModelId;
         this.code = code;
         this.location = location;
         this.active = active;
     }
 
-    public int getId() {
-        return id;
+    public int getShelfModelId() {
+        return shelfModelId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setShelfModelId(int shelfModelId) {
+        this.shelfModelId = shelfModelId;
     }
 
     public String getCode() {
