@@ -7,12 +7,12 @@ import com.renatojobal.libraryutpl.repository.model.AuthorModel;
 import com.renatojobal.libraryutpl.repository.model.BookInfoModel;
 import com.renatojobal.libraryutpl.repository.model.SampleBookModel;
 
-@DatabaseView("SELECT BookInfoModel.* , SampleBookModel.state " +
+@DatabaseView("SELECT BookInfoModel.* , SampleBookModel.* " +
         "FROM BookInfoModel, SampleBookModel " +
-        "INNER JOIN BookInfoModel ON BookInfoModel.bookInfoModelId = SampleBookModel.bookInfoModelId")
-public class SampleBookFull {
+        "WHERE SampleBookModel.fkBookInfoModel = BookInfoModel.bookInfoModelId")
+public class ResultView {
     /**
-     * This class is a view that joins the sample books with the book info, author
+     * This class is a view that joins the tables sample books with the book info, author
      */
 
 
@@ -22,8 +22,10 @@ public class SampleBookFull {
     @Embedded(prefix = "bookInfo")
     public BookInfoModel bookInfo;
 
-
-
+    public ResultView(SampleBookModel sampleBook, BookInfoModel bookInfo) {
+        this.sampleBook = sampleBook;
+        this.bookInfo = bookInfo;
+    }
 
     public SampleBookModel getSampleBook() {
         return sampleBook;
