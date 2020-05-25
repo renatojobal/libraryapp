@@ -1,29 +1,31 @@
 package com.renatojobal.libraryutpl.repository.model;
 
 import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
 import com.google.gson.annotations.SerializedName;
+import com.renatojobal.libraryutpl.repository.localdatabase.DBConstants;
 
 import java.io.Serializable;
 import java.util.Objects;
 
-@Entity(
+@Entity(tableName = DBConstants.SAMPLE_BOOK_TABLE,
         foreignKeys = {
                 @ForeignKey(entity = ShelfModel.class,
-                        parentColumns = "shelfModelId",
-                        childColumns = "shelfOwnerId",
+                        parentColumns = "shelfModelIf",
+                        childColumns = "fkShelfOwner",
                         onDelete = ForeignKey.CASCADE),
 
                 @ForeignKey(entity = ShelfModel.class,
                         parentColumns = "shelfModelId",
-                        childColumns = "actualShelfId",
+                        childColumns = "fkActualShelf",
                         onDelete = ForeignKey.CASCADE),
                 @ForeignKey(entity = BookInfoModel.class,
                         parentColumns = "bookInfoModelId",
-                        childColumns = "bookInfoModelId",
+                        childColumns = "fkBookInfoModelId",
                         onDelete = ForeignKey.CASCADE
                 )
         }
@@ -36,43 +38,37 @@ public class SampleBookModel implements Serializable {
     @PrimaryKey
     @NonNull
     @SerializedName("id")
+    @ColumnInfo(name = DBConstants.SAMPLE_BOOK_ID)
     private int sampleBookModelId;
 
     @SerializedName("borrowed_externally")
+    @ColumnInfo(name = DBConstants.SAMPLE_BOOK_BORROWED_EXTERNALLY)
     private boolean borrowedExternally;
 
     @SerializedName("borrowed_internally")
+    @ColumnInfo(name = DBConstants.SAMPLE_BOOK_BORROWED_INTERNALLY)
     private boolean borrowedInternally;
 
     @SerializedName("tag")
+    @ColumnInfo(name = DBConstants.SAMPLE_BOOK_TAG)
     private String tag;
 
     @SerializedName("state")
+    @ColumnInfo(name = DBConstants.SAMPLE_BOOK_STATE)
     private int state;
 
     @SerializedName("shelf_owner")
-    private int shelfOwnerId;
+    @ColumnInfo(name = DBConstants.SAMPLE_BOOK_SHELF_OWNER_ID)
+    private int fkShelfOwner;
 
     @SerializedName("actual_shelf")
-    private int actualShelfId;
+    @ColumnInfo(name = DBConstants.SAMPLE_BOOK_ACTUAL_SHELF_ID)
+    private int fkActualShelf;
 
     @SerializedName("book_info")
-    private int bookInfoModelId;
+    @ColumnInfo(name = DBConstants.SAMPLE_BOOK_BOOK_INFO_ID)
+    private int fkBookInfoModel;
 
-
-    public SampleBookModel(int sampleBookModelId, boolean borrowedExternally, boolean borrowedInternally, String tag, int state, int shelfOwnerId, int actualShelfId, int bookInfoModelId) {
-        /**
-         * Full params constructor
-         */
-        this.sampleBookModelId = sampleBookModelId;
-        this.borrowedExternally = borrowedExternally;
-        this.borrowedInternally = borrowedInternally;
-        this.tag = tag;
-        this.state = state;
-        this.shelfOwnerId = shelfOwnerId;
-        this.actualShelfId = actualShelfId;
-        this.bookInfoModelId = bookInfoModelId;
-    }
 
     // Getter and setters
     public int getSampleBookModelId() {
@@ -115,28 +111,28 @@ public class SampleBookModel implements Serializable {
         this.state = state;
     }
 
-    public int getShelfOwnerId() {
-        return shelfOwnerId;
+    public int getFkShelfOwner() {
+        return fkShelfOwner;
     }
 
-    public void setShelfOwnerId(int shelfOwnerId) {
-        this.shelfOwnerId = shelfOwnerId;
+    public void setFkShelfOwner(int fkShelfOwner) {
+        this.fkShelfOwner = fkShelfOwner;
     }
 
-    public int getActualShelfId() {
-        return actualShelfId;
+    public int getFkActualShelf() {
+        return fkActualShelf;
     }
 
-    public void setActualShelfId(int actualShelfId) {
-        this.actualShelfId = actualShelfId;
+    public void setFkActualShelf(int fkActualShelf) {
+        this.fkActualShelf = fkActualShelf;
     }
 
-    public int getBookInfoModelId() {
-        return bookInfoModelId;
+    public int getFkBookInfoModel() {
+        return fkBookInfoModel;
     }
 
-    public void setBookInfoModelId(int bookInfoModelId) {
-        this.bookInfoModelId = bookInfoModelId;
+    public void setFkBookInfoModel(int fkBookInfoModel) {
+        this.fkBookInfoModel = fkBookInfoModel;
     }
 
 
@@ -149,14 +145,15 @@ public class SampleBookModel implements Serializable {
                 borrowedExternally == that.borrowedExternally &&
                 borrowedInternally == that.borrowedInternally &&
                 state == that.state &&
-                shelfOwnerId == that.shelfOwnerId &&
-                actualShelfId == that.actualShelfId &&
-                bookInfoModelId == that.bookInfoModelId &&
+                fkShelfOwner == that.fkShelfOwner &&
+                fkActualShelf == that.fkActualShelf &&
+                fkBookInfoModel == that.fkBookInfoModel &&
                 Objects.equals(tag, that.tag);
+
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(sampleBookModelId, borrowedExternally, borrowedInternally, tag, state, shelfOwnerId, actualShelfId, bookInfoModelId);
+        return Objects.hash(sampleBookModelId, borrowedExternally, borrowedInternally, tag, state, fkShelfOwner, fkActualShelf, fkBookInfoModel);
     }
 }

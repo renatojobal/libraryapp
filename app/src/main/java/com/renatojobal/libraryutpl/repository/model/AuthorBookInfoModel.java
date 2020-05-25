@@ -1,34 +1,40 @@
 package com.renatojobal.libraryutpl.repository.model;
 
 import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
-@Entity(foreignKeys = {
-        @ForeignKey(entity = AuthorModel.class,
-                parentColumns = "authorModelId",
-                childColumns = "authorModelId",
-                onDelete = ForeignKey.CASCADE
-        ),
-        @ForeignKey(entity = BookInfoModel.class,
-                parentColumns = "bookInfoModelId",
-                childColumns = "bookInfoModelId",
-                onDelete = ForeignKey.CASCADE)
-})
+import com.renatojobal.libraryutpl.repository.localdatabase.DBConstants;
+
+@Entity(tableName = DBConstants.MM_AUTHOR_BOOK_INFO_TABLE,
+        foreignKeys = {
+                @ForeignKey(entity = AuthorModel.class,
+                        parentColumns = DBConstants.AUTHOR_ID,
+                        childColumns = DBConstants.MM_AUTHOR_BOOK_INFO_AUTHOR_ID,
+                        onDelete = ForeignKey.CASCADE
+                ),
+                @ForeignKey(entity = BookInfoModel.class,
+                        parentColumns = DBConstants.BOOK_INFO_ID,
+                        childColumns = DBConstants.MM_AUTHOR_BOOK_INFO_BOOK_INFO_ID,
+                        onDelete = ForeignKey.CASCADE)
+        })
 public class AuthorBookInfoModel {
     /**
      * Author_Book_Info model
-     *
+     * <p>
      * Table for many to many relationship
      */
 
-    @PrimaryKey
-    @NonNull
+    @PrimaryKey()
+    @ColumnInfo(name = DBConstants.MM_AUTHOR_BOOK_INFO_ID)
     private int id;
 
+    @ColumnInfo(name = DBConstants.MM_AUTHOR_BOOK_INFO_AUTHOR_ID)
     private int authorModelId;
 
+    @ColumnInfo(name = DBConstants.MM_AUTHOR_BOOK_INFO_BOOK_INFO_ID)
     private int bookInfoModelId;
 
     public AuthorBookInfoModel(int id, int authorModelId, int bookInfoModelId) {

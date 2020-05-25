@@ -1,13 +1,8 @@
 package com.renatojobal.libraryutpl.mainactivity.fsearchbook;
 
 
-import android.util.Log;
-
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
-import androidx.paging.DataSource;
-import androidx.paging.LivePagedListBuilder;
-import androidx.paging.PagedList;
 
 import com.renatojobal.libraryutpl.repository.localdatabase.RoomHelper;
 import com.renatojobal.libraryutpl.repository.model.SampleBookModel;
@@ -24,7 +19,7 @@ public class SearchBookViewModel extends ViewModel {
     private static final String TAG = "SearchBookViewModel";
 
     private LiveData<List<SampleBookModel>> sampleBookResultList;
-    private LiveData<List<SampleBookFull>> sampleBookFullList;
+    private LiveData<List<ResultView>> sampleBookFullList;
 
     public String targetBook;
 
@@ -52,7 +47,7 @@ public class SearchBookViewModel extends ViewModel {
         return sampleBookResultList;
     }
 
-    public LiveData<List<SampleBookFull>> getSampleBookFullList() {
+    public LiveData<List<ResultView>> getSampleBookFullList() {
         /** EExpose the result list with full data */
         return sampleBookFullList;
     }

@@ -72,7 +72,7 @@ public class SampleBookPagedListAdapter
         @Override
         public boolean areItemsTheSame(SampleBookModel oldItem, SampleBookModel newItem) {
             // The ID property identifies when items are the same.
-            return oldItem.getSampleBookModelId() == newItem.getSampleBookModelId();
+            return oldItem.getId() == newItem.getId();
         }
 
         @Override

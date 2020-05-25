@@ -1,13 +1,15 @@
 package com.renatojobal.libraryutpl.repository.model;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import com.google.gson.annotations.SerializedName;
+import com.renatojobal.libraryutpl.repository.localdatabase.DBConstants;
 
 import java.io.Serializable;
 
-@Entity
+@Entity(tableName = DBConstants.BOOK_INFO_TABLE)
 public class BookInfoModel implements Serializable {
     /**
      * Book_Info model
@@ -15,24 +17,31 @@ public class BookInfoModel implements Serializable {
 
 
     @PrimaryKey
+    @ColumnInfo(name = DBConstants.BOOK_INFO_ID)
     @SerializedName("id")
     private int bookInfoModelId;
 
+    @ColumnInfo(name = DBConstants.BOOK_INFO_TITLE)
     @SerializedName("title")
     private String title;
 
+    @ColumnInfo(name = DBConstants.BOOK_INFO_ACTUAL_STOCK)
     @SerializedName("actual_stock")
     private int actualStock;
 
+    @ColumnInfo(name = DBConstants.BOOK_INFO_TOTAL_STOCK)
     @SerializedName("total_stock")
     private int totalStock;
 
+    @ColumnInfo(name = DBConstants.BOOK_INFO_PUBLICATION_DATE)
     @SerializedName("publication_date")
     private Long publicationDate;
 
+    @ColumnInfo(name = DBConstants.BOOK_INFO_PAGES)
     @SerializedName("pages")
     private int pages;
 
+    @ColumnInfo(name = DBConstants.BOOK_INFO_EDITORIAL)
     @SerializedName("editorial")
     private String editorial;
 
