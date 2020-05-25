@@ -5,10 +5,12 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
+import com.renatojobal.libraryutpl.repository.localdatabase.DBConstants;
+
 @Entity(foreignKeys = {
         @ForeignKey(entity = ShelfModel.class,
-                parentColumns = "id",
-                childColumns = "fkShelf",
+                parentColumns = DBConstants.SHELF_ID,
+                childColumns = DBConstants.AGENT_ID,
                 onDelete = ForeignKey.CASCADE)
 })
 public class AgentModel {

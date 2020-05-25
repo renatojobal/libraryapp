@@ -1,44 +1,55 @@
 package com.renatojobal.libraryutpl.repository.model;
 
-import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity
-public class AuthorModel {
+import com.google.gson.annotations.SerializedName;
+import com.renatojobal.libraryutpl.repository.localdatabase.DBConstants;
+
+import java.io.Serializable;
+
+@Entity(tableName = DBConstants.AUTHOR_TABLE)
+public class AuthorModel  implements Serializable {
     /**
      * Author model
      */
 
     @PrimaryKey
-    private int id;
+    @ColumnInfo(name = DBConstants.AUTHOR_ID)
+    private int authorModelId;
 
+    @ColumnInfo(name = DBConstants.AUTHOR_NAME)
     private String name;
 
+    @ColumnInfo(name = DBConstants.AUTHOR_PSEUDONYM)
     private String pseudonym;
 
+    @ColumnInfo(name = DBConstants.AUTHOR_NATIONALITY)
     private String nationality;
 
-    private int state;
+    @SerializedName("state")
+    @ColumnInfo(name = DBConstants.AUTHOR_STATE)
+    private int authorState;
 
-    public AuthorModel(int id, String name, String pseudonym, String nationality, int state) {
+    public AuthorModel(int authorModelId, String name, String pseudonym, String nationality, int authorState) {
         /**
          * Full params constructor
          */
-        this.id = id;
+        this.authorModelId = authorModelId;
         this.name = name;
         this.pseudonym = pseudonym;
         this.nationality = nationality;
-        this.state = state;
+        this.authorState = authorState;
     }
 
     // Getter and setters
-    public int getId() {
-        return id;
+    public int getAuthorModelId() {
+        return authorModelId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setAuthorModelId(int authorModelId) {
+        this.authorModelId = authorModelId;
     }
 
     public String getName() {
@@ -65,11 +76,11 @@ public class AuthorModel {
         this.nationality = nationality;
     }
 
-    public int getState() {
-        return state;
+    public int getAuthorState() {
+        return authorState;
     }
 
-    public void setState(int state) {
-        this.state = state;
+    public void setAuthorState(int authorState) {
+        this.authorState = authorState;
     }
 }

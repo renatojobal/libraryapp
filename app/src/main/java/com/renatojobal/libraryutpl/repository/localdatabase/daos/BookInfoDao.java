@@ -5,6 +5,7 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 
+import com.renatojobal.libraryutpl.repository.localdatabase.DBConstants;
 import com.renatojobal.libraryutpl.repository.model.BookInfoModel;
 
 @Dao
@@ -20,6 +21,6 @@ public interface BookInfoDao {
     @Delete
     void delete(BookInfoModel bookInfo);
 
-    @Query("DELETE FROM bookinfomodel")
+    @Query("DELETE FROM "+ DBConstants.BOOK_INFO_TABLE)
     void deleteAll();
 }

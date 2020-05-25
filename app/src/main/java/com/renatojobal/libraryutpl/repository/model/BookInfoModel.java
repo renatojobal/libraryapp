@@ -1,44 +1,55 @@
 package com.renatojobal.libraryutpl.repository.model;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import com.google.gson.annotations.SerializedName;
+import com.renatojobal.libraryutpl.repository.localdatabase.DBConstants;
 
-@Entity
-public class BookInfoModel {
+import java.io.Serializable;
+
+@Entity(tableName = DBConstants.BOOK_INFO_TABLE)
+public class BookInfoModel implements Serializable {
     /**
      * Book_Info model
      */
 
 
     @PrimaryKey
+    @ColumnInfo(name = DBConstants.BOOK_INFO_ID)
     @SerializedName("id")
-    private int id;
+    private int bookInfoModelId;
 
+    @ColumnInfo(name = DBConstants.BOOK_INFO_TITLE)
     @SerializedName("title")
     private String title;
 
+    @ColumnInfo(name = DBConstants.BOOK_INFO_ACTUAL_STOCK)
     @SerializedName("actual_stock")
     private int actualStock;
 
+    @ColumnInfo(name = DBConstants.BOOK_INFO_TOTAL_STOCK)
     @SerializedName("total_stock")
     private int totalStock;
 
+    @ColumnInfo(name = DBConstants.BOOK_INFO_PUBLICATION_DATE)
     @SerializedName("publication_date")
     private Long publicationDate;
 
+    @ColumnInfo(name = DBConstants.BOOK_INFO_PAGES)
     @SerializedName("pages")
     private int pages;
 
+    @ColumnInfo(name = DBConstants.BOOK_INFO_EDITORIAL)
     @SerializedName("editorial")
     private String editorial;
 
-    public BookInfoModel(int id, String title, int actualStock, int totalStock, Long publicationDate, int pages, String editorial) {
+    public BookInfoModel(int bookInfoModelId, String title, int actualStock, int totalStock, Long publicationDate, int pages, String editorial) {
         /**
          * Full params constructor
          */
-        this.id = id;
+        this.bookInfoModelId = bookInfoModelId;
         this.title = title;
         this.actualStock = actualStock;
         this.totalStock = totalStock;
@@ -48,12 +59,12 @@ public class BookInfoModel {
     }
 
     // Getter and setters
-    public int getId() {
-        return id;
+    public int getBookInfoModelId() {
+        return bookInfoModelId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setBookInfoModelId(int bookInfoModelId) {
+        this.bookInfoModelId = bookInfoModelId;
     }
 
     public String getTitle() {

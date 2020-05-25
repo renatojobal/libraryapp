@@ -84,12 +84,10 @@ public class SamplesBookLiveDataListAdapter
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         // - get element from your dataset at this position
-        // - replace the contents of the view with that element
-
         SampleBookModel sampleBook = getItem(position);
 
-
-        holder.author.setText(sampleBook.getTag());
+        // - replace the contents of the view with that element
+        holder.title.setText(sampleBook.getFkBookInfoModel());
 
     }
 

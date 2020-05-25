@@ -1,13 +1,8 @@
 package com.renatojobal.libraryutpl.mainactivity.fsearchbook;
 
 
-import android.util.Log;
-
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
-import androidx.paging.DataSource;
-import androidx.paging.LivePagedListBuilder;
-import androidx.paging.PagedList;
 
 import com.renatojobal.libraryutpl.repository.localdatabase.RoomHelper;
 import com.renatojobal.libraryutpl.repository.model.SampleBookModel;
@@ -24,6 +19,7 @@ public class SearchBookViewModel extends ViewModel {
     private static final String TAG = "SearchBookViewModel";
 
     private LiveData<List<SampleBookModel>> sampleBookResultList;
+    private LiveData<List<ResultView>> sampleBookFullList;
 
     public String targetBook;
 
@@ -36,22 +32,39 @@ public class SearchBookViewModel extends ViewModel {
 
 
         sampleBookResultList = RoomHelper.getAppDatabaseInstance().sampleBookDao().getLiveDataList();
+        sampleBookFullList = RoomHelper.getAppDatabaseInstance().resultDao().allResultLiveData();
 
 
     }
+
+
+    /**
+     * Exposing data to the view ---
+     */
 
     public LiveData<List<SampleBookModel>> getSampleBookResultList() {
         /** Expose the result list*/
         return sampleBookResultList;
     }
 
+    public LiveData<List<ResultView>> getSampleBookFullList() {
+        /** EExpose the result list with full data */
+        return sampleBookFullList;
+    }
 
-    // UI interaction
+
+
+
+
+    /**
+     * UI interaction ---
+     */
+
     public void setTargetBook(String query){
         /**
          * Notify the fragment
          */
-        // TODO: Do the request to the api and then storage it into the database
+        // Do the request to the api and then storage it into the database
         searchBookPresenter.searchBook(query);
 
     }

@@ -18,7 +18,9 @@ public class SampleBookPagedListAdapter
         extends PagedListAdapter<SampleBookModel, SampleBookPagedListAdapter.SampleBookViewHolder> {
     /**
      * Sample book list adapter
+     * This class is not used for now
      */
+
 
     Context context;
 
