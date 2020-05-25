@@ -5,6 +5,7 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 
+import com.renatojobal.libraryutpl.repository.localdatabase.DBConstants;
 import com.renatojobal.libraryutpl.repository.model.ShelfModel;
 
 @Dao
@@ -20,6 +21,6 @@ public interface ShelfDao {
     @Delete
     void delete(ShelfModel shelf);
 
-    @Query("DELETE FROM shelfmodel")
+    @Query("DELETE FROM "+ DBConstants.SHELF_TABLE)
     void deleteAll();
 }

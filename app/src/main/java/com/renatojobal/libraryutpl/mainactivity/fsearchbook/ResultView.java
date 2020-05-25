@@ -3,23 +3,24 @@ package com.renatojobal.libraryutpl.mainactivity.fsearchbook;
 import androidx.room.DatabaseView;
 import androidx.room.Embedded;
 
+import com.renatojobal.libraryutpl.repository.localdatabase.DBConstants;
 import com.renatojobal.libraryutpl.repository.model.AuthorModel;
 import com.renatojobal.libraryutpl.repository.model.BookInfoModel;
 import com.renatojobal.libraryutpl.repository.model.SampleBookModel;
 
-@DatabaseView("SELECT BookInfoModel.* , SampleBookModel.* " +
-        "FROM BookInfoModel, SampleBookModel " +
-        "WHERE SampleBookModel.fkBookInfoModel = BookInfoModel.bookInfoModelId")
+@DatabaseView("SELECT * " +
+        "FROM "+ DBConstants.BOOK_INFO_TABLE +", "+DBConstants.SAMPLE_BOOK_TABLE+" " +
+        "WHERE "+DBConstants.SAMPLE_BOOK_BOOK_INFO_ID+" = "+DBConstants.BOOK_INFO_ID+";")
 public class ResultView {
     /**
      * This class is a view that joins the tables sample books with the book info, author
      */
 
 
-    @Embedded(prefix = "sampleBook")
+    @Embedded()
     public SampleBookModel sampleBook;
 
-    @Embedded(prefix = "bookInfo")
+    @Embedded()
     public BookInfoModel bookInfo;
 
     public ResultView(SampleBookModel sampleBook, BookInfoModel bookInfo) {

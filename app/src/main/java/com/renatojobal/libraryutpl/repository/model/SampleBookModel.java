@@ -39,7 +39,7 @@ public class SampleBookModel implements Serializable {
     @NonNull
     @SerializedName("id")
     @ColumnInfo(name = DBConstants.SAMPLE_BOOK_ID)
-    private int sampleBookModelId;
+    private int id;
 
     @SerializedName("borrowed_externally")
     @ColumnInfo(name = DBConstants.SAMPLE_BOOK_BORROWED_EXTERNALLY)
@@ -71,12 +71,12 @@ public class SampleBookModel implements Serializable {
 
 
     // Getter and setters
-    public int getSampleBookModelId() {
-        return sampleBookModelId;
+    public int getId() {
+        return id;
     }
 
-    public void setSampleBookModelId(int sampleBookModelId) {
-        this.sampleBookModelId = sampleBookModelId;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public boolean isBorrowedExternally() {
@@ -135,13 +135,12 @@ public class SampleBookModel implements Serializable {
         this.fkBookInfoModel = fkBookInfoModel;
     }
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         SampleBookModel that = (SampleBookModel) o;
-        return sampleBookModelId == that.sampleBookModelId &&
+        return id == that.id &&
                 borrowedExternally == that.borrowedExternally &&
                 borrowedInternally == that.borrowedInternally &&
                 state == that.state &&
@@ -154,6 +153,6 @@ public class SampleBookModel implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(sampleBookModelId, borrowedExternally, borrowedInternally, tag, state, fkShelfOwner, fkActualShelf, fkBookInfoModel);
+        return Objects.hash(id, borrowedExternally, borrowedInternally, tag, state, fkShelfOwner, fkActualShelf, fkBookInfoModel);
     }
 }
