@@ -12,7 +12,7 @@ public class DBConstants {
 
 
     /** SampleBook model */
-    public static final String SAMPLE_BOOK_TABLE = "sample_book";
+    public static final String SAMPLE_BOOK_TABLE = "sample_books";
     public static final String SAMPLE_BOOK_ID = "sample_book_id";
     public static final String SAMPLE_BOOK_BORROWED_EXTERNALLY = "borrowed_externally";
     public static final String SAMPLE_BOOK_BORROWED_INTERNALLY = "borrowed_internally";
@@ -23,7 +23,7 @@ public class DBConstants {
     public static final String SAMPLE_BOOK_BOOK_INFO_ID = "book_info_fk";
 
     /** BookInfo model */
-    public static final String BOOK_INFO_TABLE = "book_info";
+    public static final String BOOK_INFO_TABLE = "book_infos";
     public static final String BOOK_INFO_ID = "book_info_id";
     public static final String BOOK_INFO_TITLE = "title";
     public static final String BOOK_INFO_ACTUAL_STOCK = "actual_stock";
@@ -34,7 +34,7 @@ public class DBConstants {
     public static final String BOOK_INFO_AUTHOR_ID = "author_fk";
 
     /** Author model */
-    public static final String AUTHOR_TABLE = "author";
+    public static final String AUTHOR_TABLE = "authors";
     public static final String AUTHOR_ID = "author_id";
     public static final String AUTHOR_NAME = "author_name";
     public static final String AUTHOR_PSEUDONYM = "pseudonym";
@@ -42,7 +42,7 @@ public class DBConstants {
     public static final String AUTHOR_STATE = "author_state";
 
     /** Shelf model */
-    public static final String SHELF_TABLE = "shelf";
+    public static final String SHELF_TABLE = "shelfs";
     public static final String SHELF_ID = "shelf_id";
     public static final String SHELF_CODE = "shelf_code";
     public static final String SHELF_LOCATION = "location";
@@ -55,7 +55,8 @@ public class DBConstants {
     public static final String MM_AUTHOR_BOOK_INFO_BOOK_INFO_ID = "book_fk";
 
     /** Agent model */
-    // Add if needed
+    public static final String AGENT_TABLE = "agents";
+    public static final String AGENT_ID = "agent_id";
 
 
     /** External Loan model */

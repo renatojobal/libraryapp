@@ -4,9 +4,11 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
+import com.renatojobal.libraryutpl.repository.localdatabase.DBConstants;
+
 @Entity(foreignKeys = {
         @ForeignKey(entity = SampleBookModel.class,
-                parentColumns = "id",
+                parentColumns = DBConstants.SAMPLE_BOOK_ID,
                 childColumns = "fkSampleBook",
                 onDelete = ForeignKey.CASCADE),
         @ForeignKey(entity = PersonModel.class,

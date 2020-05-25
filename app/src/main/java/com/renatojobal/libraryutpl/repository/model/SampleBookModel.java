@@ -15,17 +15,17 @@ import java.util.Objects;
 @Entity(tableName = DBConstants.SAMPLE_BOOK_TABLE,
         foreignKeys = {
                 @ForeignKey(entity = ShelfModel.class,
-                        parentColumns = "shelfModelIf",
-                        childColumns = "fkShelfOwner",
+                        parentColumns = DBConstants.SHELF_ID,
+                        childColumns = DBConstants.SAMPLE_BOOK_SHELF_OWNER_ID,
                         onDelete = ForeignKey.CASCADE),
 
                 @ForeignKey(entity = ShelfModel.class,
-                        parentColumns = "shelfModelId",
-                        childColumns = "fkActualShelf",
+                        parentColumns = DBConstants.SHELF_ID,
+                        childColumns = DBConstants.SAMPLE_BOOK_ACTUAL_SHELF_ID,
                         onDelete = ForeignKey.CASCADE),
                 @ForeignKey(entity = BookInfoModel.class,
-                        parentColumns = "bookInfoModelId",
-                        childColumns = "fkBookInfoModelId",
+                        parentColumns = DBConstants.BOOK_INFO_ID,
+                        childColumns = DBConstants.SAMPLE_BOOK_BOOK_INFO_ID,
                         onDelete = ForeignKey.CASCADE
                 )
         }
