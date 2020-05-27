@@ -1,23 +1,24 @@
 package com.renatojobal.libraryutpl.mainactivity.fsearchbook.ui;
 
-import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.LiveData;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.renatojobal.libraryutpl.R;
+import com.renatojobal.libraryutpl.databinding.ItemSampleBookBinding;
+import com.renatojobal.libraryutpl.mainactivity.fsearchbook.ResultView;
 import com.renatojobal.libraryutpl.repository.model.SampleBookModel;
 
 import java.util.List;
 
 public class SamplesBookLiveDataListAdapter
-        extends RecyclerView.Adapter<SamplesBookLiveDataListAdapter.ViewHolder> {
+        extends RecyclerView.Adapter<SamplesBookLiveDataListAdapter.MyViewHolder> {
 
     /**
      * Recycler View Adapter
@@ -26,84 +27,94 @@ public class SamplesBookLiveDataListAdapter
      * @param sampleBookLiveData List of books
      * @return
      */
-    private static final String TAG = "SamplesBookLiveDataList";
-
 
     // Attributes
-    Context context;
-    LiveData<List<SampleBookModel>> sampleBookLiveData;
-
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-
-        // Ui elements
-        public TextView title;
-        public TextView author;
-
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
-            title = itemView.findViewById(R.id.title);
-            author = itemView.findViewById(R.id.author);
+    LiveData<List<ResultView>> resultViewLiveData;
 
 
-        }
-    }
 
     // Provide a suitable constructor (depends on the kind of data set)
     public SamplesBookLiveDataListAdapter(
-            Context context,
-            LiveData<List<SampleBookModel>> sampleBookLiveData) {
+            LiveData<List<ResultView>> resultViewLiveData) {
         /**
          * Constructor
          */
-        this.context = context;
-        this.sampleBookLiveData = sampleBookLiveData;
+
+        this.resultViewLiveData = resultViewLiveData;
     }
 
     // Create new views (invoked by the layout manager)
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view;
-        try{
-            view = LayoutInflater
-                    .from(parent.getContext())
-                    .inflate(R.layout.item_sample_book, parent, false);
-        }catch (Exception e){
-            Log.e(TAG, "onCreateView"+ e.getMessage());
-            view = null;
-            throw e;
-        }
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
+        LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
+
+        ItemSampleBookBinding binding = DataBindingUtil.inflate(layoutInflater,
+                    R.layout.item_sample_book, parent, false);
 
 
         // Return the view holder with the elements attached
-        ViewHolder viewHolder = new ViewHolder(view);
+        MyViewHolder viewHolder = new MyViewHolder(binding);
         return viewHolder;
     }
 
     // Replace the contents of a view (invoked by the layout manager)
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         // - get element from your dataset at this position
-        SampleBookModel sampleBook = getItem(position);
+        ResultView resultView = getItem(position);
 
         // - replace the contents of the view with that element
-        holder.title.setText(sampleBook.getFkBookInfoModel());
+//        holder.title.setText(sampleBook.getFkBookInfoModel());
+        holder.bind(resultView);
 
     }
 
     @Override
     public long getItemId(int position) {
-        return sampleBookLiveData.getValue().indexOf(position);
+        return resultViewLiveData.getValue().indexOf(position);
     }
 
     // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
-        return sampleBookLiveData.getValue().size();
+        return resultViewLiveData.getValue().size();
     }
 
-    public SampleBookModel getItem(int position){
-        return sampleBookLiveData.getValue().get(position);
+    public ResultView getItem(int position){
+        return resultViewLiveData.getValue().get(position);
     }
+
+
+
+    // View holder
+    public static class MyViewHolder extends RecyclerView.ViewHolder {
+
+        // Using data binding
+        ItemSampleBookBinding itemBinding;
+
+        // Ui elements
+
+        public TextView title;
+        public TextView author;
+
+        public MyViewHolder(ItemSampleBookBinding itemBinding) {
+            super(itemBinding.getRoot());
+            this.itemBinding = itemBinding;
+            title = itemView.findViewById(R.id.title);
+            author = itemView.findViewById(R.id.author);
+
+
+        }
+
+
+        public void bind(ResultView resultView) {
+            itemBinding.setResultView(resultView);
+        }
+
+
+    }
+
 
 }

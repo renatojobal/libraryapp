@@ -21,6 +21,7 @@ import android.widget.SearchView;
 import com.renatojobal.libraryutpl.R;
 
 import com.renatojobal.libraryutpl.databinding.FragmentSearchBookBinding;
+import com.renatojobal.libraryutpl.mainactivity.fsearchbook.ResultView;
 import com.renatojobal.libraryutpl.mainactivity.fsearchbook.SearchBookViewModel;
 import com.renatojobal.libraryutpl.repository.model.SampleBookModel;
 
@@ -38,7 +39,7 @@ public class SearchBookFragment extends Fragment {
 
     // UI elements (Could use dagger for injection in hte future)
     private RecyclerView resultRecyclerView;
-    private SamplesBookLiveDataListAdapter samplesBookLiveDataListAdapter;
+    private SamplesBookLiveDataListAdapter resultBookLiveDataListAdapter;
 
 
     @Override
@@ -57,14 +58,9 @@ public class SearchBookFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_search_book, container, false);
 
-        samplesBookLiveDataListAdapter = new SamplesBookLiveDataListAdapter(getContext(), searchBookViewModel.getSampleBookResultList());
+        resultBookLiveDataListAdapter = new SamplesBookLiveDataListAdapter(searchBookViewModel.getResultBookFullList());
         binding.recyclerViewResultList.setLayoutManager(new LinearLayoutManager(getContext()));
-        searchBookViewModel.getSampleBookResultList().observe(getViewLifecycleOwner(), new Observer<List<SampleBookModel>>() {
-            @Override
-            public void onChanged(List<SampleBookModel> sampleBookModelList) {
-                binding.recyclerViewResultList.setAdapter(samplesBookLiveDataListAdapter);
-            }
-        });
+
 
         binding.searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override

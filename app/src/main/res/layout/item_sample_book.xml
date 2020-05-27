@@ -1,49 +1,60 @@
-
-
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/card_view_sample_book"
-    android:layout_width="match_parent"
-    android:layout_height="240dp"
-    android:layout_marginHorizontal="16dp"
-    android:layout_marginTop="14dp"
-    app:cardCornerRadius="38dp">
+    xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
 
-    <LinearLayout
+        <variable
+            name="resultView"
+            type="com.renatojobal.libraryutpl.mainactivity.fsearchbook.ResultView" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view_sample_book"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="240dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="14dp"
+        app:cardCornerRadius="38dp">
 
 
-        <TextView
-            android:id="@+id/title"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:text="La naranja mecánica" />
-
-        <TextView
-            android:id="@+id/author"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:text="Anthony Burguess" />
-
-        <TextView
-            android:id="@+id/availability"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:text="Sí" />
-
-        <TextView
-            android:id="@+id/location"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:text="Anaquel 802, Planta baja" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
 
-    </LinearLayout>
-</androidx.cardview.widget.CardView>
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="La naranja mecánica"
+                android:text="@{resultView.bookInfo.title}"/>
+
+            <TextView
+                android:id="@+id/author"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="Anthony Burguess" />
+
+            <TextView
+                android:id="@+id/availability"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="Sí" />
+
+            <TextView
+                android:id="@+id/location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="Anaquel 802, Planta baja" />
+
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+</layout>
 
 
 

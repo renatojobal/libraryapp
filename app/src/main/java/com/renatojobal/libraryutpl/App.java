@@ -18,6 +18,7 @@ public class App extends Application {
         super.onCreate();
         App.context = getApplicationContext();
 
+        // Set up timber
 
     }
 
