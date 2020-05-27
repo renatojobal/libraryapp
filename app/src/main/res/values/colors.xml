@@ -5,6 +5,11 @@
     <color name="colorAccent">#03DAC5</color>
     
     
+    <!-- Put her the color palette -->
+
+
+    <color name="linen">#EDEAE4</color>
     <color name="rainBlue">#56CCF2</color>
+    <color name="salmon">#FA7C92</color>
     
 </resources>

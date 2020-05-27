@@ -15,8 +15,8 @@
         android:layout_height="240dp"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="14dp"
-        app:cardCornerRadius="38dp"
-        app:cardBackgroundColor="@color/rainBlue">
+        app:cardBackgroundColor="@{resultView.sampleBook.state == 1 ? @color/rainBlue : @color/salmon}"
+        app:cardCornerRadius="38dp">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -29,11 +29,12 @@
                 android:layout_width="348dp"
                 android:layout_height="21dp"
                 android:layout_marginTop="40dp"
+
                 android:text="@{resultView.bookInfo.title}"
                 app:layout_constraintEnd_toStartOf="@+id/guideline2"
                 app:layout_constraintStart_toStartOf="@+id/guideline"
                 app:layout_constraintTop_toTopOf="@+id/guideline3"
-                tools:text="La naranja mecánica" />
+                tools:text="Cien años de soledad" />
 
             <TextView
                 android:id="@+id/author"
@@ -42,16 +43,18 @@
                 app:layout_constraintEnd_toStartOf="@+id/guideline2"
                 app:layout_constraintStart_toStartOf="@+id/guideline"
                 app:layout_constraintTop_toBottomOf="@+id/location"
-                tools:text="Anthony Burguess" />
+                tools:text="Gabriel García Marques" />
 
             <TextView
                 android:id="@+id/availability"
                 android:layout_width="345dp"
                 android:layout_height="15dp"
+                android:text="@{resultView.sampleBook.state == 1 ? @string/available : @string/not_available}"
                 app:layout_constraintEnd_toStartOf="@+id/guideline2"
                 app:layout_constraintStart_toStartOf="@+id/guideline"
+
                 app:layout_constraintTop_toBottomOf="@+id/title"
-                tools:text="Sí" />
+                tools:text="Disponible" />
 
             <TextView
                 android:id="@+id/location"
@@ -62,6 +65,8 @@
                 app:layout_constraintTop_toBottomOf="@+id/availability"
                 tools:text="Anaquel 802, Planta baja" />
 
+
+            <!-- Guidelines -->
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline"
                 android:layout_width="wrap_content"
