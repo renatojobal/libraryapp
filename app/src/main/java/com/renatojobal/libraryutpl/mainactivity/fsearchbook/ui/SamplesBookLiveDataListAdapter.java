@@ -67,7 +67,7 @@ public class SamplesBookLiveDataListAdapter
         try{
             view = LayoutInflater
                     .from(parent.getContext())
-                    .inflate(R.layout.card_view_sample_book, parent, false);
+                    .inflate(R.layout.item_sample_book, parent, false);
         }catch (Exception e){
             Log.e(TAG, "onCreateView"+ e.getMessage());
             view = null;
