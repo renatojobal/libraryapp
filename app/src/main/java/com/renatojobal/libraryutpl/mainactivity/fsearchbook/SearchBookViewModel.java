@@ -19,7 +19,7 @@ public class SearchBookViewModel extends ViewModel {
     private static final String TAG = "SearchBookViewModel";
 
     private LiveData<List<SampleBookModel>> sampleBookResultList;
-    private LiveData<List<ResultView>> sampleBookFullList;
+    private LiveData<List<ResultView>> resultBookFullList;
 
     public String targetBook;
 
@@ -32,7 +32,7 @@ public class SearchBookViewModel extends ViewModel {
 
 
         sampleBookResultList = RoomHelper.getAppDatabaseInstance().sampleBookDao().getLiveDataList();
-        sampleBookFullList = RoomHelper.getAppDatabaseInstance().resultDao().allResultLiveData();
+        resultBookFullList = RoomHelper.getAppDatabaseInstance().resultDao().allResultLiveData();
 
 
     }
@@ -47,9 +47,9 @@ public class SearchBookViewModel extends ViewModel {
         return sampleBookResultList;
     }
 
-    public LiveData<List<ResultView>> getSampleBookFullList() {
+    public LiveData<List<ResultView>> getResultBookFullList() {
         /** EExpose the result list with full data */
-        return sampleBookFullList;
+        return resultBookFullList;
     }
 
 

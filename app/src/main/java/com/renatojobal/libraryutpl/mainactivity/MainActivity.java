@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.SplashTheme);                                                  // Showing the splash screen for until the activity is ready
         super.onCreate(savedInstanceState);
 
         // Binding

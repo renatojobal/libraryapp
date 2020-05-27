@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">Biblioteca UTPL</string>
     <string name="search_book_hint">Buscar un libro</string>
+
+
+    <string name="available">Disponible</string>
+    <string name="not_available">No disponible</string>
+
+
+
+
 </resources>

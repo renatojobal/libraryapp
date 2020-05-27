@@ -52,7 +52,7 @@ public class SampleBookPagedListAdapter
         /**
          * This method will be used to attach the card view of notification to the list view.
          * */
-        View view = LayoutInflater.from(context).inflate(R.layout.card_view_sample_book, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_sample_book, parent, false);
 
         return new SampleBookViewHolder(view);
     }
