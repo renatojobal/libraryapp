@@ -4,43 +4,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.renatojobal.libraryutpl.mainactivity.fsearchbook.ui.SearchBookFragment">
 
-        <data>
-                <variable
-                    name="searchViewModel"
-                    type="com.renatojobal.libraryutpl.mainactivity.fsearchbook.SearchBookViewModel" />
-        </data>
-        <androidx.constraintlayout.widget.ConstraintLayout
+    <data>
+
+        <variable
+            name="searchViewModel"
+            type="com.renatojobal.libraryutpl.mainactivity.fsearchbook.SearchBookViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <SearchView
+            android:id="@+id/searchView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="50dp"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="0dp">
+
+        </SearchView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_result_list"
+            android:layout_width="match_parent"
+            android:layout_height="594dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/searchView"
+            tools:layout_editor_absoluteX="-16dp"
+            tools:listitem="@layout/item_sample_book">
 
 
-                <SearchView
-                    android:id="@+id/searchView"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:layout_editor_absoluteX="0dp"
-                    >
-
-                </SearchView>
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recycler_view_result_list"
-                    android:layout_width="match_parent"
-                    android:layout_height="594dp"
-                    android:layout_marginTop="20dp"
-                    app:layout_constraintTop_toBottomOf="@+id/searchView"
-                    tools:layout_editor_absoluteX="-16dp"
-                    tools:listitem="@layout/item_sample_book">
+        </androidx.recyclerview.widget.RecyclerView>
 
 
-                </androidx.recyclerview.widget.RecyclerView>
-
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </layout>

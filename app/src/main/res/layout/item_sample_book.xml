@@ -15,42 +15,82 @@
         android:layout_height="240dp"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="14dp"
-        app:cardCornerRadius="38dp">
+        app:cardCornerRadius="38dp"
+        app:cardBackgroundColor="@color/rainBlue">
 
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
 
             <TextView
                 android:id="@+id/title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="La naranja mecánica"
-                android:text="@{resultView.bookInfo.title}"/>
+                android:layout_width="348dp"
+                android:layout_height="21dp"
+                android:layout_marginTop="40dp"
+                android:text="@{resultView.bookInfo.title}"
+                app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                app:layout_constraintStart_toStartOf="@+id/guideline"
+                app:layout_constraintTop_toTopOf="@+id/guideline3"
+                tools:text="La naranja mecánica" />
 
             <TextView
                 android:id="@+id/author"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="343dp"
+                android:layout_height="19dp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                app:layout_constraintStart_toStartOf="@+id/guideline"
+                app:layout_constraintTop_toBottomOf="@+id/location"
                 tools:text="Anthony Burguess" />
 
             <TextView
                 android:id="@+id/availability"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="345dp"
+                android:layout_height="15dp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                app:layout_constraintStart_toStartOf="@+id/guideline"
+                app:layout_constraintTop_toBottomOf="@+id/title"
                 tools:text="Sí" />
 
             <TextView
                 android:id="@+id/location"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="340dp"
+                android:layout_height="22dp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                app:layout_constraintStart_toStartOf="@+id/guideline"
+                app:layout_constraintTop_toBottomOf="@+id/availability"
                 tools:text="Anaquel 802, Planta baja" />
 
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="14dp" />
 
-        </LinearLayout>
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="364dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="16dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="224dp" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.cardview.widget.CardView>
 
 

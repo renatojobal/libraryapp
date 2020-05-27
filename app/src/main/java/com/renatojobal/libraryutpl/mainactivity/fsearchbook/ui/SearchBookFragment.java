@@ -63,7 +63,7 @@ public class SearchBookFragment extends Fragment {
             @Override
             public void onChanged(List<ResultView> resultViews) {
             // Change the result list now
-
+            fragmentSearchBookBinding.recyclerViewResultList.setAdapter(resultBookLiveDataListAdapter);
             }
         });
 
