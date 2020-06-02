@@ -102,6 +102,9 @@ dependencies {
     // optional - RxJava support
     // implementation "androidx.paging:paging-rxjava2:$version_paging"
 
+    /** Timber for log better */
+    implementation "com.jakewharton.timber:timber:$version_timber"
+
 }
 
 

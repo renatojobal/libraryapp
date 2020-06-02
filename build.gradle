@@ -14,6 +14,7 @@ buildscript {
         version_room = "2.2.5"
         version_retrofit = "2.8.1"
         version_play_services = '17.2.2'
+        version_timber = '4.7.1'
     }
 
     repositories {

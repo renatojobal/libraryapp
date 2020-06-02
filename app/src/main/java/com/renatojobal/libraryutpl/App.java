@@ -4,12 +4,13 @@ import android.app.Application;
 import android.content.Context;
 import android.util.Log;
 
+import timber.log.Timber;
+
 public class App extends Application {
     /**
      * This class is used:
      * - For return an access to the application context from every part of the app.
      */
-    private static final String TAG = "App";
 
     private static Context context;
 
@@ -19,7 +20,7 @@ public class App extends Application {
         App.context = getApplicationContext();
 
         // Set up timber
-
+        Timber.plant(new Timber.DebugTree());
     }
 
     public static Context getContext(){
