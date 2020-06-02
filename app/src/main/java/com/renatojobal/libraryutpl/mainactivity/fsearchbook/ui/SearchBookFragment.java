@@ -26,17 +26,20 @@ import com.renatojobal.libraryutpl.mainactivity.fsearchbook.SearchBookViewModel;
 
 import java.util.List;
 
+import timber.log.Timber;
+
+
 public class SearchBookFragment extends Fragment {
     /**
-     * SearchBook fragment
+     * Fragment search book
      */
-    private static final String TAG = "SearchBookFragment";
+
 
     private SearchBookViewModel searchBookViewModel;        // Fragment view model
 
     FragmentSearchBookBinding fragmentSearchBookBinding;    // Binding element
 
-    // UI elements (Could use dagger for injection in hte future)
+    // UI elements (Could use dagger for injection in the future)
     private SamplesBookLiveDataListAdapter resultBookLiveDataListAdapter;
 
 
@@ -71,7 +74,7 @@ public class SearchBookFragment extends Fragment {
         fragmentSearchBookBinding.searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                Log.i(TAG, "Query: "+query);
+                Timber.i("Query: "+query);
                 searchBookViewModel.setTargetBook(query);
 
                 return false;
