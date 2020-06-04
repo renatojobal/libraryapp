@@ -1,4 +1,4 @@
-package com.renatojobal.libraryutpl.mainactivity.fsearchbook.ui;
+package com.renatojobal.libraryutpl.mainactivity.fsearchbook;
 
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
@@ -23,6 +23,7 @@ import com.renatojobal.libraryutpl.R;
 import com.renatojobal.libraryutpl.databinding.FragmentSearchBookBinding;
 import com.renatojobal.libraryutpl.mainactivity.fsearchbook.ResultView;
 import com.renatojobal.libraryutpl.mainactivity.fsearchbook.SearchBookViewModel;
+import com.renatojobal.libraryutpl.mainactivity.fsearchbook.ui.SamplesBookLiveDataListAdapter;
 
 import java.util.List;
 
@@ -51,7 +52,7 @@ public class SearchBookFragment extends Fragment {
         super.onCreate(savedInstanceState);
         searchBookViewModel = new ViewModelProvider(this).get(SearchBookViewModel.class);
 
-
+        Timber.wtf("onCreate: Create search book fragment");
     }
 
     @Override
