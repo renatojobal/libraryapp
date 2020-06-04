@@ -4,11 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.os.Bundle;
 
 import com.renatojobal.libraryutpl.R;
 import com.renatojobal.libraryutpl.databinding.ActivityMainBinding;
+
+import timber.log.Timber;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -19,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding binding;
     MainViewModel mainViewModel;
+    private NavController navController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +37,34 @@ public class MainActivity extends AppCompatActivity {
         mainViewModel = new ViewModelProvider(this).get(MainViewModel.class);
 
 
+        setUpBinding();
+        setUpUi();
 
+    }
+
+    private void setUpBinding() {
+        /** Bind the data */
+        binding.setMainViewModel(mainViewModel);
+
+    }
+
+
+
+    private void setUpUi() {
+        /** Set up the navigation system */
+        navController = ((NavHostFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.nav_host_fragment))
+                .getNavController();
+
+        mainViewModel.getNewDestination().observe(this, new EventObserver<>(new EventListener<Integer>() {
+            @Override public void onEvent(Integer destinationId) {
+                Timber.d("New destination: ");
+                navigate(destinationId);
+            }
+        }));
+    }
+
+    private void navigate(int destId) {
+        navController.navigate(destId);
     }
 }

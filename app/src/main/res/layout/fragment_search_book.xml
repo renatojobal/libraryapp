@@ -2,13 +2,21 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.renatojobal.libraryutpl.mainactivity.fsearchbook.ui.SearchBookFragment">
+    tools:context="com.renatojobal.libraryutpl.mainactivity.fsearchbook.SearchBookFragment">
 
     <data>
 
         <variable
+            name="mainViewModel"
+            type="com.renatojobal.libraryutpl.mainactivity.MainViewModel" />
+
+        <variable
             name="searchViewModel"
             type="com.renatojobal.libraryutpl.mainactivity.fsearchbook.SearchBookViewModel" />
+
+        <variable
+            name="navDirection"
+            type="androidx.navigation.NavDirections" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

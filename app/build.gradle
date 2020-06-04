@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
+apply plugin: "androidx.navigation.safeargs"
 
 android {
     compileSdkVersion 29
@@ -51,12 +52,9 @@ dependencies {
     implementation 'com.google.android.material:material:1.2.0-alpha06'
 
     /** Palette */
-    // implementation 'androidx.palette:palette:1.0.0' We are not using this for the moment
+    // implementation 'androidx.palette:palette:1.0.0' // We are not using this for the moment
 
     /** Play service */
-//    implementation "com.google.android.gms:play-services-location:$version"
-//    implementation "com.google.android.gms:play-services-maps:$play_services_version"
-//    implementation "com.google.android.gms:play-services-places:$play_services_version"
     implementation "com.google.firebase:firebase-analytics:$version_play_services"
 
     /** Retrofit library */
@@ -74,16 +72,17 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
     /** Navigation */
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.0.0-rc02'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.0.0-rc02'
+    implementation "androidx.navigation:navigation-fragment:$version_navigation"
+    implementation "androidx.navigation:navigation-ui:$version_navigation"
+    implementation "androidx.navigation:navigation-dynamic-features-fragment:$version_navigation"     // Dynamic Feature Module Support
+    androidTestImplementation "androidx.navigation:navigation-testing:$version_navigation"     // Testing Navigation
+
 
 
     /** ROOM */
     implementation "androidx.room:room-runtime:$version_room"
     annotationProcessor "androidx.room:room-compiler:$version_room"
-
-    // optional - RxJava support for Room
-    implementation "androidx.room:room-rxjava2:$version_room"
+    implementation "androidx.room:room-rxjava2:$version_room"     // optional - RxJava support for Room
 
 
     /** Recycler view support */
@@ -101,6 +100,9 @@ dependencies {
 
     // optional - RxJava support
     // implementation "androidx.paging:paging-rxjava2:$version_paging"
+
+    /** Timber for log better */
+    implementation "com.jakewharton.timber:timber:$version_timber"
 
 }
 

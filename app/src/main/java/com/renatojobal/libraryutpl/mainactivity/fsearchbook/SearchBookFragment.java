@@ -1,4 +1,4 @@
-package com.renatojobal.libraryutpl.mainactivity.fsearchbook.ui;
+package com.renatojobal.libraryutpl.mainactivity.fsearchbook;
 
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
@@ -23,20 +23,24 @@ import com.renatojobal.libraryutpl.R;
 import com.renatojobal.libraryutpl.databinding.FragmentSearchBookBinding;
 import com.renatojobal.libraryutpl.mainactivity.fsearchbook.ResultView;
 import com.renatojobal.libraryutpl.mainactivity.fsearchbook.SearchBookViewModel;
+import com.renatojobal.libraryutpl.mainactivity.fsearchbook.ui.SamplesBookLiveDataListAdapter;
 
 import java.util.List;
 
+import timber.log.Timber;
+
+
 public class SearchBookFragment extends Fragment {
     /**
-     * SearchBook fragment
+     * Fragment search book
      */
-    private static final String TAG = "SearchBookFragment";
+
 
     private SearchBookViewModel searchBookViewModel;        // Fragment view model
 
     FragmentSearchBookBinding fragmentSearchBookBinding;    // Binding element
 
-    // UI elements (Could use dagger for injection in hte future)
+    // UI elements (Could use dagger for injection in the future)
     private SamplesBookLiveDataListAdapter resultBookLiveDataListAdapter;
 
 
@@ -48,7 +52,7 @@ public class SearchBookFragment extends Fragment {
         super.onCreate(savedInstanceState);
         searchBookViewModel = new ViewModelProvider(this).get(SearchBookViewModel.class);
 
-
+        Timber.wtf("onCreate: Create search book fragment");
     }
 
     @Override
@@ -71,7 +75,7 @@ public class SearchBookFragment extends Fragment {
         fragmentSearchBookBinding.searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                Log.i(TAG, "Query: "+query);
+                Timber.i("Query: "+query);
                 searchBookViewModel.setTargetBook(query);
 
                 return false;
