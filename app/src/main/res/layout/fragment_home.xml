@@ -5,9 +5,18 @@
     tools:context=".mainactivity.fhome.HomeFragment">
 
     <data>
+
+        <variable
+            name="mainViewModel"
+            type="com.renatojobal.libraryutpl.mainactivity.MainViewModel" />
+
         <variable
             name="homeViewModel"
             type="com.renatojobal.libraryutpl.mainactivity.fhome.HomeViewModel" />
+
+        <variable
+            name="navDirection"
+            type="androidx.navigation.NavDirections" />
     </data>
 
 
@@ -20,12 +29,25 @@
             android:layout_width="359dp"
             android:layout_height="70dp"
             android:layout_marginTop="16dp"
+            android:onClick="@{() -> mainViewModel.setNewDestination(navDirection.getActionId())}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            >
+            app:layout_constraintTop_toTopOf="parent">
+
 
         </SearchView>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/root_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="100dp"
+            app:layout_constraintTop_toBottomOf="@+id/previous_search_view"
+
+            tools:layout_editor_absoluteX="16dp"
+            tools:listitem="@layout/item_horizontal_home_list" />
+
 
         <TextView
             android:id="@+id/textView"
@@ -37,16 +59,7 @@
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/previous_search_view"
-            tools:visibility="gone"/>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/root_recycler_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="100dp"
-            app:layout_constraintTop_toBottomOf="@+id/previous_search_view"
-            tools:layout_editor_absoluteX="16dp"
-            tools:listitem="@layout/item_horizontal_home_list" />
+            tools:visibility="gone" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
