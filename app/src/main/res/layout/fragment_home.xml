@@ -22,20 +22,23 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/primaryLightColor">
 
-        <SearchView
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/previous_search_view"
-            android:layout_width="359dp"
-            android:layout_height="70dp"
-            android:layout_marginTop="16dp"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
             android:onClick="@{() -> mainViewModel.setNewDestination(navDirection.getActionId())}"
+            android:text="Buscar un libro"
+            app:cornerRadius="32dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-
-        </SearchView>
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <androidx.recyclerview.widget.RecyclerView
@@ -51,10 +54,11 @@
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="329dp"
-            android:layout_height="80dp"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
             android:layout_marginTop="200dp"
             android:text="No tienes conexión a internet en ese momento"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
