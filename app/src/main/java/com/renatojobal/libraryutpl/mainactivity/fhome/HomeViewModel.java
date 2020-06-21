@@ -5,28 +5,31 @@ import androidx.lifecycle.ViewModel;
 
 import timber.log.Timber;
 
+/**
+ * View model for home. I t will be an assistant between the repository and the view
+ */
 public class HomeViewModel extends ViewModel {
-    /**
-     * View model for home. I t will be an assistant between the repository and the view
-     */
+
 
     private MutableLiveData<Boolean> shouldNavigateToSearch;
 
 
+    /**
+     * Empty constructor (We could use dagger in the future)
+     */
     public HomeViewModel() {
-        /**
-         * Empty constructor (We could use dagger in the future)
-         */
+
         Timber.i("Home view-model attached");
         shouldNavigateToSearch = new MutableLiveData<>(Boolean.FALSE);
 
     }
 
 
+    /**
+     * This method will be called by the layout
+     */
     public void changeSearchClickedValue(Boolean value) {
-        /**
-         * This method will be called by the layout
-         */
+
         this.shouldNavigateToSearch.setValue(value);
     }
 

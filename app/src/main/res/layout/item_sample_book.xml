@@ -6,7 +6,7 @@
 
         <variable
             name="resultView"
-            type="com.renatojobal.libraryutpl.mainactivity.fsearchbook.ResultView" />
+            type="com.renatojobal.libraryutpl.mainactivity.fsearchbook.BookFull" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -15,7 +15,7 @@
         android:layout_height="240dp"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="14dp"
-        app:cardBackgroundColor="@{resultView.sampleBook.state == 1 ? @color/rainBlue : @color/salmon}"
+        app:cardBackgroundColor="@{resultView.sampleBook.state == 1 ? @color/bookAvailableColor : @color/bookNotAvailableColor}"
         app:cardCornerRadius="38dp"
         tools:cardBackgroundColor="@color/rainBlue">
 

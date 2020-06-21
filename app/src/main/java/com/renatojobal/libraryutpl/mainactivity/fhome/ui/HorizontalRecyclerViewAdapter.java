@@ -4,7 +4,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.LiveData;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.renatojobal.libraryutpl.repository.model.BookInfoModel;
+
+import java.util.List;
 
 public class HorizontalRecyclerViewAdapter extends RecyclerView.Adapter<HorizontalRecyclerViewAdapter.HorizontalViewHolder> {
     /**
@@ -13,6 +18,11 @@ public class HorizontalRecyclerViewAdapter extends RecyclerView.Adapter<Horizont
      * @param viewType
      * @return
      */
+
+    // Data source
+    LiveData<List<BookInfoModel>> list;
+
+
     @NonNull
     @Override
     public HorizontalViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -26,7 +36,7 @@ public class HorizontalRecyclerViewAdapter extends RecyclerView.Adapter<Horizont
 
     @Override
     public int getItemCount() {
-        return 0;
+        return list.getValue().size();
     }
 
 

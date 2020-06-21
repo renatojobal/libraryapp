@@ -7,7 +7,11 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import com.renatojobal.libraryutpl.mainactivity.fhome.HomePresenter;
+import com.renatojobal.libraryutpl.mainactivity.fsearchbook.BookFull;
+import com.renatojobal.libraryutpl.repository.model.BookInfoModel;
 
+import java.util.List;
 
 
 public class MainViewModel extends AndroidViewModel {
@@ -19,11 +23,20 @@ public class MainViewModel extends AndroidViewModel {
     private final MutableLiveData<Event<Integer>> newDestination = new MutableLiveData<>();
 
 
+    private MutableLiveData<List<List<BookInfoModel>>> recommendedBooks = new MutableLiveData<>();
+
+
+
+    HomePresenter homePresenter;
+
     public MainViewModel(@NonNull Application application) {
         super(application);
 
+        homePresenter = new HomePresenter();
 
+        homePresenter.getRecommendedBook(recommendedBooks);
 
+        homePresenter.pullHomeContent();
     }
 
 
@@ -35,6 +48,8 @@ public class MainViewModel extends AndroidViewModel {
         newDestination.setValue(new Event<>(destinationId));
     }
 
-
+    public LiveData<List<List<BookInfoModel>>> getRecommendedBooks() {
+        return recommendedBooks;
+    }
 
 }

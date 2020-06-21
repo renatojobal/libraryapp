@@ -11,6 +11,7 @@ import com.renatojobal.libraryutpl.repository.model.BookInfoModel;
 import com.renatojobal.libraryutpl.repository.model.SampleBookModel;
 import com.renatojobal.libraryutpl.repository.model.ShelfModel;
 import com.renatojobal.libraryutpl.repository.webservice.ApiClient;
+import com.renatojobal.libraryutpl.repository.webservice.GeneralCallback;
 
 import java.io.IOException;
 import java.util.List;
@@ -18,17 +19,20 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import timber.log.Timber;
 
+/**
+ * Manager between the view model and the repository
+ */
 public class SearchBookPresenter {
-    /**
-     * Manager between the view model and the repository
-     */
-    private static final String TAG = "SearchBookPresenter";
 
+
+
+    /**
+     * Search a book and storage into database
+     */
     public void searchBook(String query) {
-        /**
-         * Search a book and storage into database
-         */
+
         deletePreviousResult();
 
         SearchBookBody searchBookBody = new SearchBookBody();
@@ -37,10 +41,10 @@ public class SearchBookPresenter {
                 ApiClient.getClient().create(SearchBookRetrofitInterface.class);
         Call<List<SearchResponse>> call = searchBookRetrofitInterface.searchBookByTitle(searchBookBody);
 
-        call.enqueue(new Callback<List<SearchResponse>>() {
+        call.enqueue(new GeneralCallback<List<SearchResponse>>(call) {
             @Override
-            public void onResponse(Call<List<SearchResponse>> call, Response<List<SearchResponse>> response) {
-                Log.d(TAG, "onResponse: " + response.body());
+            public void onFinalResponse(Call<List<SearchResponse>> call, Response<List<SearchResponse>> response) {
+                Timber.d( "onFinalResponse: " + response.body());
                 new Thread(new Runnable() {
 
                     @Override
@@ -48,18 +52,13 @@ public class SearchBookPresenter {
                         for (int i = 0; i < response.body().size(); i++) {
                             // Getting each element and save it into data base
                             SearchResponse searchResponse = response.body().get(i);
-                            Log.i(TAG, "Saving response into database ");
+                            Timber.i("Saving response into database ");
                             saveResultIntoDatabase(searchResponse);
 
 
                         }
                     }
                 }).start();
-            }
-
-            @Override
-            public void onFailure(Call<List<SearchResponse>> call, Throwable t) {
-                Log.e(TAG, "onFailure: " + t.getMessage().toString());
             }
         });
 

@@ -16,10 +16,10 @@ public class SearchBookViewModel extends ViewModel {
      *
      * @param sampleBookList list of books found
      */
-    private static final String TAG = "SearchBookViewModel";
+
 
     private LiveData<List<SampleBookModel>> sampleBookResultList;
-    private LiveData<List<ResultView>> resultBookFullList;
+    private LiveData<List<BookFull>> resultBookFullList;
 
     public String targetBook;
 
@@ -47,7 +47,7 @@ public class SearchBookViewModel extends ViewModel {
         return sampleBookResultList;
     }
 
-    public LiveData<List<ResultView>> getResultBookFullList() {
+    public LiveData<List<BookFull>> getResultBookFullList() {
         /** EExpose the result list with full data */
         return resultBookFullList;
     }

@@ -6,7 +6,7 @@
     <data>
         <variable
             name="resultView"
-            type="com.renatojobal.libraryutpl.mainactivity.fsearchbook.ResultView" />
+            type="com.renatojobal.libraryutpl.mainactivity.fsearchbook.BookFull" />
 
     </data>
 

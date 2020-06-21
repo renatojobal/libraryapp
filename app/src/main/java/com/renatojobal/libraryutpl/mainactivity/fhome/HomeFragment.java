@@ -12,17 +12,23 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.ActionOnlyNavDirections;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.renatojobal.libraryutpl.R;
 import com.renatojobal.libraryutpl.databinding.FragmentHomeBinding;
 import com.renatojobal.libraryutpl.mainactivity.MainViewModel;
 import com.renatojobal.libraryutpl.mainactivity.fhome.ui.RootRecyclerViewAdapter;
+import com.renatojobal.libraryutpl.mainactivity.fsearchbook.BookFull;
+import com.renatojobal.libraryutpl.repository.model.BookInfoModel;
+
+import java.util.List;
 
 
+/**
+ * Fragment home
+ */
 public class HomeFragment extends Fragment {
-    /**
-     * Fragment home
-     */
+
 
     // Fragment view-model
     HomeViewModel homeViewModel;
@@ -36,30 +42,44 @@ public class HomeFragment extends Fragment {
     // Adapters
     RootRecyclerViewAdapter rootRecyclerViewAdapter;
 
+    /**
+     * onCreate
+     * - Link the home view-model
+     */
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
-        /**
-         * onCreate
-         * - Link the home view-model
-         */
+
         super.onCreate(savedInstanceState);
+        mainViewModel = new ViewModelProvider(getActivity()).get(MainViewModel.class);
         homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
-        mainViewModel = new ViewModelProvider(this).get(MainViewModel.class);
+
     }
 
 
+    /**
+     * onCreateView
+     */
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        /**
-         * onCreateView
-         */
+
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false);
         setUpBindingData();
 
+        binding.rootRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
         // Create the root adapter
         // TODO: Set up the adapters
-        rootRecyclerViewAdapter = new RootRecyclerViewAdapter();
+
+        rootRecyclerViewAdapter = new RootRecyclerViewAdapter(getContext(), mainViewModel.getRecommendedBooks());
+        mainViewModel.getRecommendedBooks().observe(getActivity(), new Observer<List<List<BookInfoModel>>>() {
+            @Override
+            public void onChanged(List<List<BookInfoModel>> lists) {
+                if(!lists.isEmpty()){
+                    binding.rootRecyclerView.setAdapter(rootRecyclerViewAdapter);
+                }
+            }
+        });
 
 
 

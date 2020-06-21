@@ -10,6 +10,6 @@ import java.util.List;
 public interface ResultDao {
     // Lets access to the result of search a book from the database
 
-    @Query("SELECT * FROM ResultView")
-    LiveData<List<ResultView>> allResultLiveData();
+    @Query("SELECT * FROM BookFull")
+    LiveData<List<BookFull>> allResultLiveData();
 }

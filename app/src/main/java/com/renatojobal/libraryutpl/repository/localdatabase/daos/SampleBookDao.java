@@ -1,8 +1,7 @@
 package com.renatojobal.libraryutpl.repository.localdatabase.daos;
 
 import androidx.lifecycle.LiveData;
-import androidx.paging.DataSource;
-import androidx.paging.PagedList;
+
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -21,8 +20,7 @@ public interface SampleBookDao {
      * @return
      */
 
-    @Query("SELECT * FROM "+ DBConstants.SAMPLE_BOOK_TABLE)
-    DataSource.Factory<Integer, SampleBookModel> getLiveDataPagedList();
+
 
     @Query("SELECT * FROM "+ DBConstants.SAMPLE_BOOK_TABLE)
     LiveData<List<SampleBookModel>> getLiveDataList();
