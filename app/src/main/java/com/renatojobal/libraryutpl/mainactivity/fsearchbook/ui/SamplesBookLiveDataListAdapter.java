@@ -1,7 +1,6 @@
 package com.renatojobal.libraryutpl.mainactivity.fsearchbook.ui;
 
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
@@ -12,8 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.renatojobal.libraryutpl.R;
 import com.renatojobal.libraryutpl.databinding.ItemSampleBookBinding;
-import com.renatojobal.libraryutpl.mainactivity.fsearchbook.ResultView;
-import com.renatojobal.libraryutpl.repository.model.SampleBookModel;
+import com.renatojobal.libraryutpl.mainactivity.fsearchbook.BookFull;
 
 import java.util.List;
 
@@ -29,13 +27,13 @@ public class SamplesBookLiveDataListAdapter
      */
 
     // Attributes
-    LiveData<List<ResultView>> resultViewLiveData;
+    LiveData<List<BookFull>> resultViewLiveData;
 
 
 
     // Provide a suitable constructor (depends on the kind of data set)
     public SamplesBookLiveDataListAdapter(
-            LiveData<List<ResultView>> resultViewLiveData) {
+            LiveData<List<BookFull>> resultViewLiveData) {
         /**
          * Constructor
          */
@@ -63,7 +61,7 @@ public class SamplesBookLiveDataListAdapter
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         // - get element from your dataset at this position
-        ResultView resultView = getItem(position);
+        BookFull resultView = getItem(position);
 
         // - replace the contents of the view with that element
 //        holder.title.setText(sampleBook.getFkBookInfoModel());
@@ -82,7 +80,7 @@ public class SamplesBookLiveDataListAdapter
         return resultViewLiveData.getValue().size();
     }
 
-    public ResultView getItem(int position){
+    public BookFull getItem(int position){
         return resultViewLiveData.getValue().get(position);
     }
 
@@ -109,7 +107,7 @@ public class SamplesBookLiveDataListAdapter
         }
 
 
-        public void bind(ResultView resultView) {
+        public void bind(BookFull resultView) {
             itemBinding.setResultView(resultView);
         }
 

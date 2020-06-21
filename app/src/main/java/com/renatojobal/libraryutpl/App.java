@@ -4,6 +4,8 @@ import android.app.Application;
 import android.content.Context;
 import android.util.Log;
 
+import com.renatojobal.libraryutpl.repository.localdatabase.DataGenerator;
+
 import timber.log.Timber;
 
 public class App extends Application {
@@ -18,9 +20,12 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         App.context = getApplicationContext();
-
         // Set up timber
         Timber.plant(new Timber.DebugTree());
+
+        // Pre populate database
+        DataGenerator.populateDatabase();
+
     }
 
     public static Context getContext(){

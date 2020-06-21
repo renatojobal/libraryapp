@@ -10,9 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,8 +19,6 @@ import android.widget.SearchView;
 import com.renatojobal.libraryutpl.R;
 
 import com.renatojobal.libraryutpl.databinding.FragmentSearchBookBinding;
-import com.renatojobal.libraryutpl.mainactivity.fsearchbook.ResultView;
-import com.renatojobal.libraryutpl.mainactivity.fsearchbook.SearchBookViewModel;
 import com.renatojobal.libraryutpl.mainactivity.fsearchbook.ui.SamplesBookLiveDataListAdapter;
 
 import java.util.List;
@@ -44,11 +40,12 @@ public class SearchBookFragment extends Fragment {
     private SamplesBookLiveDataListAdapter resultBookLiveDataListAdapter;
 
 
+    /**
+     * Link the view model
+     */
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
-        /**
-         * Link the view model
-         */
+
         super.onCreate(savedInstanceState);
         searchBookViewModel = new ViewModelProvider(this).get(SearchBookViewModel.class);
 
@@ -63,9 +60,9 @@ public class SearchBookFragment extends Fragment {
         resultBookLiveDataListAdapter = new SamplesBookLiveDataListAdapter(searchBookViewModel.getResultBookFullList());
         fragmentSearchBookBinding.recyclerViewResultList.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        searchBookViewModel.getResultBookFullList().observe(getViewLifecycleOwner(), new Observer<List<ResultView>>() {
+        searchBookViewModel.getResultBookFullList().observe(getViewLifecycleOwner(), new Observer<List<BookFull>>() {
             @Override
-            public void onChanged(List<ResultView> resultViews) {
+            public void onChanged(List<BookFull> resultViews) {
             // Change the result list now
             fragmentSearchBookBinding.recyclerViewResultList.setAdapter(resultBookLiveDataListAdapter);
             }

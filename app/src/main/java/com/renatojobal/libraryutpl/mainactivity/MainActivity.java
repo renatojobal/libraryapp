@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
         setUpBinding();
         setUpUi();
-
+        setTheme(R.style.AppTheme); // Change the them when the activity is ready
     }
 
     private void setUpBinding() {
@@ -67,4 +67,6 @@ public class MainActivity extends AppCompatActivity {
     private void navigate(int destId) {
         navController.navigate(destId);
     }
+
+
 }

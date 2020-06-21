@@ -1,9 +1,11 @@
 package com.renatojobal.libraryutpl.mainactivity.fsearchbook;
 
+
+/**
+ * Body when hit the web service to search a book
+ */
 public class SearchBookBody {
-    /**
-     * Body when hit the web service to search a book
-     */
+
     private String title;
 
     public SearchBookBody() {

@@ -4,8 +4,9 @@ import androidx.room.Database;
 import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 
+import com.renatojobal.libraryutpl.mainactivity.fhome.RecommendBooksDao;
 import com.renatojobal.libraryutpl.mainactivity.fsearchbook.ResultDao;
-import com.renatojobal.libraryutpl.mainactivity.fsearchbook.ResultView;
+import com.renatojobal.libraryutpl.mainactivity.fsearchbook.BookFull;
 import com.renatojobal.libraryutpl.repository.localdatabase.converter.DateConverter;
 import com.renatojobal.libraryutpl.repository.localdatabase.daos.AuthorDao;
 import com.renatojobal.libraryutpl.repository.localdatabase.daos.BookInfoDao;
@@ -24,7 +25,7 @@ import com.renatojobal.libraryutpl.repository.model.ShelfModel;
                 AuthorModel.class
         },
         views = {
-                ResultView.class
+                BookFull.class
         },
         exportSchema = true,
         version = 10)
@@ -44,5 +45,7 @@ public abstract class AppDatabase extends RoomDatabase {
 
 
     public abstract ResultDao resultDao();
+
+    public abstract RecommendBooksDao recommendBooksDao();
 
 }
