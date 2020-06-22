@@ -23,6 +23,8 @@ import com.renatojobal.libraryutpl.repository.model.BookInfoModel;
 
 import java.util.List;
 
+import timber.log.Timber;
+
 
 /**
  * Fragment home
@@ -75,7 +77,8 @@ public class HomeFragment extends Fragment {
         mainViewModel.getRecommendedBooks().observe(getActivity(), new Observer<List<List<BookInfoModel>>>() {
             @Override
             public void onChanged(List<List<BookInfoModel>> lists) {
-                if(!lists.isEmpty()){
+                if(!lists.isEmpty()){ // If the list is no empty
+                    Timber.d("Setting the adapter");
                     binding.rootRecyclerView.setAdapter(rootRecyclerViewAdapter);
                 }
             }

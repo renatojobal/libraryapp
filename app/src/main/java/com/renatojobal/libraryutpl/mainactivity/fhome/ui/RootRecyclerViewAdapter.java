@@ -18,13 +18,12 @@ import com.renatojobal.libraryutpl.repository.model.BookInfoModel;
 import java.util.List;
 
 
+/**
+ *  This Recycler view will be the adapter for all the nested recycler views
+ *
+ */
 public class RootRecyclerViewAdapter extends RecyclerView.Adapter<RootRecyclerViewAdapter.RootViewHolder> {
-    /**
-     * This Recycler view will be the adapter for all the nested recycler views
-     * @param parent
-     * @param viewType
-     * @return
-     */
+
 
     // Data source   (List of lists)
     LiveData<List<List<BookInfoModel>>> lists;
@@ -52,7 +51,8 @@ public class RootRecyclerViewAdapter extends RecyclerView.Adapter<RootRecyclerVi
 
         // Return the view holder with the elements attached
         RootViewHolder viewHolder = new RootViewHolder(binding);
-        return null;
+
+        return viewHolder;
     }
 
     // Replace the contents of a view (invoked by the layout manager)
@@ -96,10 +96,14 @@ public class RootRecyclerViewAdapter extends RecyclerView.Adapter<RootRecyclerVi
 
         // Bind the list with the horizontal recycler view
         public void bind(List<BookInfoModel> horizontalList) {
-            itemBinding.recyclerViewHorizontal.setLayoutManager(new LinearLayoutManager(context));
+            // Layout manager
+            LinearLayoutManager horizontalLinearLayoutManager = new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
 
+            itemBinding.recyclerViewHorizontal.setLayoutManager(horizontalLinearLayoutManager);
 
+            HorizontalRecyclerViewAdapter horizontalRecyclerViewAdapter = new HorizontalRecyclerViewAdapter(context, horizontalList);
 
+            itemBinding.recyclerViewHorizontal.setAdapter(horizontalRecyclerViewAdapter);
         }
     }
 }
