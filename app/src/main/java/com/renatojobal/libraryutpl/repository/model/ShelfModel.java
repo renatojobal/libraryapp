@@ -7,11 +7,12 @@ import androidx.room.PrimaryKey;
 import com.google.gson.annotations.SerializedName;
 import com.renatojobal.libraryutpl.repository.localdatabase.DBConstants;
 
+/**
+ * Shelf model
+ */
 @Entity(tableName = DBConstants.SHELF_TABLE)
 public class ShelfModel {
-    /**
-     * Shelf model
-     */
+
 
     @PrimaryKey
     @SerializedName("id")
@@ -30,6 +31,13 @@ public class ShelfModel {
     @ColumnInfo(name = DBConstants.SHELF_ACTIVE)
     private boolean active;
 
+    /**
+     * Full params constructor
+     * @param shelfModelId
+     * @param code
+     * @param location
+     * @param active
+     */
     public ShelfModel(int shelfModelId, String code, String location, boolean active) {
         this.shelfModelId = shelfModelId;
         this.code = code;

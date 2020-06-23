@@ -8,12 +8,11 @@ import androidx.room.Query;
 import com.renatojobal.libraryutpl.repository.localdatabase.DBConstants;
 import com.renatojobal.libraryutpl.repository.model.AuthorModel;
 
+/**
+ * Dao for Author model
+ */
 @Dao
 public interface AuthorDao {
-    /**
-     * Dao for Author model
-     * @return
-     */
 
     @Insert
     void insert(AuthorModel author);

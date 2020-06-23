@@ -4,13 +4,14 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
+/**
+ * Notification model
+ */
 @Entity(foreignKeys = @ForeignKey(entity = SampleBookModel.class,
         parentColumns = "id",
         childColumns = "fkSampleBook"))
 public class NotificationModel {
-    /**
-     * Notification model
-     */
+
 
     @PrimaryKey
     private int id;
@@ -19,10 +20,13 @@ public class NotificationModel {
 
     private int fkSampleBook;
 
+    /**
+     * Full params constructor
+     * @param id
+     * @param notificationType
+     * @param fkSampleBook
+     */
     public NotificationModel(int id, int notificationType, int fkSampleBook) {
-        /**
-         * Full params constructor
-         */
         this.id = id;
         this.notificationType = notificationType;
         this.fkSampleBook = fkSampleBook;

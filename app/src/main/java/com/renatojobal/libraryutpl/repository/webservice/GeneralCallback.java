@@ -9,7 +9,7 @@ import timber.log.Timber;
  * In this class we call handle all the onFailures calls that use this response
  * Also we can try the call another time or whatever
  *
- * @param <T>
+ * @param <T> Generic class
  */
 public abstract class GeneralCallback<T> implements Callback<T> {
 
@@ -86,6 +86,9 @@ public abstract class GeneralCallback<T> implements Callback<T> {
     }
 
 
+    /**
+     * Retry the same call
+     */
     private void retryCall() {
         Timber.i("Retrying call");
         call.clone().enqueue(this); // clone the original call and enqueue it for retry

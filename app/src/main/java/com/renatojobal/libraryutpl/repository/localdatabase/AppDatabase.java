@@ -17,6 +17,9 @@ import com.renatojobal.libraryutpl.repository.model.BookInfoModel;
 import com.renatojobal.libraryutpl.repository.model.SampleBookModel;
 import com.renatojobal.libraryutpl.repository.model.ShelfModel;
 
+/**
+ * This class expose the database data access objects (DAOs)
+ */
 @Database(
         entities = {
                 BookInfoModel.class,
@@ -31,9 +34,6 @@ import com.renatojobal.libraryutpl.repository.model.ShelfModel;
         version = 10)
 @TypeConverters({DateConverter.class})
 public abstract class AppDatabase extends RoomDatabase {
-    /**
-     * Expose the database data access objects
-     */
 
     public abstract BookInfoDao bookInfoDao();
 
@@ -42,7 +42,6 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract ShelfDao shelfDao();
 
     public abstract AuthorDao authorDao();
-
 
     public abstract ResultDao resultDao();
 

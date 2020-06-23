@@ -19,6 +19,10 @@ import timber.log.Timber;
 public class HomePresenter {
 
 
+    /**
+     * This method will access the data base in another thread
+     * @param targetRecommendedList Live data observed by the view
+     */
     public void getRecommendedBook(MutableLiveData<List<List<BookInfoModel>>> targetRecommendedList){
 
         new Thread(new Runnable() {
@@ -27,7 +31,7 @@ public class HomePresenter {
                 List<BookInfoModel> singleList = RoomHelper.getAppDatabaseInstance().recommendBooksDao().singleResultList();
 
                 List<List<BookInfoModel>> recommendedBooks = new ArrayList<>();
-                for (int i = 0; i < 6; i ++){
+                for (int i = 0; i < 6; i++) {
                     recommendedBooks.add(singleList);
 
                 }
@@ -36,7 +40,7 @@ public class HomePresenter {
                 targetRecommendedList.postValue(recommendedBooks);
             }
         }
-        ).run();
+        ).start();
 
 
 

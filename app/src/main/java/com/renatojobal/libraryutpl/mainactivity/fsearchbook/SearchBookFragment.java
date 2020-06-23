@@ -25,12 +25,10 @@ import java.util.List;
 
 import timber.log.Timber;
 
-
+/**
+ * Fragment search book
+ */
 public class SearchBookFragment extends Fragment {
-    /**
-     * Fragment search book
-     */
-
 
     private SearchBookViewModel searchBookViewModel;        // Fragment view model
 
@@ -51,6 +49,7 @@ public class SearchBookFragment extends Fragment {
 
         Timber.wtf("onCreate: Create search book fragment");
     }
+
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -95,14 +94,8 @@ public class SearchBookFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        /**
-         * Change Live Data into the observer.
-         */
+         // Change Live Data into the observer if needed
         super.onViewCreated(view, savedInstanceState);
-
-        // Linking UI elements
-
-
 
     }
 }

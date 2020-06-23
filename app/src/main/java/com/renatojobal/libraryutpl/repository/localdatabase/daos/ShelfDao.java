@@ -8,12 +8,11 @@ import androidx.room.Query;
 import com.renatojobal.libraryutpl.repository.localdatabase.DBConstants;
 import com.renatojobal.libraryutpl.repository.model.ShelfModel;
 
+/**
+ * Dao for Shelf model
+ */
 @Dao
 public interface ShelfDao {
-    /**
-     * Dao for Shelf model
-     * @return
-     */
 
     @Insert
     void insert(ShelfModel shelf);

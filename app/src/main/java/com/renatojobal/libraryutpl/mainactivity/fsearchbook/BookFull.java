@@ -10,9 +10,9 @@ import com.renatojobal.libraryutpl.repository.model.SampleBookModel;
 
 
 /**
- * This class is a view that joins the tables sample books with the book info, author
+ * This class is a view that joins the tables sample books with the book info
+ * and also with the author in next versions
  */
-
 @DatabaseView("SELECT * " +
         "FROM "+ DBConstants.BOOK_INFO_TABLE +", "+DBConstants.SAMPLE_BOOK_TABLE+" " +
         "WHERE "+DBConstants.SAMPLE_BOOK_BOOK_INFO_ID+" = "+DBConstants.BOOK_INFO_ID+";")

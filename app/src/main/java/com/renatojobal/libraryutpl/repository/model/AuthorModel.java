@@ -9,11 +9,12 @@ import com.renatojobal.libraryutpl.repository.localdatabase.DBConstants;
 
 import java.io.Serializable;
 
+/**
+ * Author model
+ */
 @Entity(tableName = DBConstants.AUTHOR_TABLE)
 public class AuthorModel  implements Serializable {
-    /**
-     * Author model
-     */
+
 
     @PrimaryKey
     @ColumnInfo(name = DBConstants.AUTHOR_ID)
@@ -32,10 +33,15 @@ public class AuthorModel  implements Serializable {
     @ColumnInfo(name = DBConstants.AUTHOR_STATE)
     private int authorState;
 
+    /**
+     * Full params constructor
+     * @param authorModelId
+     * @param name
+     * @param pseudonym
+     * @param nationality
+     * @param authorState
+     */
     public AuthorModel(int authorModelId, String name, String pseudonym, String nationality, int authorState) {
-        /**
-         * Full params constructor
-         */
         this.authorModelId = authorModelId;
         this.name = name;
         this.pseudonym = pseudonym;

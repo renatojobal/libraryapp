@@ -3,11 +3,12 @@ package com.renatojobal.libraryutpl.repository.model;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+/**
+ * Person model
+ */
 @Entity
 public class PersonModel {
-    /**
-     * Person model
-     */
+
 
     @PrimaryKey
     private int id;
@@ -16,10 +17,13 @@ public class PersonModel {
 
     private String firstName;
 
+    /**
+     * Full params constructor
+     * @param id
+     * @param identification
+     * @param firstName
+     */
     public PersonModel(int id, String identification, String firstName) {
-        /**
-         * Full params constructor
-         */
         this.id = id;
         this.identification = identification;
         this.firstName = firstName;

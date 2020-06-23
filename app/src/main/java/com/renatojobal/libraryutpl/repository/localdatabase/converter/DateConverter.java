@@ -4,10 +4,11 @@ import androidx.room.TypeConverter;
 
 import java.util.Date;
 
+/**
+ * This class is used only for convert date to timestamp and solve some problems
+ */
 public class DateConverter {
-    /**
-     * This class is used only for convert date to timestamp and solve some problems
-     */
+
     @TypeConverter
     public static Date toDate(Long timestamp) {
         return timestamp == null ? null : new Date(timestamp);

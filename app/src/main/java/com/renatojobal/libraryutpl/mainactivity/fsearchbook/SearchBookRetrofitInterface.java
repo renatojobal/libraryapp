@@ -15,7 +15,11 @@ import retrofit2.http.POST;
  */
 public interface SearchBookRetrofitInterface {
 
-
+    /**
+     * Search a title into the server using a key word of the title
+     * @param searchBookBody key word
+     * @return response
+     */
     @POST(ServiceConstants.SEARCH_BOOK_BY_TITLE_URL)
     Call<List<SearchResponse>> searchBookByTitle(
             @Body SearchBookBody searchBookBody

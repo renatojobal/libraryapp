@@ -8,6 +8,9 @@ public class SearchBookBody {
 
     private String title;
 
+    /**
+     * Empty constructor
+     */
     public SearchBookBody() {
     }
 

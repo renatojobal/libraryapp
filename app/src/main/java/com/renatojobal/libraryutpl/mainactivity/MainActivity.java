@@ -1,5 +1,6 @@
 package com.renatojobal.libraryutpl.mainactivity;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
@@ -14,20 +15,25 @@ import com.renatojobal.libraryutpl.databinding.ActivityMainBinding;
 
 import timber.log.Timber;
 
-
+/**
+ * MainActivity
+ * We are following the single activity advice from android developers
+ */
 public class MainActivity extends AppCompatActivity {
-    /**
-     *
-     * @param savedInstanceState
-     */
+
 
     ActivityMainBinding binding;
     MainViewModel mainViewModel;
     private NavController navController;
 
+
+    /**
+     * Method called when the activity is going to be created5
+     * @param savedInstanceState
+     */
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        setTheme(R.style.SplashTheme);                                                  // Showing the splash screen for until the activity is ready
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        setTheme(R.style.SplashTheme);            // Showing the splash screen for until the activity is ready
         super.onCreate(savedInstanceState);
 
         // Binding
@@ -42,16 +48,19 @@ public class MainActivity extends AppCompatActivity {
         setTheme(R.style.AppTheme); // Change the them when the activity is ready
     }
 
+    /**
+     * Bind the data
+     */
     private void setUpBinding() {
-        /** Bind the data */
         binding.setMainViewModel(mainViewModel);
 
     }
 
-
-
+    /**
+     * Set up the navigation system
+     */
     private void setUpUi() {
-        /** Set up the navigation system */
+
         navController = ((NavHostFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.nav_host_fragment))
                 .getNavController();
@@ -64,6 +73,10 @@ public class MainActivity extends AppCompatActivity {
         }));
     }
 
+    /**
+     * We finally navigate to the specified destination
+     * @param destId resource layout id
+     */
     private void navigate(int destId) {
         navController.navigate(destId);
     }
