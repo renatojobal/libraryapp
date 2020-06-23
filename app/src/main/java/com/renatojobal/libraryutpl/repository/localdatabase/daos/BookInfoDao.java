@@ -11,12 +11,11 @@ import com.renatojobal.libraryutpl.repository.model.BookInfoModel;
 
 import java.util.List;
 
+/**
+ * Dao for BookInfo Model
+ */
 @Dao
 public interface BookInfoDao {
-    /**
-     * Dao for BookInfo Model
-     * @return
-     */
 
     @Insert
     void insert(BookInfoModel bookInfo);

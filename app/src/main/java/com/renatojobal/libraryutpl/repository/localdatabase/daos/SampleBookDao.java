@@ -12,15 +12,11 @@ import com.renatojobal.libraryutpl.repository.model.SampleBookModel;
 
 import java.util.List;
 
-
+/**
+ * Dao for SampleBook Model
+ */
 @Dao
 public interface SampleBookDao {
-    /**
-     * Dao for SampleBook Model
-     * @return
-     */
-
-
 
     @Query("SELECT * FROM "+ DBConstants.SAMPLE_BOOK_TABLE)
     LiveData<List<SampleBookModel>> getLiveDataList();

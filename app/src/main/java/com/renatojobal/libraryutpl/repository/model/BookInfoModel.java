@@ -9,11 +9,11 @@ import com.renatojobal.libraryutpl.repository.localdatabase.DBConstants;
 
 import java.io.Serializable;
 
+/**
+ * Book_Info model
+ */
 @Entity(tableName = DBConstants.BOOK_INFO_TABLE)
 public class BookInfoModel implements Serializable {
-    /**
-     * Book_Info model
-     */
 
 
     @PrimaryKey
@@ -45,10 +45,17 @@ public class BookInfoModel implements Serializable {
     @SerializedName("editorial")
     private String editorial;
 
+    /**
+     * Full params constructor
+     * @param bookInfoModelId
+     * @param title
+     * @param actualStock
+     * @param totalStock
+     * @param publicationDate
+     * @param pages
+     * @param editorial
+     */
     public BookInfoModel(int bookInfoModelId, String title, int actualStock, int totalStock, Long publicationDate, int pages, String editorial) {
-        /**
-         * Full params constructor
-         */
         this.bookInfoModelId = bookInfoModelId;
         this.title = title;
         this.actualStock = actualStock;

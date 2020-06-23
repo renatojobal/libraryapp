@@ -12,6 +12,9 @@ import com.renatojobal.libraryutpl.repository.localdatabase.DBConstants;
 import java.io.Serializable;
 import java.util.Objects;
 
+/**
+ * Singular_Book model
+ */
 @Entity(tableName = DBConstants.SAMPLE_BOOK_TABLE,
         foreignKeys = {
                 @ForeignKey(entity = ShelfModel.class,
@@ -31,9 +34,7 @@ import java.util.Objects;
         }
 )
 public class SampleBookModel implements Serializable {
-    /**
-     * Singular_Book model
-     */
+
 
     @PrimaryKey
     @NonNull

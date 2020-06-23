@@ -13,14 +13,19 @@ import okhttp3.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+/**
+ * ApiClient provides a retrofit instance for make the call to the server
+ */
 public class ApiClient {
-    /**
-     * ApiClient provides a retrofit instance for make the call to the server
-     */
 
+    // Singleton
     private static Retrofit retrofit = null;
 
 
+    /**
+     * Interceptor that catch the responses and you can do something here, like validate the
+     * response code
+     */
     private static Interceptor interceptor = new Interceptor() {
         @Override
         public Response intercept(Chain chain) throws IOException {
@@ -31,7 +36,7 @@ public class ApiClient {
             // Deal with the issues the way we need to
             if (response.code() == 401) {
                 // Unauthorized
-
+                // Do something ...
             }
 
 
@@ -39,6 +44,10 @@ public class ApiClient {
         }
     };
 
+    /**
+     *
+     * @return a retrofit instance to allow build services
+     */
     public static Retrofit getClient() {
         if (retrofit == null) {
             Gson gson = new GsonBuilder().create();

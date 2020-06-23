@@ -6,6 +6,9 @@ import androidx.room.PrimaryKey;
 
 import com.renatojobal.libraryutpl.repository.localdatabase.DBConstants;
 
+/**
+ * External_Loan model
+ */
 @Entity(foreignKeys = {
         @ForeignKey(entity = SampleBookModel.class,
                 parentColumns = DBConstants.SAMPLE_BOOK_ID,
@@ -17,9 +20,7 @@ import com.renatojobal.libraryutpl.repository.localdatabase.DBConstants;
                 onDelete = ForeignKey.CASCADE)
 })
 public class ExternalLoanModel {
-    /**
-     * External_Loan model
-     */
+
 
     @PrimaryKey
     private int id;
@@ -36,10 +37,17 @@ public class ExternalLoanModel {
 
     private int state;
 
+    /**
+     * Full params constructor
+     * @param id
+     * @param fkSampleBook
+     * @param fkPerson
+     * @param loanTime
+     * @param returnExpected
+     * @param dateReturned
+     * @param state
+     */
     public ExternalLoanModel(int id, int fkSampleBook, int fkPerson, Long loanTime, Long returnExpected, Long dateReturned, int state) {
-        /**
-         * Full params constructor
-         */
         this.id = id;
         this.fkSampleBook = fkSampleBook;
         this.fkPerson = fkPerson;

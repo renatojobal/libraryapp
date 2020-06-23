@@ -8,6 +8,11 @@ import androidx.room.PrimaryKey;
 
 import com.renatojobal.libraryutpl.repository.localdatabase.DBConstants;
 
+/**
+ * Author_Book_Info model
+ * <p>
+ * Table for many to many relationship
+ */
 @Entity(tableName = DBConstants.MM_AUTHOR_BOOK_INFO_TABLE,
         foreignKeys = {
                 @ForeignKey(entity = AuthorModel.class,
@@ -21,11 +26,7 @@ import com.renatojobal.libraryutpl.repository.localdatabase.DBConstants;
                         onDelete = ForeignKey.CASCADE)
         })
 public class AuthorBookInfoModel {
-    /**
-     * Author_Book_Info model
-     * <p>
-     * Table for many to many relationship
-     */
+
 
     @PrimaryKey()
     @ColumnInfo(name = DBConstants.MM_AUTHOR_BOOK_INFO_ID)
@@ -37,10 +38,13 @@ public class AuthorBookInfoModel {
     @ColumnInfo(name = DBConstants.MM_AUTHOR_BOOK_INFO_BOOK_INFO_ID)
     private int bookInfoModelId;
 
+    /**
+     * Full params constructor
+     * @param id
+     * @param authorModelId
+     * @param bookInfoModelId
+     */
     public AuthorBookInfoModel(int id, int authorModelId, int bookInfoModelId) {
-        /**
-         * Full params constructor
-         */
         this.id = id;
         this.authorModelId = authorModelId;
         this.bookInfoModelId = bookInfoModelId;

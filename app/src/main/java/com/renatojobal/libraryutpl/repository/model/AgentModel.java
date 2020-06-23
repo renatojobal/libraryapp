@@ -7,6 +7,11 @@ import androidx.room.PrimaryKey;
 
 import com.renatojobal.libraryutpl.repository.localdatabase.DBConstants;
 
+/**
+ * Agent model
+ * <p>
+ * Probably we don't need to use it on the client side. Only in backend.
+ */
 @Entity(foreignKeys = {
         @ForeignKey(entity = ShelfModel.class,
                 parentColumns = DBConstants.SHELF_ID,
@@ -14,11 +19,7 @@ import com.renatojobal.libraryutpl.repository.localdatabase.DBConstants;
                 onDelete = ForeignKey.CASCADE)
 })
 public class AgentModel {
-    /**
-     * Agent model
-     * <p>
-     * Probably we don't need to use it on the client side. Only in backend.
-     */
+
 
     @PrimaryKey
     @NonNull
@@ -34,10 +35,16 @@ public class AgentModel {
 
     private int fkShelf;
 
+    /**
+     * Full params constructor
+     * @param id
+     * @param requestDelay
+     * @param updateSettingsDelay
+     * @param productionUrl
+     * @param developmentUrl
+     * @param fkShelf
+     */
     public AgentModel(int id, int requestDelay, int updateSettingsDelay, String productionUrl, String developmentUrl, int fkShelf) {
-        /**
-         * Full params constructor
-         */
         this.id = id;
         this.requestDelay = requestDelay;
         this.updateSettingsDelay = updateSettingsDelay;
