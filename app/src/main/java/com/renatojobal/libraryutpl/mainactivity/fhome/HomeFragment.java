@@ -71,8 +71,6 @@ public class HomeFragment extends Fragment {
         binding.rootRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         // Create the root adapter
-        // TODO: Set up the adapters
-
         rootRecyclerViewAdapter = new RootRecyclerViewAdapter(getContext(), mainViewModel.getRecommendedBooks());
         mainViewModel.getRecommendedBooks().observe(getActivity(), new Observer<List<List<BookInfoModel>>>() {
             @Override

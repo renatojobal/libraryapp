@@ -15,6 +15,10 @@ import retrofit2.Call;
  */
 public interface RecommendsRetrofitInterface {
 
+    /**
+     * Request list of recommended books
+     * @return List of books
+     */
     @GET(ServiceConstants.PULL_RECOMMENDED_BOOKS)
     Call<List<BookInfoModel>> getRecommendedBooks();
 

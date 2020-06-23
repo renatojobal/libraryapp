@@ -18,13 +18,11 @@ import com.renatojobal.libraryutpl.repository.model.BookInfoModel;
 
 import java.util.List;
 
+/**
+ * This adapter would be for the horizontal list of books
+ */
 public class HorizontalRecyclerViewAdapter extends RecyclerView.Adapter<HorizontalRecyclerViewAdapter.HorizontalViewHolder> {
-    /**
-     * This adapter would be for the horizontal list of books
-     * @param parent
-     * @param viewType
-     * @return
-     */
+
 
     // Context
     Context context;
