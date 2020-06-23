@@ -6,6 +6,9 @@ import com.renatojobal.libraryutpl.repository.model.BookInfoModel;
 import com.renatojobal.libraryutpl.repository.model.SampleBookModel;
 import com.renatojobal.libraryutpl.repository.model.ShelfModel;
 
+/**
+ * Mock the response of the server
+ */
 public class SearchResponse{
 
     @SerializedName("actual_shelf")

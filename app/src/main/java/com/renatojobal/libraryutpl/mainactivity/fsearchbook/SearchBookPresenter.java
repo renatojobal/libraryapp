@@ -66,6 +66,11 @@ public class SearchBookPresenter {
     }
 
 
+    /**
+     * Saving the result into database
+     * ? It could be improved
+     * @param searchResponse response
+     */
     public void saveResultIntoDatabase(SearchResponse searchResponse) {
 
         SampleBookModel sampleBookModel = searchResponse.getSingularBookInfo();
@@ -115,19 +120,16 @@ public class SearchBookPresenter {
 
     }
 
-
+    /**
+     * Delete previous database result,
+     * We do that for not showing previous result in the screen
+     */
     public void deletePreviousResult() {
-        /**
-         * Delete previous database result
-         */
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                RoomHelper.getAppDatabaseInstance().bookInfoDao().deleteAll();
-                RoomHelper.getAppDatabaseInstance().authorDao().deleteAll();
-                RoomHelper.getAppDatabaseInstance().shelfDao().deleteAll();
-                RoomHelper.getAppDatabaseInstance().sampleBookDao().deleteAll();
-            }
+        new Thread(() -> {
+            RoomHelper.getAppDatabaseInstance().bookInfoDao().deleteAll();
+            RoomHelper.getAppDatabaseInstance().authorDao().deleteAll();
+            RoomHelper.getAppDatabaseInstance().shelfDao().deleteAll();
+            RoomHelper.getAppDatabaseInstance().sampleBookDao().deleteAll();
         }).start();
     }
 }
