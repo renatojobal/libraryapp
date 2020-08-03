@@ -28,8 +28,8 @@
             <TextView
                 android:id="@+id/title"
                 style="@style/simple_text"
-                android:layout_width="348dp"
-                android:layout_height="25dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
 
                 android:layout_marginTop="40dp"
                 android:text="@{resultView.bookInfo.title}"
@@ -41,8 +41,8 @@
             <TextView
                 android:id="@+id/author"
                 style="@style/simple_text"
-                android:layout_width="343dp"
-                android:layout_height="25dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 app:layout_constraintEnd_toStartOf="@+id/guideline2"
                 app:layout_constraintStart_toStartOf="@+id/guideline"
                 app:layout_constraintTop_toBottomOf="@+id/location"
@@ -51,8 +51,8 @@
             <TextView
                 android:id="@+id/availability"
                 style="@style/simple_text"
-                android:layout_width="345dp"
-                android:layout_height="25dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:text="@{resultView.sampleBook.state == 1 ? @string/available : @string/not_available}"
 
                 app:layout_constraintEnd_toStartOf="@+id/guideline2"
@@ -63,8 +63,8 @@
             <TextView
                 android:id="@+id/location"
                 style="@style/simple_text"
-                android:layout_width="340dp"
-                android:layout_height="25dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 app:layout_constraintEnd_toStartOf="@+id/guideline2"
                 app:layout_constraintStart_toStartOf="@+id/guideline"
                 app:layout_constraintTop_toBottomOf="@+id/availability"
