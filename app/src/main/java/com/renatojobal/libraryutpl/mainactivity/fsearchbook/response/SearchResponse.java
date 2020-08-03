@@ -38,4 +38,14 @@ public class SearchResponse{
     public BookInfoModel getBookInfo(){
         return bookInfo;
     }
+
+    @Override
+    public String toString() {
+        return "\nSearchResponse{" +
+                "\nactualShelf=" + actualShelf +
+                ", \nsingularBookInfo=" + singularBookInfo +
+                ", \nauthorsInfo=" + authorsInfo +
+                ", \nbookInfo=" + bookInfo +
+                "\n}\n";
+    }
 }

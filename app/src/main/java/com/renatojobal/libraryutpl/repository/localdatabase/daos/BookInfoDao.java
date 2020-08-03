@@ -17,6 +17,9 @@ import java.util.List;
 @Dao
 public interface BookInfoDao {
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insertOrReplace(BookInfoModel bookInfo);
+
     @Insert
     void insert(BookInfoModel bookInfo);
 

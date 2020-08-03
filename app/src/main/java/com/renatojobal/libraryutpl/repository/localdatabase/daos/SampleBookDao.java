@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
 import com.renatojobal.libraryutpl.repository.localdatabase.DBConstants;
@@ -23,6 +24,9 @@ public interface SampleBookDao {
 
     @Insert
     void insert(SampleBookModel sampleBook);
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insertOrReplace(SampleBookModel sampleBook);
 
     @Query("DELETE FROM "+ DBConstants.SAMPLE_BOOK_TABLE)
     void deleteAll();

@@ -62,6 +62,21 @@ public class SearchBookFragment extends Fragment {
         searchBookViewModel.getResultBookFullList().observe(getViewLifecycleOwner(), new Observer<List<BookFull>>() {
             @Override
             public void onChanged(List<BookFull> resultViews) {
+
+                if (resultViews.isEmpty()) {
+                    Timber.d("List result is empty");
+                    // If the list is empty
+                    fragmentSearchBookBinding.recyclerViewResultList.setVisibility(View.GONE);
+                    fragmentSearchBookBinding.noResultsText.setVisibility(View.VISIBLE);
+                } else {
+                    Timber.d("List result is not empty");
+                    // If is  not empty
+                    fragmentSearchBookBinding.recyclerViewResultList.setVisibility(View.VISIBLE);
+                    fragmentSearchBookBinding.noResultsText.setVisibility(View.GONE);
+                    fragmentSearchBookBinding.recyclerViewResultList.setAdapter(resultBookLiveDataListAdapter);
+                }
+
+
             // Change the result list now
             fragmentSearchBookBinding.recyclerViewResultList.setAdapter(resultBookLiveDataListAdapter);
             }
