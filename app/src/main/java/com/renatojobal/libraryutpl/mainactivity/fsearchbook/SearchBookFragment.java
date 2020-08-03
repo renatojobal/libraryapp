@@ -47,7 +47,7 @@ public class SearchBookFragment extends Fragment {
         super.onCreate(savedInstanceState);
         searchBookViewModel = new ViewModelProvider(this).get(SearchBookViewModel.class);
 
-        Timber.wtf("onCreate: Create search book fragment");
+        Timber.d("onCreate: Create search book fragment");
     }
 
 

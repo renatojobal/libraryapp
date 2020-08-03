@@ -5,6 +5,7 @@
 
     <string name="available">Disponible</string>
     <string name="not_available">No disponible</string>
+    <string name="no_results">Sin resultados</string>
 
 
 </resources>
