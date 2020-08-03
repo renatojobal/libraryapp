@@ -89,4 +89,15 @@ public class AuthorModel  implements Serializable {
     public void setAuthorState(int authorState) {
         this.authorState = authorState;
     }
+
+    @Override
+    public String toString() {
+        return "AuthorModel{" +
+                "authorModelId=" + authorModelId +
+                ", name='" + name + '\'' +
+                ", pseudonym='" + pseudonym + '\'' +
+                ", nationality='" + nationality + '\'' +
+                ", authorState=" + authorState +
+                '}';
+    }
 }

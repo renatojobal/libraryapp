@@ -121,4 +121,17 @@ public class BookInfoModel implements Serializable {
     public void setEditorial(String editorial) {
         this.editorial = editorial;
     }
+
+    @Override
+    public String toString() {
+        return "BookInfoModel{" +
+                "bookInfoModelId=" + bookInfoModelId +
+                ", title='" + title + '\'' +
+                ", actualStock=" + actualStock +
+                ", totalStock=" + totalStock +
+                ", publicationDate=" + publicationDate +
+                ", pages=" + pages +
+                ", editorial='" + editorial + '\'' +
+                '}';
+    }
 }

@@ -76,4 +76,14 @@ public class ShelfModel {
     public void setActive(boolean active) {
         this.active = active;
     }
+
+    @Override
+    public String toString() {
+        return "ShelfModel{" +
+                "shelfModelId=" + shelfModelId +
+                ", code='" + code + '\'' +
+                ", location='" + location + '\'' +
+                ", active=" + active +
+                '}';
+    }
 }

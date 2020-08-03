@@ -20,12 +20,12 @@ import java.util.Objects;
                 @ForeignKey(entity = ShelfModel.class,
                         parentColumns = DBConstants.SHELF_ID,
                         childColumns = DBConstants.SAMPLE_BOOK_SHELF_OWNER_ID,
-                        onDelete = ForeignKey.CASCADE),
+                        onDelete = ForeignKey.SET_NULL),
 
                 @ForeignKey(entity = ShelfModel.class,
                         parentColumns = DBConstants.SHELF_ID,
                         childColumns = DBConstants.SAMPLE_BOOK_ACTUAL_SHELF_ID,
-                        onDelete = ForeignKey.CASCADE),
+                        onDelete = ForeignKey.SET_NULL),
                 @ForeignKey(entity = BookInfoModel.class,
                         parentColumns = DBConstants.BOOK_INFO_ID,
                         childColumns = DBConstants.SAMPLE_BOOK_BOOK_INFO_ID,
@@ -60,11 +60,11 @@ public class SampleBookModel implements Serializable {
 
     @SerializedName("shelf_owner")
     @ColumnInfo(name = DBConstants.SAMPLE_BOOK_SHELF_OWNER_ID)
-    private int fkShelfOwner;
+    private Integer fkShelfOwner;
 
     @SerializedName("actual_shelf")
     @ColumnInfo(name = DBConstants.SAMPLE_BOOK_ACTUAL_SHELF_ID)
-    private int fkActualShelf;
+    private Integer fkActualShelf;
 
     @SerializedName("book_info")
     @ColumnInfo(name = DBConstants.SAMPLE_BOOK_BOOK_INFO_ID)
@@ -112,19 +112,19 @@ public class SampleBookModel implements Serializable {
         this.state = state;
     }
 
-    public int getFkShelfOwner() {
+    public Integer getFkShelfOwner() {
         return fkShelfOwner;
     }
 
-    public void setFkShelfOwner(int fkShelfOwner) {
+    public void setFkShelfOwner(Integer fkShelfOwner) {
         this.fkShelfOwner = fkShelfOwner;
     }
 
-    public int getFkActualShelf() {
+    public Integer getFkActualShelf() {
         return fkActualShelf;
     }
 
-    public void setFkActualShelf(int fkActualShelf) {
+    public void setFkActualShelf(Integer fkActualShelf) {
         this.fkActualShelf = fkActualShelf;
     }
 
@@ -155,5 +155,19 @@ public class SampleBookModel implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(id, borrowedExternally, borrowedInternally, tag, state, fkShelfOwner, fkActualShelf, fkBookInfoModel);
+    }
+
+    @Override
+    public String toString() {
+        return "SampleBookModel{" +
+                "id=" + id +
+                ", borrowedExternally=" + borrowedExternally +
+                ", borrowedInternally=" + borrowedInternally +
+                ", tag='" + tag + '\'' +
+                ", state=" + state +
+                ", fkShelfOwner=" + fkShelfOwner +
+                ", fkActualShelf=" + fkActualShelf +
+                ", fkBookInfoModel=" + fkBookInfoModel +
+                '}';
     }
 }

@@ -75,18 +75,25 @@ public class SearchBookPresenter {
 
 
         if (authorModel != null) {
+            Timber.d("Saving an author");
             RoomHelper.getAppDatabaseInstance().authorDao().insertOrReplace(searchResponse.getAuthorsInfo());
         }
 
         if (bookInfoModel != null) {
+            Timber.d("Saving a book info");
             RoomHelper.getAppDatabaseInstance().bookInfoDao().insertOrReplace(bookInfoModel);
         }
 
         if (actualShelf != null) {
+            Timber.d("Saving a shelf");
             RoomHelper.getAppDatabaseInstance().shelfDao().insertOrReplace(actualShelf);
         }
 
         if (sampleBookModel != null) {
+            Timber.d("Saving a sample book");
+            // Strip the actual shelf foreign key becsause we are not receiving this on the response.
+            // Otherwise a Foreign key exception will occur
+            sampleBookModel.setFkShelfOwner(null);
             RoomHelper.getAppDatabaseInstance().sampleBookDao().insertOrReplace(sampleBookModel);
         }
 

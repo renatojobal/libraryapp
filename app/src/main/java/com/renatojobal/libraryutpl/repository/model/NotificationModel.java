@@ -16,9 +16,9 @@ public class NotificationModel {
     @PrimaryKey
     private int id;
 
-    private int notificationType;
+    private Integer notificationType;
 
-    private int fkSampleBook;
+    private Integer fkSampleBook;
 
     /**
      * Full params constructor
@@ -33,6 +33,7 @@ public class NotificationModel {
     }
 
     // Getter and setters
+
     public int getId() {
         return id;
     }
@@ -41,19 +42,19 @@ public class NotificationModel {
         this.id = id;
     }
 
-    public int getNotificationType() {
+    public Integer getNotificationType() {
         return notificationType;
     }
 
-    public void setNotificationType(int notificationType) {
+    public void setNotificationType(Integer notificationType) {
         this.notificationType = notificationType;
     }
 
-    public int getFkSampleBook() {
+    public Integer getFkSampleBook() {
         return fkSampleBook;
     }
 
-    public void setFkSampleBook(int fkSampleBook) {
+    public void setFkSampleBook(Integer fkSampleBook) {
         this.fkSampleBook = fkSampleBook;
     }
 }
