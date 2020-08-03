@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="bookInfoModel"
             type="com.renatojobal.libraryutpl.repository.model.BookInfoModel" />
@@ -12,41 +13,53 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/item_home_book"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:backgroundTintMode="screen">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
 
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/item_cover_page"
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_view_item_cover_page"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="4dp"
-                android:contentDescription="Bridge"
-                android:src="@drawable/debug_bridge"
+
+                app:cardCornerRadius="24dp"
+                app:cardElevation="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/item_title"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:src="@drawable/debug_bridge" />
+                app:layout_constraintVertical_chainStyle="packed">
+
+                <ImageView
+                    android:id="@+id/item_cover_page"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="IMagen por defecto"
+                    android:src="@drawable/debug_bridge"
+                    tools:src="@drawable/debug_bridge" />
+
+            </androidx.cardview.widget.CardView>
 
             <TextView
                 android:id="@+id/item_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
+                android:layout_marginTop="8dp"
                 android:text="@{bookInfoModel.title}"
+                android:textColor="@android:color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/item_cover_page"
+                app:layout_constraintTop_toBottomOf="@+id/card_view_item_cover_page"
                 tools:text="TextView" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 

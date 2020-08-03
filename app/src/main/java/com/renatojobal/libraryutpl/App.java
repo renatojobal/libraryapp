@@ -4,6 +4,8 @@ import android.app.Application;
 import android.content.Context;
 import android.util.Log;
 
+import com.renatojobal.libraryutpl.mainactivity.timber.DebugTree;
+import com.renatojobal.libraryutpl.mainactivity.timber.ReleaseTree;
 import com.renatojobal.libraryutpl.repository.localdatabase.DataGenerator;
 
 import timber.log.Timber;
@@ -28,7 +30,7 @@ public class App extends Application {
         App.context = getApplicationContext();
 
         // Set up timber
-        Timber.plant(new Timber.DebugTree());
+        setUpTimber();
 
         // Pre populate database (if needed)
         DataGenerator.populateDatabase();
@@ -43,6 +45,25 @@ public class App extends Application {
     public static Context getContext(){
 
         return App.context;
+    }
+
+
+
+    /**
+     * Timber is a library to log in a better way
+     */
+    private void setUpTimber() {
+        if (BuildConfig.DEBUG) {
+            Timber.plant(new DebugTree());
+            // Set a key to an int.
+            // FirebaseCrashlytics.getInstance().setCustomKey("Build config", "DEBUG");
+            Timber.i("Timber set up in DEBUG level");
+        } else {
+            Timber.plant(new ReleaseTree());
+            // Set a key to an int.
+            // FirebaseCrashlytics.getInstance().setCustomKey("Build config", "RELEASE");
+        }
+
     }
 
 

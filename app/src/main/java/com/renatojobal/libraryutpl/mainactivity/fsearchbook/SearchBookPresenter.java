@@ -44,7 +44,7 @@ public class SearchBookPresenter {
         call.enqueue(new GeneralCallback<List<SearchResponse>>(call) {
             @Override
             public void onFinalResponse(Call<List<SearchResponse>> call, Response<List<SearchResponse>> response) {
-                Timber.d( "onFinalResponse: " + response.body());
+                Timber.d( "onFinalResponse: %s", response.body());
                 new Thread(new Runnable() {
 
                     @Override

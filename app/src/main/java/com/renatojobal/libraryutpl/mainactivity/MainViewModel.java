@@ -8,7 +8,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.renatojobal.libraryutpl.mainactivity.fhome.HomePresenter;
-import com.renatojobal.libraryutpl.mainactivity.fsearchbook.BookFull;
+import com.renatojobal.libraryutpl.mainactivity.util.Event;
 import com.renatojobal.libraryutpl.repository.model.BookInfoModel;
 
 import java.util.List;

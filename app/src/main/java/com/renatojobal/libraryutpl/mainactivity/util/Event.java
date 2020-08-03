@@ -1,4 +1,4 @@
-package com.renatojobal.libraryutpl.mainactivity;
+package com.renatojobal.libraryutpl.mainactivity.util;
 
 /*
  * Copyright 2018 Google, Inc.

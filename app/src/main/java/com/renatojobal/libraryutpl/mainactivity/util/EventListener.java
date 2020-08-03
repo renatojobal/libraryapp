@@ -1,4 +1,4 @@
-package com.renatojobal.libraryutpl.mainactivity;
+package com.renatojobal.libraryutpl.mainactivity.util;
 
 /**
  * Is a listerner of a event

@@ -4,7 +4,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
@@ -12,6 +11,8 @@ import android.os.Bundle;
 
 import com.renatojobal.libraryutpl.R;
 import com.renatojobal.libraryutpl.databinding.ActivityMainBinding;
+import com.renatojobal.libraryutpl.mainactivity.util.EventListener;
+import com.renatojobal.libraryutpl.mainactivity.util.EventObserver;
 
 import timber.log.Timber;
 

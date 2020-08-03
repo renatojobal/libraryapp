@@ -1,4 +1,4 @@
-package com.renatojobal.libraryutpl.mainactivity;
+package com.renatojobal.libraryutpl.mainactivity.util;
 /*
  * Copyright 2018 Google, Inc.
  *
@@ -17,13 +17,16 @@ package com.renatojobal.libraryutpl.mainactivity;
 
 import androidx.lifecycle.Observer;
 
+import com.renatojobal.libraryutpl.mainactivity.util.Event;
+import com.renatojobal.libraryutpl.mainactivity.util.EventListener;
+
 /**
  * An [Observer] for [Event]s, simplifying the pattern of checking if the [Event]'s content has
  * already been consumed.
  * <p>
  * [onEventConsumed] is *only* called if the [Event]'s contents has not been consumed.
  */
-class EventObserver<T> implements Observer<Event<T>> {
+public class EventObserver<T> implements Observer<Event<T>> {
 
     private EventListener<T> eventListener;
 

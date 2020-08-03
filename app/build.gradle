@@ -3,6 +3,12 @@ apply plugin: 'com.google.gms.google-services'
 apply plugin: 'androidx.navigation.safeargs'
 
 android {
+
+    // Version code
+    def versionMajor = 1
+    def versionMinor = 0
+    def versionPatch = 0
+
     compileSdkVersion 29
 
     buildToolsVersion "29.0.2"
@@ -11,8 +17,11 @@ android {
         applicationId "com.renatojobal.libraryutpl"
         minSdkVersion 24
         targetSdkVersion 29
-        versionCode 8
-        versionName "1.0.0"
+
+        // Version code (It will appear like: 41010)
+        versionCode = ((versionMajor * 10000)
+                + (versionMinor * 100)
+                + versionPatch)
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
