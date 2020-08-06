@@ -38,15 +38,7 @@
                 app:layout_constraintTop_toTopOf="@+id/guideline3"
                 tools:text="Cien años de soledad" />
 
-            <TextView
-                android:id="@+id/author"
-                style="@style/simple_text"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toStartOf="@+id/guideline2"
-                app:layout_constraintStart_toStartOf="@+id/guideline"
-                app:layout_constraintTop_toBottomOf="@+id/location"
-                tools:text="Gabriel García Marques" />
+
 
             <TextView
                 android:id="@+id/availability"
@@ -68,7 +60,18 @@
                 app:layout_constraintEnd_toStartOf="@+id/guideline2"
                 app:layout_constraintStart_toStartOf="@+id/guideline"
                 app:layout_constraintTop_toBottomOf="@+id/availability"
+                android:text="@{resultView.sampleBook.state == 1 ? resultView.actualShelf.location : @string/not_available}"
                 tools:text="Anaquel 802, Planta baja" />
+
+            <TextView
+                android:id="@+id/author"
+                style="@style/simple_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                app:layout_constraintStart_toStartOf="@+id/guideline"
+                app:layout_constraintTop_toBottomOf="@+id/location"
+                tools:text="Gabriel García Marques" />
 
 
             <!-- Guidelines -->

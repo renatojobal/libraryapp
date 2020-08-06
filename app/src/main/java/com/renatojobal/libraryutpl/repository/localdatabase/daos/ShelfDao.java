@@ -21,6 +21,10 @@ public interface ShelfDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertOrReplace(ShelfModel shelf);
 
+    @Query("SELECT * FROM "+DBConstants.SHELF_TABLE +
+            " WHERE "+DBConstants.SHELF_ID + " = :id")
+    ShelfModel getShelfById(int id);
+
     @Delete
     void delete(ShelfModel shelf);
 
