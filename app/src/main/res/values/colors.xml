@@ -19,7 +19,9 @@
     <color name="bookAvailableColor">#8BC34A</color>
     <color name="bookNotAvailableColor">#F44336</color>
 
-
-
+    <!-- UTPL pallet -->
+    <color name="UTPL_blue">#003F72</color>
+    <color name="UTPL_yellow">#EAAB00</color>
+    <color name="UTPL_red">#A71930</color>
 
 </resources>
