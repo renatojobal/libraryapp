@@ -3,9 +3,10 @@
     <string name="search_book_hint">Buscar un libro</string>
 
 
-    <string name="available">Disponible</string>
+    <string name="available">Sí disponible</string>
     <string name="not_available">No disponible</string>
     <string name="no_results">Sin resultados</string>
+    <string name="default_image">Imagen por defecto</string>
 
 
 </resources>

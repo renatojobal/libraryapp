@@ -40,9 +40,9 @@
 
                 <ImageView
                     android:id="@+id/item_cover_page"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:contentDescription="IMagen por defecto"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:contentDescription="@string/default_image"
                     android:src="@drawable/debug_bridge"
                     tools:src="@drawable/debug_bridge" />
 
