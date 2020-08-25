@@ -11,7 +11,7 @@ public class PersonModel {
 
 
     @PrimaryKey
-    private int id;
+    private Integer id;
 
     private String identification;
 
@@ -23,18 +23,18 @@ public class PersonModel {
      * @param identification
      * @param firstName
      */
-    public PersonModel(int id, String identification, String firstName) {
+    public PersonModel(Integer id, String identification, String firstName) {
         this.id = id;
         this.identification = identification;
         this.firstName = firstName;
     }
 
     // Getter and setters
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

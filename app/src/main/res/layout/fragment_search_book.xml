@@ -14,9 +14,7 @@
             name="searchViewModel"
             type="com.renatojobal.libraryutpl.mainactivity.fsearchbook.SearchBookViewModel" />
 
-        <variable
-            name="navDirection"
-            type="androidx.navigation.NavDirections" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

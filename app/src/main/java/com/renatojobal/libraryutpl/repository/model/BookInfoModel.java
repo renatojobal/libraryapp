@@ -19,7 +19,7 @@ public class BookInfoModel implements Serializable {
     @PrimaryKey
     @ColumnInfo(name = DBConstants.BOOK_INFO_ID)
     @SerializedName("id")
-    private int bookInfoModelId;
+    private Integer bookInfoModelId;
 
     @ColumnInfo(name = DBConstants.BOOK_INFO_TITLE)
     @SerializedName("title")
@@ -55,7 +55,7 @@ public class BookInfoModel implements Serializable {
      * @param pages
      * @param editorial
      */
-    public BookInfoModel(int bookInfoModelId, String title, int actualStock, int totalStock, Long publicationDate, int pages, String editorial) {
+    public BookInfoModel(Integer bookInfoModelId, String title, int actualStock, int totalStock, Long publicationDate, int pages, String editorial) {
         this.bookInfoModelId = bookInfoModelId;
         this.title = title;
         this.actualStock = actualStock;
@@ -66,11 +66,11 @@ public class BookInfoModel implements Serializable {
     }
 
     // Getter and setters
-    public int getBookInfoModelId() {
+    public Integer getBookInfoModelId() {
         return bookInfoModelId;
     }
 
-    public void setBookInfoModelId(int bookInfoModelId) {
+    public void setBookInfoModelId(Integer bookInfoModelId) {
         this.bookInfoModelId = bookInfoModelId;
     }
 

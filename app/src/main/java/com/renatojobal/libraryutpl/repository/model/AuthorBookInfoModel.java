@@ -30,13 +30,13 @@ public class AuthorBookInfoModel {
 
     @PrimaryKey()
     @ColumnInfo(name = DBConstants.MM_AUTHOR_BOOK_INFO_ID)
-    private int id;
+    private Integer id;
 
     @ColumnInfo(name = DBConstants.MM_AUTHOR_BOOK_INFO_AUTHOR_ID)
-    private int authorModelId;
+    private Integer authorModelId;
 
     @ColumnInfo(name = DBConstants.MM_AUTHOR_BOOK_INFO_BOOK_INFO_ID)
-    private int bookInfoModelId;
+    private Integer bookInfoModelId;
 
     /**
      * Full params constructor
@@ -44,7 +44,7 @@ public class AuthorBookInfoModel {
      * @param authorModelId
      * @param bookInfoModelId
      */
-    public AuthorBookInfoModel(int id, int authorModelId, int bookInfoModelId) {
+    public AuthorBookInfoModel(Integer id, Integer authorModelId, Integer bookInfoModelId) {
         this.id = id;
         this.authorModelId = authorModelId;
         this.bookInfoModelId = bookInfoModelId;

@@ -14,7 +14,7 @@ public class NotificationModel {
 
 
     @PrimaryKey
-    private int id;
+    private Integer id;
 
     private Integer notificationType;
 
@@ -26,19 +26,18 @@ public class NotificationModel {
      * @param notificationType
      * @param fkSampleBook
      */
-    public NotificationModel(int id, int notificationType, int fkSampleBook) {
+    public NotificationModel(Integer id, Integer notificationType, Integer fkSampleBook) {
         this.id = id;
         this.notificationType = notificationType;
         this.fkSampleBook = fkSampleBook;
     }
 
     // Getter and setters
-
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

@@ -94,6 +94,7 @@ public class SearchBookPresenter {
             // Strip the actual shelf foreign key becsause we are not receiving this on the response.
             // Otherwise a Foreign key exception will occur
             sampleBookModel.setFkShelfOwner(null);
+            Timber.d("Smaple book before inserting into database: %s", sampleBookModel);
             RoomHelper.getAppDatabaseInstance().sampleBookDao().insertOrReplace(sampleBookModel);
         }
 

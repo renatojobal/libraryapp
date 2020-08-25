@@ -75,7 +75,7 @@ public class HomeFragment extends Fragment {
         mainViewModel.getRecommendedBooks().observe(getActivity(), new Observer<List<List<BookInfoModel>>>() {
             @Override
             public void onChanged(List<List<BookInfoModel>> lists) {
-                if(!lists.isEmpty()){ // If the list is no empty
+                if (!lists.isEmpty()) { // If the list is no empty
                     Timber.d("Setting the adapter");
                     binding.rootRecyclerView.setAdapter(rootRecyclerViewAdapter);
                 }
@@ -83,25 +83,24 @@ public class HomeFragment extends Fragment {
         });
 
 
-
-
         // Return the binding root
         return binding.getRoot();
     }
 
-    private void setUpBindingData(){
+    private void setUpBindingData() {
         binding.setMainViewModel(mainViewModel);
         binding.setHomeViewModel(homeViewModel);
         setUpNavigation();
     }
 
 
-    private void setUpNavigation(){
-        binding.setNavDirection(HomeFragmentDirections.actionHomeFragmentToSearchBookFragment());
+    private void setUpNavigation() {
+        binding.previousSearchView.setOnClickListener(v ->
+                mainViewModel.setNewDestination(
+                        HomeFragmentDirections.actionHomeFragmentToSearchBookFragment().getActionId()
+                ));
 
     }
-
-
 
 
 }

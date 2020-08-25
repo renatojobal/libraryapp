@@ -23,7 +23,7 @@ public class AgentModel {
 
     @PrimaryKey
     @NonNull
-    private int id;
+    private Integer id;
 
     private int requestDelay;
 
@@ -33,7 +33,7 @@ public class AgentModel {
 
     private String developmentUrl;
 
-    private int fkShelf;
+    private Integer fkShelf;
 
     /**
      * Full params constructor
@@ -44,7 +44,7 @@ public class AgentModel {
      * @param developmentUrl
      * @param fkShelf
      */
-    public AgentModel(int id, int requestDelay, int updateSettingsDelay, String productionUrl, String developmentUrl, int fkShelf) {
+    public AgentModel(Integer id, int requestDelay, int updateSettingsDelay, String productionUrl, String developmentUrl, Integer fkShelf) {
         this.id = id;
         this.requestDelay = requestDelay;
         this.updateSettingsDelay = updateSettingsDelay;
@@ -54,11 +54,12 @@ public class AgentModel {
     }
 
     // Getter and setters
-    public int getId() {
+    @NonNull
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(@NonNull Integer id) {
         this.id = id;
     }
 
@@ -94,11 +95,11 @@ public class AgentModel {
         this.developmentUrl = developmentUrl;
     }
 
-    public int getFkShelf() {
+    public Integer getFkShelf() {
         return fkShelf;
     }
 
-    public void setFkShelf(int fkShelf) {
+    public void setFkShelf(Integer fkShelf) {
         this.fkShelf = fkShelf;
     }
 }

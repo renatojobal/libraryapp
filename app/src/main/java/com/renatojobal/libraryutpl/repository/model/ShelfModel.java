@@ -17,7 +17,7 @@ public class ShelfModel {
     @PrimaryKey
     @SerializedName("id")
     @ColumnInfo(name = DBConstants.SHELF_ID)
-    private int shelfModelId;
+    private Integer shelfModelId;
 
     @SerializedName("code")
     @ColumnInfo(name = DBConstants.SHELF_CODE)
@@ -38,18 +38,18 @@ public class ShelfModel {
      * @param location
      * @param active
      */
-    public ShelfModel(int shelfModelId, String code, String location, boolean active) {
+    public ShelfModel(Integer shelfModelId, String code, String location, boolean active) {
         this.shelfModelId = shelfModelId;
         this.code = code;
         this.location = location;
         this.active = active;
     }
 
-    public int getShelfModelId() {
+    public Integer getShelfModelId() {
         return shelfModelId;
     }
 
-    public void setShelfModelId(int shelfModelId) {
+    public void setShelfModelId(Integer shelfModelId) {
         this.shelfModelId = shelfModelId;
     }
 

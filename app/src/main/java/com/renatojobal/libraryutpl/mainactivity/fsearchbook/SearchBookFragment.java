@@ -68,7 +68,7 @@ public class SearchBookFragment extends Fragment {
                         Timber.d("Triggered the listener");
                         mainViewModel.setFocusBookId(bookInfoId);
                         mainViewModel.setNewDestination(
-                                SearchBookFragmentDirections.actionSearchBookFragmentToHomeFragment().getActionId()
+                                SearchBookFragmentDirections.actionSearchBookFragmentToDetailedBookFragment().getActionId()
                         );
                     }
                 }

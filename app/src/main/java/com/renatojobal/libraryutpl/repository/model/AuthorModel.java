@@ -18,7 +18,7 @@ public class AuthorModel  implements Serializable {
 
     @PrimaryKey
     @ColumnInfo(name = DBConstants.AUTHOR_ID)
-    private int authorModelId;
+    private Integer authorModelId;
 
     @ColumnInfo(name = DBConstants.AUTHOR_NAME)
     private String name;
@@ -41,7 +41,7 @@ public class AuthorModel  implements Serializable {
      * @param nationality
      * @param authorState
      */
-    public AuthorModel(int authorModelId, String name, String pseudonym, String nationality, int authorState) {
+    public AuthorModel(Integer authorModelId, String name, String pseudonym, String nationality, int authorState) {
         this.authorModelId = authorModelId;
         this.name = name;
         this.pseudonym = pseudonym;
@@ -50,11 +50,11 @@ public class AuthorModel  implements Serializable {
     }
 
     // Getter and setters
-    public int getAuthorModelId() {
+    public Integer getAuthorModelId() {
         return authorModelId;
     }
 
-    public void setAuthorModelId(int authorModelId) {
+    public void setAuthorModelId(Integer authorModelId) {
         this.authorModelId = authorModelId;
     }
 

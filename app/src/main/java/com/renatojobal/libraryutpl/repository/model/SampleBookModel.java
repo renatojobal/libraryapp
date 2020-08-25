@@ -40,7 +40,7 @@ public class SampleBookModel implements Serializable {
     @NonNull
     @SerializedName("id")
     @ColumnInfo(name = DBConstants.SAMPLE_BOOK_ID)
-    private int id;
+    private Integer id;
 
     @SerializedName("borrowed_externally")
     @ColumnInfo(name = DBConstants.SAMPLE_BOOK_BORROWED_EXTERNALLY)
@@ -68,15 +68,16 @@ public class SampleBookModel implements Serializable {
 
     @SerializedName("book_info")
     @ColumnInfo(name = DBConstants.SAMPLE_BOOK_BOOK_INFO_ID)
-    private int fkBookInfoModel;
+    private Integer fkBookInfoModel;
 
 
     // Getter and setters
-    public int getId() {
+    @NonNull
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(@NonNull Integer id) {
         this.id = id;
     }
 
@@ -128,11 +129,11 @@ public class SampleBookModel implements Serializable {
         this.fkActualShelf = fkActualShelf;
     }
 
-    public int getFkBookInfoModel() {
+    public Integer getFkBookInfoModel() {
         return fkBookInfoModel;
     }
 
-    public void setFkBookInfoModel(int fkBookInfoModel) {
+    public void setFkBookInfoModel(Integer fkBookInfoModel) {
         this.fkBookInfoModel = fkBookInfoModel;
     }
 

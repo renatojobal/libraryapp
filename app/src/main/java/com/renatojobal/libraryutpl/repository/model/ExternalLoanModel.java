@@ -23,11 +23,11 @@ public class ExternalLoanModel {
 
 
     @PrimaryKey
-    private int id;
+    private Integer id;
 
-    private int fkSampleBook;
+    private Integer fkSampleBook;
 
-    private int fkPerson;
+    private Integer fkPerson;
 
     private Long loanTime;
 
@@ -47,7 +47,7 @@ public class ExternalLoanModel {
      * @param dateReturned
      * @param state
      */
-    public ExternalLoanModel(int id, int fkSampleBook, int fkPerson, Long loanTime, Long returnExpected, Long dateReturned, int state) {
+    public ExternalLoanModel(Integer id, Integer fkSampleBook, Integer fkPerson, Long loanTime, Long returnExpected, Long dateReturned, int state) {
         this.id = id;
         this.fkSampleBook = fkSampleBook;
         this.fkPerson = fkPerson;
@@ -58,27 +58,27 @@ public class ExternalLoanModel {
     }
 
     // Getter and setters
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public int getFkSampleBook() {
+    public Integer getFkSampleBook() {
         return fkSampleBook;
     }
 
-    public void setFkSampleBook(int fkSampleBook) {
+    public void setFkSampleBook(Integer fkSampleBook) {
         this.fkSampleBook = fkSampleBook;
     }
 
-    public int getFkPerson() {
+    public Integer getFkPerson() {
         return fkPerson;
     }
 
-    public void setFkPerson(int fkPerson) {
+    public void setFkPerson(Integer fkPerson) {
         this.fkPerson = fkPerson;
     }
 

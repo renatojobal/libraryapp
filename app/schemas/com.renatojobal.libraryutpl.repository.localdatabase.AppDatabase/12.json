@@ -2,17 +2,17 @@
   "formatVersion": 1,
   "database": {
     "version": 12,
-    "identityHash": "e47ab4f41622395bf0786abf2eb1b004",
+    "identityHash": "8a16d20eecce05caa75d08d4cce03047",
     "entities": [
       {
         "tableName": "book_infos",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`book_info_id` INTEGER NOT NULL, `title` TEXT, `actual_stock` INTEGER NOT NULL, `total_stock` INTEGER NOT NULL, `publication_date` INTEGER, `pages` INTEGER NOT NULL, `editorial` TEXT, PRIMARY KEY(`book_info_id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`book_info_id` INTEGER, `title` TEXT, `actual_stock` INTEGER NOT NULL, `total_stock` INTEGER NOT NULL, `publication_date` INTEGER, `pages` INTEGER NOT NULL, `editorial` TEXT, PRIMARY KEY(`book_info_id`))",
         "fields": [
           {
             "fieldPath": "bookInfoModelId",
             "columnName": "book_info_id",
             "affinity": "INTEGER",
-            "notNull": true
+            "notNull": false
           },
           {
             "fieldPath": "title",
@@ -62,7 +62,7 @@
       },
       {
         "tableName": "sample_books",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`sample_book_id` INTEGER NOT NULL, `borrowed_externally` INTEGER NOT NULL, `borrowed_internally` INTEGER NOT NULL, `tag` TEXT, `sample_book_state` INTEGER NOT NULL, `shelf_owner_fk` INTEGER, `actual_shelf_fk` INTEGER, `book_info_fk` INTEGER NOT NULL, PRIMARY KEY(`sample_book_id`), FOREIGN KEY(`shelf_owner_fk`) REFERENCES `shelfs`(`shelf_id`) ON UPDATE NO ACTION ON DELETE SET NULL , FOREIGN KEY(`actual_shelf_fk`) REFERENCES `shelfs`(`shelf_id`) ON UPDATE NO ACTION ON DELETE SET NULL , FOREIGN KEY(`book_info_fk`) REFERENCES `book_infos`(`book_info_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`sample_book_id` INTEGER NOT NULL, `borrowed_externally` INTEGER NOT NULL, `borrowed_internally` INTEGER NOT NULL, `tag` TEXT, `sample_book_state` INTEGER NOT NULL, `shelf_owner_fk` INTEGER, `actual_shelf_fk` INTEGER, `book_info_fk` INTEGER, PRIMARY KEY(`sample_book_id`), FOREIGN KEY(`shelf_owner_fk`) REFERENCES `shelfs`(`shelf_id`) ON UPDATE NO ACTION ON DELETE SET NULL , FOREIGN KEY(`actual_shelf_fk`) REFERENCES `shelfs`(`shelf_id`) ON UPDATE NO ACTION ON DELETE SET NULL , FOREIGN KEY(`book_info_fk`) REFERENCES `book_infos`(`book_info_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
         "fields": [
           {
             "fieldPath": "id",
@@ -110,7 +110,7 @@
             "fieldPath": "fkBookInfoModel",
             "columnName": "book_info_fk",
             "affinity": "INTEGER",
-            "notNull": true
+            "notNull": false
           }
         ],
         "primaryKey": {
@@ -158,13 +158,13 @@
       },
       {
         "tableName": "shelfs",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`shelf_id` INTEGER NOT NULL, `shelf_code` TEXT, `location` TEXT, `shelf_active` INTEGER NOT NULL, PRIMARY KEY(`shelf_id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`shelf_id` INTEGER, `shelf_code` TEXT, `location` TEXT, `shelf_active` INTEGER NOT NULL, PRIMARY KEY(`shelf_id`))",
         "fields": [
           {
             "fieldPath": "shelfModelId",
             "columnName": "shelf_id",
             "affinity": "INTEGER",
-            "notNull": true
+            "notNull": false
           },
           {
             "fieldPath": "code",
@@ -196,13 +196,13 @@
       },
       {
         "tableName": "authors",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`author_id` INTEGER NOT NULL, `author_name` TEXT, `pseudonym` TEXT, `nationality` TEXT, `author_state` INTEGER NOT NULL, PRIMARY KEY(`author_id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`author_id` INTEGER, `author_name` TEXT, `pseudonym` TEXT, `nationality` TEXT, `author_state` INTEGER NOT NULL, PRIMARY KEY(`author_id`))",
         "fields": [
           {
             "fieldPath": "authorModelId",
             "columnName": "author_id",
             "affinity": "INTEGER",
-            "notNull": true
+            "notNull": false
           },
           {
             "fieldPath": "name",
@@ -247,7 +247,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'e47ab4f41622395bf0786abf2eb1b004')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '8a16d20eecce05caa75d08d4cce03047')"
     ]
   }
 }
