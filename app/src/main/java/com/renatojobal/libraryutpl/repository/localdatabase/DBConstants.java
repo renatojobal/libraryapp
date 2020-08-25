@@ -27,6 +27,7 @@ public class DBConstants {
     public static final String BOOK_INFO_TABLE = "book_infos";
     public static final String BOOK_INFO_ID = "book_info_id";
     public static final String BOOK_INFO_TITLE = "title";
+    public static final String BOOK_INFO_ABSTRACT = "abstract";
     public static final String BOOK_INFO_ACTUAL_STOCK = "actual_stock";
     public static final String BOOK_INFO_TOTAL_STOCK = "total_stock";
     public static final String BOOK_INFO_PUBLICATION_DATE = "publication_date";

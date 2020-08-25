@@ -30,14 +30,19 @@ public class HorizontalRecyclerViewAdapter extends RecyclerView.Adapter<Horizont
     // Data source
     List<BookInfoModel> list;
 
+
+
+   RootRecyclerViewAdapter.ItemClickListener itemClickListener;
+
     /**
      * Constructor
      * @param context
      * @param horizontalList
      */
-    public HorizontalRecyclerViewAdapter(Context context, List<BookInfoModel> horizontalList) {
+    public HorizontalRecyclerViewAdapter(Context context, List<BookInfoModel> horizontalList, RootRecyclerViewAdapter.ItemClickListener itemClickListener) {
         this.context = context;
         this.list = horizontalList;
+        this.itemClickListener = itemClickListener;
     }
 
 
@@ -74,7 +79,7 @@ public class HorizontalRecyclerViewAdapter extends RecyclerView.Adapter<Horizont
         BookInfoModel bookInfoModel = getItem(position);
 
         // - replace the contents of the view with that element
-        holder.bind(bookInfoModel);
+        holder.bind(bookInfoModel, this.itemClickListener);
     }
 
     /**
@@ -115,10 +120,15 @@ public class HorizontalRecyclerViewAdapter extends RecyclerView.Adapter<Horizont
          * Bind the list with each item
          * @param bookInfoModel
          */
-        public void bind(BookInfoModel bookInfoModel) {
+        public void bind(BookInfoModel bookInfoModel, RootRecyclerViewAdapter.ItemClickListener itemClickListener) {
             itemHomeBookBinding.setBookInfoModel(bookInfoModel);
 
-
+            itemHomeBookBinding.cardViewItemCoverPage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    itemClickListener.onClickListener(bookInfoModel.getBookInfoModelId());
+                }
+            });
 
         }
 

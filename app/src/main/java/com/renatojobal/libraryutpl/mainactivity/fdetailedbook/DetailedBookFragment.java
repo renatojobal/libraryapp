@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -11,15 +12,24 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.renatojobal.libraryutpl.R;
+import com.renatojobal.libraryutpl.databinding.FragmentDetailedBookBinding;
 import com.renatojobal.libraryutpl.databinding.FragmentHomeBinding;
 import com.renatojobal.libraryutpl.databinding.FragmentSearchBookBinding;
 import com.renatojobal.libraryutpl.mainactivity.MainViewModel;
 import com.renatojobal.libraryutpl.mainactivity.fhome.HomeViewModel;
 import com.renatojobal.libraryutpl.mainactivity.fhome.ui.RootRecyclerViewAdapter;
+import com.renatojobal.libraryutpl.mainactivity.fsearchbook.BookFull;
+import com.renatojobal.libraryutpl.mainactivity.fsearchbook.SearchBookFragmentDirections;
+import com.renatojobal.libraryutpl.mainactivity.fsearchbook.ui.SamplesBookLiveDataListAdapter;
 import com.renatojobal.libraryutpl.repository.localdatabase.RoomHelper;
 import com.renatojobal.libraryutpl.repository.model.BookInfoModel;
+
+import java.util.List;
+
+import timber.log.Timber;
 
 public class DetailedBookFragment extends Fragment {
 
@@ -28,7 +38,7 @@ public class DetailedBookFragment extends Fragment {
     MainViewModel mainViewModel;
 
     // Using data binding
-    FragmentSearchBookBinding binding;
+    FragmentDetailedBookBinding binding;
 
 
     /**
@@ -41,32 +51,8 @@ public class DetailedBookFragment extends Fragment {
         super.onCreate(savedInstanceState);
         mainViewModel = new ViewModelProvider(getActivity()).get(MainViewModel.class);
 
-        // Get info about the focused book and show on the screen
-        setUpElements();
+
     }
-
-    /**
-     * Get info about the focused book available on the main view model and show on the screen
-     */
-    private void setUpElements() {
-        mainViewModel.getFocusBookId().observe(getViewLifecycleOwner(), new Observer<Integer>() {
-            @Override
-            public void onChanged(Integer integer) {
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        if(integer != null){
-                            BookInfoModel bookInfoModel = RoomHelper.getAppDatabaseInstance().bookInfoDao().getBookInfo(integer);
-
-
-
-                        }
-                    }
-                }).start();
-            }
-        });
-    }
-
 
     /**
      * Called to have the fragment instantiate its user interface view.
@@ -83,7 +69,32 @@ public class DetailedBookFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_detailed_book, container, false);
-
+        setUpElements();
         return binding.getRoot();
     }
+
+    /**
+     * Get info about the focused book available on the main view model and show on the screen
+     */
+    private void setUpElements() {
+        mainViewModel.getFocusBookId().observe(getViewLifecycleOwner(), new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer integer) {
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if(integer != null){
+                            BookInfoModel bookInfoModel = RoomHelper.getAppDatabaseInstance().bookInfoDao().getBookInfo(integer);
+
+                            binding.setTargetBook(bookInfoModel);
+
+                        }
+                    }
+                }).start();
+            }
+        });
+    }
+
+
+
 }

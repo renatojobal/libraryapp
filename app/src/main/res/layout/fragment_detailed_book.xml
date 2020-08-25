@@ -5,6 +5,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".mainactivity.fdetailedbook.DetailedBookFragment">
 
+    <data>
+        <variable
+            name="targetBook"
+            type="com.renatojobal.libraryutpl.repository.model.BookInfoModel" />
+    </data>
+
 <androidx.constraintlayout.motion.widget.MotionLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -28,20 +34,84 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:paddingRight="16dp"
+        android:paddingLeft="16dp"
+        android:paddingTop="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/textView4"
+            android:id="@+id/book_abstract"
+            style="@style/TextAppearance.MaterialComponents.Headline6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+
+            android:text="@{targetBook.bookAbstract}"
+            app:lineHeight="26dp" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/label_total_stock"
+            style="@style/TextAppearance.MaterialComponents.Subtitle1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Eejemplares existentes:" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/total_stock"
             style="@style/TextAppearance.MaterialComponents.Body1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingStart="32dp"
-            android:paddingEnd="32dp"
-            android:paddingBottom="32dp"
-            android:text="@string/lorem_ipsum"
-            app:lineHeight="26dp" />
+            android:text="@{String.valueOf(targetBook.totalStock)}" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/label_actual_stock"
+            style="@style/TextAppearance.MaterialComponents.Subtitle1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Ejemplares disponibles:" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/actual_stock"
+            style="@style/TextAppearance.MaterialComponents.Body1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{String.valueOf(targetBook.actualStock)}"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/label_pages"
+            style="@style/TextAppearance.MaterialComponents.Subtitle1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Páginas" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/pages"
+            style="@style/TextAppearance.MaterialComponents.Body1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{String.valueOf(targetBook.pages)}" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/label_editorial"
+            style="@style/TextAppearance.MaterialComponents.Subtitle1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Editorial" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/editorial"
+            style="@style/TextAppearance.MaterialComponents.Body1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="@{targetBook.editorial}" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -55,12 +125,12 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/textView5"
+            android:id="@+id/book_title"
             style="@style/TextAppearance.MaterialComponents.Headline3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="32dp"
-            android:text="Cien años de soledad"
+            android:text="@{targetBook.title}"
             android:textColor="@android:color/black" />
     </LinearLayout>
 

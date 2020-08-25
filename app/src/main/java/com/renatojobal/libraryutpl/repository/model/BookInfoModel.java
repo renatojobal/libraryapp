@@ -25,6 +25,10 @@ public class BookInfoModel implements Serializable {
     @SerializedName("title")
     private String title;
 
+    @ColumnInfo(name = DBConstants.BOOK_INFO_ABSTRACT)
+    @SerializedName("abstract")
+    private String bookAbstract;
+
     @ColumnInfo(name = DBConstants.BOOK_INFO_ACTUAL_STOCK)
     @SerializedName("actual_stock")
     private int actualStock;
@@ -46,18 +50,20 @@ public class BookInfoModel implements Serializable {
     private String editorial;
 
     /**
-     * Full params constructor
+     * Constructor by default
      * @param bookInfoModelId
      * @param title
+     * @param bookAbstract
      * @param actualStock
      * @param totalStock
      * @param publicationDate
      * @param pages
      * @param editorial
      */
-    public BookInfoModel(Integer bookInfoModelId, String title, int actualStock, int totalStock, Long publicationDate, int pages, String editorial) {
+    public BookInfoModel(Integer bookInfoModelId, String title, String bookAbstract, int actualStock, int totalStock, Long publicationDate, int pages, String editorial) {
         this.bookInfoModelId = bookInfoModelId;
         this.title = title;
+        this.bookAbstract = bookAbstract;
         this.actualStock = actualStock;
         this.totalStock = totalStock;
         this.publicationDate = publicationDate;
@@ -66,6 +72,7 @@ public class BookInfoModel implements Serializable {
     }
 
     // Getter and setters
+
     public Integer getBookInfoModelId() {
         return bookInfoModelId;
     }
@@ -80,6 +87,14 @@ public class BookInfoModel implements Serializable {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getBookAbstract() {
+        return bookAbstract;
+    }
+
+    public void setBookAbstract(String bookAbstract) {
+        this.bookAbstract = bookAbstract;
     }
 
     public int getActualStock() {
@@ -127,6 +142,7 @@ public class BookInfoModel implements Serializable {
         return "BookInfoModel{" +
                 "bookInfoModelId=" + bookInfoModelId +
                 ", title='" + title + '\'' +
+                ", bookAbstract='" + bookAbstract + '\'' +
                 ", actualStock=" + actualStock +
                 ", totalStock=" + totalStock +
                 ", publicationDate=" + publicationDate +

@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.renatojobal.libraryutpl.R;
 import com.renatojobal.libraryutpl.databinding.ItemHorizontalHomeListBinding;
+import com.renatojobal.libraryutpl.mainactivity.fsearchbook.ui.SamplesBookLiveDataListAdapter;
 import com.renatojobal.libraryutpl.repository.model.BookInfoModel;
 
 import java.util.List;
@@ -31,12 +32,23 @@ public class RootRecyclerViewAdapter extends RecyclerView.Adapter<RootRecyclerVi
     // We need the context her for pass it forward the horizontal recycler view
     Context context;
 
+
+    // Item click listener
+    public static interface ItemClickListener{
+
+        void onClickListener(int bookInfoId);
+    }
+
+    ItemClickListener itemClickListener;
+
     /**
      * Constructor
      */
-    public RootRecyclerViewAdapter(Context context, LiveData<List<List<BookInfoModel>>> lists) {
+    public RootRecyclerViewAdapter(Context context, LiveData<List<List<BookInfoModel>>> lists,
+                                   ItemClickListener itemClickListener) {
         this.context = context;
         this.lists = lists;
+        this.itemClickListener = itemClickListener;
     }
 
     // Create new views (invoked by the layout manager)
@@ -62,7 +74,7 @@ public class RootRecyclerViewAdapter extends RecyclerView.Adapter<RootRecyclerVi
         List<BookInfoModel> horizontalList = getItem(position);
 
         // - replace the contents of the view with that element
-        holder.bind(horizontalList);
+        holder.bind(horizontalList, this.itemClickListener);
 
     }
 
@@ -95,13 +107,13 @@ public class RootRecyclerViewAdapter extends RecyclerView.Adapter<RootRecyclerVi
 
 
         // Bind the list with the horizontal recycler view
-        public void bind(List<BookInfoModel> horizontalList) {
+        public void bind(List<BookInfoModel> horizontalList, ItemClickListener itemClickListener) {
             // Layout manager
             LinearLayoutManager horizontalLinearLayoutManager = new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
 
             itemBinding.recyclerViewHorizontal.setLayoutManager(horizontalLinearLayoutManager);
 
-            HorizontalRecyclerViewAdapter horizontalRecyclerViewAdapter = new HorizontalRecyclerViewAdapter(context, horizontalList);
+            HorizontalRecyclerViewAdapter horizontalRecyclerViewAdapter = new HorizontalRecyclerViewAdapter(context, horizontalList, itemClickListener);
 
             itemBinding.recyclerViewHorizontal.setAdapter(horizontalRecyclerViewAdapter);
         }

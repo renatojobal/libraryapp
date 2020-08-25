@@ -19,6 +19,7 @@ import com.renatojobal.libraryutpl.databinding.FragmentHomeBinding;
 import com.renatojobal.libraryutpl.mainactivity.MainViewModel;
 import com.renatojobal.libraryutpl.mainactivity.fhome.ui.RootRecyclerViewAdapter;
 import com.renatojobal.libraryutpl.mainactivity.fsearchbook.BookFull;
+import com.renatojobal.libraryutpl.mainactivity.fsearchbook.SearchBookFragmentDirections;
 import com.renatojobal.libraryutpl.repository.model.BookInfoModel;
 
 import java.util.List;
@@ -71,7 +72,17 @@ public class HomeFragment extends Fragment {
         binding.rootRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         // Create the root adapter
-        rootRecyclerViewAdapter = new RootRecyclerViewAdapter(getContext(), mainViewModel.getRecommendedBooks());
+        rootRecyclerViewAdapter = new RootRecyclerViewAdapter(getContext(), mainViewModel.getRecommendedBooks(),
+                new RootRecyclerViewAdapter.ItemClickListener() {
+                    @Override
+                    public void onClickListener(int bookInfoId) {
+                        Timber.d("Triggered the listener");
+                        mainViewModel.setFocusBookId(bookInfoId);
+                        mainViewModel.setNewDestination(
+                                HomeFragmentDirections.actionHomeFragmentToDetailedBookFragment().getActionId()
+                        );
+                    }
+                });
         mainViewModel.getRecommendedBooks().observe(getActivity(), new Observer<List<List<BookInfoModel>>>() {
             @Override
             public void onChanged(List<List<BookInfoModel>> lists) {
