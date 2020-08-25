@@ -1,0 +1,259 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 13,
+    "identityHash": "63c71d7303886a776448ce12dd50f4d4",
+    "entities": [
+      {
+        "tableName": "book_infos",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`book_info_id` INTEGER, `title` TEXT, `abstract` TEXT, `actual_stock` INTEGER NOT NULL, `total_stock` INTEGER NOT NULL, `publication_date` INTEGER, `pages` INTEGER NOT NULL, `editorial` TEXT, PRIMARY KEY(`book_info_id`))",
+        "fields": [
+          {
+            "fieldPath": "bookInfoModelId",
+            "columnName": "book_info_id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "title",
+            "columnName": "title",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "ABSTRACT",
+            "columnName": "abstract",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "actualStock",
+            "columnName": "actual_stock",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "totalStock",
+            "columnName": "total_stock",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "publicationDate",
+            "columnName": "publication_date",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "pages",
+            "columnName": "pages",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "editorial",
+            "columnName": "editorial",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "book_info_id"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "sample_books",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`sample_book_id` INTEGER NOT NULL, `borrowed_externally` INTEGER NOT NULL, `borrowed_internally` INTEGER NOT NULL, `tag` TEXT, `sample_book_state` INTEGER NOT NULL, `shelf_owner_fk` INTEGER, `actual_shelf_fk` INTEGER, `book_info_fk` INTEGER, PRIMARY KEY(`sample_book_id`), FOREIGN KEY(`shelf_owner_fk`) REFERENCES `shelfs`(`shelf_id`) ON UPDATE NO ACTION ON DELETE SET NULL , FOREIGN KEY(`actual_shelf_fk`) REFERENCES `shelfs`(`shelf_id`) ON UPDATE NO ACTION ON DELETE SET NULL , FOREIGN KEY(`book_info_fk`) REFERENCES `book_infos`(`book_info_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "sample_book_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "borrowedExternally",
+            "columnName": "borrowed_externally",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "borrowedInternally",
+            "columnName": "borrowed_internally",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tag",
+            "columnName": "tag",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "state",
+            "columnName": "sample_book_state",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "fkShelfOwner",
+            "columnName": "shelf_owner_fk",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "fkActualShelf",
+            "columnName": "actual_shelf_fk",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "fkBookInfoModel",
+            "columnName": "book_info_fk",
+            "affinity": "INTEGER",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "sample_book_id"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": [
+          {
+            "table": "shelfs",
+            "onDelete": "SET NULL",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "shelf_owner_fk"
+            ],
+            "referencedColumns": [
+              "shelf_id"
+            ]
+          },
+          {
+            "table": "shelfs",
+            "onDelete": "SET NULL",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "actual_shelf_fk"
+            ],
+            "referencedColumns": [
+              "shelf_id"
+            ]
+          },
+          {
+            "table": "book_infos",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "book_info_fk"
+            ],
+            "referencedColumns": [
+              "book_info_id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "shelfs",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`shelf_id` INTEGER, `shelf_code` TEXT, `location` TEXT, `shelf_active` INTEGER NOT NULL, PRIMARY KEY(`shelf_id`))",
+        "fields": [
+          {
+            "fieldPath": "shelfModelId",
+            "columnName": "shelf_id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "code",
+            "columnName": "shelf_code",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "location",
+            "columnName": "location",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "active",
+            "columnName": "shelf_active",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "shelf_id"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "authors",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`author_id` INTEGER, `author_name` TEXT, `pseudonym` TEXT, `nationality` TEXT, `author_state` INTEGER NOT NULL, PRIMARY KEY(`author_id`))",
+        "fields": [
+          {
+            "fieldPath": "authorModelId",
+            "columnName": "author_id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "author_name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "pseudonym",
+            "columnName": "pseudonym",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "nationality",
+            "columnName": "nationality",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "authorState",
+            "columnName": "author_state",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "author_id"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [
+      {
+        "viewName": "BookFull",
+        "createSql": "CREATE VIEW `${VIEW_NAME}` AS SELECT * FROM book_infos, sample_books WHERE book_info_fk = book_info_id;"
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '63c71d7303886a776448ce12dd50f4d4')"
+    ]
+  }
+}
