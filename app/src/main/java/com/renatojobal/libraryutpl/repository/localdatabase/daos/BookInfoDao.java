@@ -26,6 +26,8 @@ public interface BookInfoDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertAllOrReplace(List<BookInfoModel> bookInfoModelList);
 
+    @Query("SELECT * FROM "+DBConstants.BOOK_INFO_TABLE+" WHERE "+DBConstants.BOOK_INFO_ID+" = :id")
+    BookInfoModel getBookInfo(int id);
 
     @Delete
     void delete(BookInfoModel bookInfo);

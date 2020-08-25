@@ -19,6 +19,7 @@ import android.widget.SearchView;
 import com.renatojobal.libraryutpl.R;
 
 import com.renatojobal.libraryutpl.databinding.FragmentSearchBookBinding;
+import com.renatojobal.libraryutpl.mainactivity.MainViewModel;
 import com.renatojobal.libraryutpl.mainactivity.fsearchbook.ui.SamplesBookLiveDataListAdapter;
 
 import java.util.List;
@@ -30,7 +31,9 @@ import timber.log.Timber;
  */
 public class SearchBookFragment extends Fragment {
 
-    private SearchBookViewModel searchBookViewModel;        // Fragment view model
+    private SearchBookViewModel searchBookViewModel;        // Fragment view modelç
+
+    private MainViewModel mainViewModel;
 
     FragmentSearchBookBinding fragmentSearchBookBinding;    // Binding element
 
@@ -46,6 +49,7 @@ public class SearchBookFragment extends Fragment {
 
         super.onCreate(savedInstanceState);
         searchBookViewModel = new ViewModelProvider(this).get(SearchBookViewModel.class);
+        mainViewModel = new ViewModelProvider(this).get(MainViewModel.class);
 
         Timber.d("onCreate: Create search book fragment");
     }
@@ -56,7 +60,20 @@ public class SearchBookFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         fragmentSearchBookBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_search_book, container, false);
 
-        resultBookLiveDataListAdapter = new SamplesBookLiveDataListAdapter(searchBookViewModel.getResultBookFullList());
+        resultBookLiveDataListAdapter = new SamplesBookLiveDataListAdapter(
+                searchBookViewModel.getResultBookFullList(),
+                new SamplesBookLiveDataListAdapter.ItemClickListener() {
+                    @Override
+                    public void onClickListener(int bookInfoId) {
+                        Timber.d("Triggered the listener");
+                        mainViewModel.setFocusBookId(bookInfoId);
+                        mainViewModel.setNewDestination(
+                                SearchBookFragmentDirections.actionSearchBookFragmentToHomeFragment().getActionId()
+                        );
+                    }
+                }
+
+        );
         fragmentSearchBookBinding.recyclerViewResultList.setLayoutManager(new LinearLayoutManager(getContext()));
 
         searchBookViewModel.getResultBookFullList().observe(getViewLifecycleOwner(), new Observer<List<BookFull>>() {
@@ -86,7 +103,7 @@ public class SearchBookFragment extends Fragment {
         fragmentSearchBookBinding.searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                Timber.i("Query: "+query);
+                Timber.i("Query: %s", query);
                 searchBookViewModel.setTargetBook(query);
 
                 return false;
@@ -98,7 +115,6 @@ public class SearchBookFragment extends Fragment {
                 return false;
             }
         });
-
 
 
 

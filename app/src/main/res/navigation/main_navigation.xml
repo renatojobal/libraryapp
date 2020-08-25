@@ -12,6 +12,9 @@
         <action
             android:id="@+id/action_homeFragment_to_searchBookFragment"
             app:destination="@id/searchBookFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_detailedBookFragment"
+            app:destination="@id/detailedBookFragment" />
     </fragment>
     <fragment
         android:id="@+id/searchBookFragment"
@@ -20,6 +23,21 @@
         tools:layout="@layout/fragment_search_book" >
         <action
             android:id="@+id/action_searchBookFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_searchBookFragment_to_detailedBookFragment"
+            app:destination="@id/detailedBookFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailedBookFragment"
+        android:name="com.renatojobal.libraryutpl.mainactivity.fdetailedbook.DetailedBookFragment"
+        android:label="DetailedBookFragment" >
+
+        <action
+            android:id="@+id/action_detailedBookFragment_to_searchBookFragment"
+            app:destination="@id/searchBookFragment" />
+        <action
+            android:id="@+id/action_detailedBookFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
 </navigation>

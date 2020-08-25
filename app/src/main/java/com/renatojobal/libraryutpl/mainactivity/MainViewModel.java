@@ -13,6 +13,8 @@ import com.renatojobal.libraryutpl.repository.model.BookInfoModel;
 
 import java.util.List;
 
+import timber.log.Timber;
+
 /**
  * Main view model for expose data that may would be expensive if we put them in each view model
  * for each fragment
@@ -27,6 +29,8 @@ public class MainViewModel extends AndroidViewModel {
     // because we do not want to be updating this info every time when the fragment onResume(),
     // we only update this info when the activity start.
     private MutableLiveData<List<List<BookInfoModel>>> recommendedBooks = new MutableLiveData<>();
+
+    private MutableLiveData<Integer> focusBookId = new MutableLiveData<>();
 
     // Instance that will help this view model doing some home fragment stuff
     HomePresenter homePresenter;
@@ -59,6 +63,8 @@ public class MainViewModel extends AndroidViewModel {
      * @param destinationId
      */
     public void setNewDestination(int destinationId) {
+        Timber.d("Setting a new destination");
+        Timber.d("Id: %s", destinationId);
         newDestination.setValue(new Event<>(destinationId));
     }
 
@@ -69,5 +75,15 @@ public class MainViewModel extends AndroidViewModel {
     public LiveData<List<List<BookInfoModel>>> getRecommendedBooks() {
         return recommendedBooks;
     }
+
+    public void setFocusBookId(int focusBookId){
+        this.focusBookId.postValue(focusBookId);
+    }
+
+    public MutableLiveData<Integer> getFocusBookId(){
+        return this.focusBookId;
+    }
+
+
 
 }

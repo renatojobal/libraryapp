@@ -7,6 +7,7 @@
         <variable
             name="resultView"
             type="com.renatojobal.libraryutpl.mainactivity.fsearchbook.BookFull" />
+
     </data>
 
     <androidx.cardview.widget.CardView

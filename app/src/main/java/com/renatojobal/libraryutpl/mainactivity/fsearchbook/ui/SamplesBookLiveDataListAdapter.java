@@ -1,6 +1,7 @@
 package com.renatojobal.libraryutpl.mainactivity.fsearchbook.ui;
 
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
@@ -15,6 +16,8 @@ import com.renatojobal.libraryutpl.mainactivity.fsearchbook.BookFull;
 
 import java.util.List;
 
+import timber.log.Timber;
+
 /**
  * Adapter for the recycler view
  */
@@ -26,15 +29,23 @@ public class SamplesBookLiveDataListAdapter
     // Attributes
     LiveData<List<BookFull>> resultViewLiveData; // List of books
 
+    // Item click listener
+    public static interface ItemClickListener{
 
+        void onClickListener(int bookInfoId);
+    }
+
+    ItemClickListener itemClickListener;
 
     /**
      * Constructor
      */
     public SamplesBookLiveDataListAdapter(
-            LiveData<List<BookFull>> resultViewLiveData) {
+            LiveData<List<BookFull>> resultViewLiveData,
+            ItemClickListener itemClickListener) {
         // Provide a suitable constructor (depends on the kind of data set)
         this.resultViewLiveData = resultViewLiveData;
+        this.itemClickListener = itemClickListener;
     }
 
     /**
@@ -54,7 +65,7 @@ public class SamplesBookLiveDataListAdapter
 
 
         // Return the view holder with the elements attached
-        MyViewHolder viewHolder = new MyViewHolder(binding);
+        MyViewHolder viewHolder = new MyViewHolder(binding, itemClickListener);
         return viewHolder;
     }
 
@@ -114,14 +125,17 @@ public class SamplesBookLiveDataListAdapter
         // Using data binding
         ItemSampleBookBinding itemBinding;
 
+        // Item click listener
+        ItemClickListener itemClickListener;
+
         /**
          * Constructor
          * @param itemBinding binding instance
          */
-        public MyViewHolder(ItemSampleBookBinding itemBinding) {
+        public MyViewHolder(ItemSampleBookBinding itemBinding, ItemClickListener itemClickListener) {
             super(itemBinding.getRoot());
             this.itemBinding = itemBinding;
-
+            this.itemClickListener = itemClickListener;
         }
 
         /**
@@ -130,6 +144,17 @@ public class SamplesBookLiveDataListAdapter
          */
         public void bind(BookFull resultView) {
             itemBinding.setResultView(resultView);
+
+            // Set on click listener to navigate to the detailed book info
+            itemBinding.cardViewSampleBook.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Timber.d("On item click listener");
+                    itemClickListener.onClickListener(resultView.bookInfo.getBookInfoModelId());
+                }
+            });
+
+
         }
 
 

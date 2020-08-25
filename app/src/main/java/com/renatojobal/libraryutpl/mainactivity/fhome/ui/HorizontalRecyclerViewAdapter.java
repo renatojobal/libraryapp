@@ -118,6 +118,8 @@ public class HorizontalRecyclerViewAdapter extends RecyclerView.Adapter<Horizont
         public void bind(BookInfoModel bookInfoModel) {
             itemHomeBookBinding.setBookInfoModel(bookInfoModel);
 
+
+
         }
 
 
