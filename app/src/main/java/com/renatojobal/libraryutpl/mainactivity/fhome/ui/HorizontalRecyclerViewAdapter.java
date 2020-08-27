@@ -15,6 +15,7 @@ import com.renatojobal.libraryutpl.R;
 import com.renatojobal.libraryutpl.databinding.ItemHomeBookBinding;
 import com.renatojobal.libraryutpl.databinding.ItemHorizontalHomeListBinding;
 import com.renatojobal.libraryutpl.repository.model.BookInfoModel;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -122,11 +123,15 @@ public class HorizontalRecyclerViewAdapter extends RecyclerView.Adapter<Horizont
          */
         public void bind(BookInfoModel bookInfoModel, RootRecyclerViewAdapter.ItemClickListener itemClickListener) {
             itemHomeBookBinding.setBookInfoModel(bookInfoModel);
-
+            Picasso.get()
+                    .load(bookInfoModel.getBookImage())
+                    .fit()
+                    .into(itemHomeBookBinding.itemCoverPage);
             itemHomeBookBinding.cardViewItemCoverPage.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     itemClickListener.onClickListener(bookInfoModel);
+
                 }
             });
 

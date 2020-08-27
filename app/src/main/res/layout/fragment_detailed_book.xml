@@ -34,8 +34,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingRight="16dp"
-        android:paddingLeft="16dp"
+        android:paddingRight="24dp"
+        android:paddingLeft="24dp"
         android:paddingTop="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -53,11 +53,11 @@
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/label_total_stock"
-            style="@style/TextAppearance.MaterialComponents.Subtitle1"
+            style="@style/TextAppearance.MaterialComponents.Subtitle2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Eejemplares existentes:" />
+            android:text="Ejemplares existentes:" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/total_stock"
@@ -68,7 +68,7 @@
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/label_actual_stock"
-            style="@style/TextAppearance.MaterialComponents.Subtitle1"
+            style="@style/TextAppearance.MaterialComponents.Subtitle2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -83,7 +83,7 @@
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/label_pages"
-            style="@style/TextAppearance.MaterialComponents.Subtitle1"
+            style="@style/TextAppearance.MaterialComponents.Subtitle2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -98,7 +98,7 @@
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/label_editorial"
-            style="@style/TextAppearance.MaterialComponents.Subtitle1"
+            style="@style/TextAppearance.MaterialComponents.Subtitle2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -129,7 +129,10 @@
             style="@style/TextAppearance.MaterialComponents.Headline3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="32dp"
+            android:paddingTop="16dp"
+            android:paddingLeft="32dp"
+            android:paddingRight="32dp"
+            android:paddingBottom="16dp"
             android:text="@{targetBook.title}"
             android:textColor="@android:color/black" />
     </LinearLayout>

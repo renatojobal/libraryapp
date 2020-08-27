@@ -1,5 +1,8 @@
 package com.renatojobal.libraryutpl.mainactivity.fdetailedbook;
 
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,13 +14,20 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.palette.graphics.Palette;
 
 import com.renatojobal.libraryutpl.R;
 import com.renatojobal.libraryutpl.databinding.FragmentDetailedBookBinding;
 import com.renatojobal.libraryutpl.mainactivity.MainViewModel;
 import com.renatojobal.libraryutpl.repository.localdatabase.RoomHelper;
 import com.renatojobal.libraryutpl.repository.model.BookInfoModel;
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
+
+import java.io.IOException;
+
+import timber.log.Timber;
 
 public class DetailedBookFragment extends Fragment {
 
@@ -27,6 +37,8 @@ public class DetailedBookFragment extends Fragment {
 
     // Using data binding
     FragmentDetailedBookBinding binding;
+
+    Palette palette;
 
 
     /**
@@ -44,6 +56,7 @@ public class DetailedBookFragment extends Fragment {
 
     /**
      * Called to have the fragment instantiate its user interface view.
+     *
      * @param inflater           The LayoutInflater object that can be used to inflate
      *                           any views in the fragment,
      * @param container          If non-null, this is the parent view that the fragment's
@@ -65,24 +78,29 @@ public class DetailedBookFragment extends Fragment {
      * Get info about the focused book available on the main view model and show on the screen
      */
     private void setUpElements() {
-        mainViewModel.getFocusBook().observe(getViewLifecycleOwner(), new Observer<BookInfoModel>() {
-            @Override
-            public void onChanged(BookInfoModel bookInfoModel) {
-                if(bookInfoModel != null){
+        BookInfoModel bookInfoModel = mainViewModel.getFocusBook().getValue();
 
-                    binding.setTargetBook(bookInfoModel);
+        binding.setTargetBook(bookInfoModel);
 
-                    Picasso
-                            .get()
-                            .load(bookInfoModel.getBookImage())
-                            .fit()
-                            .into(binding.bookImage);
+        Picasso.get()
+                .load(bookInfoModel.getBookImage())
+                .fit()
+                .into(binding.bookImage);
 
-                }
-            }
-        });
+
     }
 
 
+    // Generate palette synchronously and return it
+    public Palette createPaletteSync (Bitmap bitmap){
+        Palette p = Palette.from(bitmap).generate();
+        return p;
+    }
+
+    // Generate palette asynchronously and use it on a different
+    // thread using onGenerated()
+    public void createPaletteAsync (Bitmap bitmap, Palette.PaletteAsyncListener listener){
+        Palette.from(bitmap).generate(listener);
+    }
 
 }
