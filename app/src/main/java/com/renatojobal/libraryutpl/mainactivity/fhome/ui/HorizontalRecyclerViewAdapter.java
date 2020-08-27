@@ -19,6 +19,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import timber.log.Timber;
+
 /**
  * This adapter would be for the horizontal list of books
  */
@@ -44,6 +46,7 @@ public class HorizontalRecyclerViewAdapter extends RecyclerView.Adapter<Horizont
         this.context = context;
         this.list = horizontalList;
         this.itemClickListener = itemClickListener;
+        Timber.d("Incoming list: "+horizontalList);
     }
 
 
@@ -94,6 +97,7 @@ public class HorizontalRecyclerViewAdapter extends RecyclerView.Adapter<Horizont
 
     @Override
     public int getItemCount() {
+        Timber.d("Returning item count: "+list.size());
         return list.size();
     }
 
@@ -122,6 +126,7 @@ public class HorizontalRecyclerViewAdapter extends RecyclerView.Adapter<Horizont
          * @param bookInfoModel
          */
         public void bind(BookInfoModel bookInfoModel, RootRecyclerViewAdapter.ItemClickListener itemClickListener) {
+            Timber.d("Binding the: "+bookInfoModel);
             itemHomeBookBinding.setBookInfoModel(bookInfoModel);
             Picasso.get()
                     .load(bookInfoModel.getBookImage())

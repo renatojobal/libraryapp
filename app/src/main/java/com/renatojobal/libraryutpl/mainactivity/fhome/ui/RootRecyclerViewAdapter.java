@@ -18,6 +18,8 @@ import com.renatojobal.libraryutpl.repository.model.BookInfoModel;
 
 import java.util.List;
 
+import timber.log.Timber;
+
 
 /**
  *  This Recycler view will be the adapter for all the nested recycler views
@@ -49,6 +51,7 @@ public class RootRecyclerViewAdapter extends RecyclerView.Adapter<RootRecyclerVi
         this.context = context;
         this.lists = lists;
         this.itemClickListener = itemClickListener;
+
     }
 
     // Create new views (invoked by the layout manager)

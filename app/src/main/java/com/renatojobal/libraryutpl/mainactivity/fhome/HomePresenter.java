@@ -33,7 +33,7 @@ public class HomePresenter {
             @Override
             public void run() {
                 List<List<BookInfoModel>> recommendedBooks = new ArrayList<>();
-                Timber.i("Collecting recommended books");
+                Timber.d("Collecting recommended books");
 
                 // Build the service
                 RecommendsRetrofitInterface retrofitInterface = ApiClient.getClient().create(RecommendsRetrofitInterface.class);
@@ -44,9 +44,9 @@ public class HomePresenter {
                 call.enqueue(new GeneralCallback<List<BookInfoModel>>(call) {
                     @Override
                     public void onFinalResponse(Call<List<BookInfoModel>> call, Response<List<BookInfoModel>> response) {
-
                         // Save the response into database, in this way the live data of main view model could know about it
                         recommendedBooks.add(response.body());
+                        Timber.d("Recomnedned books: "+recommendedBooks);
                         targetRecommendedList.postValue(recommendedBooks);
 
 
