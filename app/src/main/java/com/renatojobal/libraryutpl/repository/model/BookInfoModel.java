@@ -25,6 +25,10 @@ public class BookInfoModel implements Serializable {
     @SerializedName("title")
     private String title;
 
+    @ColumnInfo(name = DBConstants.BOOK_INFO_BOOK_IMAGE)
+    @SerializedName("book_image")
+    private String bookImage;
+
     @ColumnInfo(name = DBConstants.BOOK_INFO_ABSTRACT)
     @SerializedName("abstract")
     private String bookAbstract;
@@ -50,9 +54,10 @@ public class BookInfoModel implements Serializable {
     private String editorial;
 
     /**
-     * Constructor by default
+     * Constructor
      * @param bookInfoModelId
      * @param title
+     * @param bookImage
      * @param bookAbstract
      * @param actualStock
      * @param totalStock
@@ -60,9 +65,10 @@ public class BookInfoModel implements Serializable {
      * @param pages
      * @param editorial
      */
-    public BookInfoModel(Integer bookInfoModelId, String title, String bookAbstract, int actualStock, int totalStock, Long publicationDate, int pages, String editorial) {
+    public BookInfoModel(Integer bookInfoModelId, String title, String bookImage, String bookAbstract, int actualStock, int totalStock, Long publicationDate, int pages, String editorial) {
         this.bookInfoModelId = bookInfoModelId;
         this.title = title;
+        this.bookImage = bookImage;
         this.bookAbstract = bookAbstract;
         this.actualStock = actualStock;
         this.totalStock = totalStock;
@@ -70,8 +76,6 @@ public class BookInfoModel implements Serializable {
         this.pages = pages;
         this.editorial = editorial;
     }
-
-    // Getter and setters
 
     public Integer getBookInfoModelId() {
         return bookInfoModelId;
@@ -87,6 +91,14 @@ public class BookInfoModel implements Serializable {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getBookImage() {
+        return bookImage;
+    }
+
+    public void setBookImage(String bookImage) {
+        this.bookImage = bookImage;
     }
 
     public String getBookAbstract() {
@@ -142,6 +154,7 @@ public class BookInfoModel implements Serializable {
         return "BookInfoModel{" +
                 "bookInfoModelId=" + bookInfoModelId +
                 ", title='" + title + '\'' +
+                ", bookImage='" + bookImage + '\'' +
                 ", bookAbstract='" + bookAbstract + '\'' +
                 ", actualStock=" + actualStock +
                 ", totalStock=" + totalStock +

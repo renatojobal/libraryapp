@@ -126,7 +126,7 @@ public class HorizontalRecyclerViewAdapter extends RecyclerView.Adapter<Horizont
             itemHomeBookBinding.cardViewItemCoverPage.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    itemClickListener.onClickListener(bookInfoModel.getBookInfoModelId());
+                    itemClickListener.onClickListener(bookInfoModel);
                 }
             });
 

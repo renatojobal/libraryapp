@@ -11,15 +11,12 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.ActionOnlyNavDirections;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.renatojobal.libraryutpl.R;
 import com.renatojobal.libraryutpl.databinding.FragmentHomeBinding;
 import com.renatojobal.libraryutpl.mainactivity.MainViewModel;
 import com.renatojobal.libraryutpl.mainactivity.fhome.ui.RootRecyclerViewAdapter;
-import com.renatojobal.libraryutpl.mainactivity.fsearchbook.BookFull;
-import com.renatojobal.libraryutpl.mainactivity.fsearchbook.SearchBookFragmentDirections;
 import com.renatojobal.libraryutpl.repository.model.BookInfoModel;
 
 import java.util.List;
@@ -75,9 +72,9 @@ public class HomeFragment extends Fragment {
         rootRecyclerViewAdapter = new RootRecyclerViewAdapter(getContext(), mainViewModel.getRecommendedBooks(),
                 new RootRecyclerViewAdapter.ItemClickListener() {
                     @Override
-                    public void onClickListener(int bookInfoId) {
+                    public void onClickListener(BookInfoModel bookInfoModel) {
                         Timber.d("Triggered the listener");
-                        mainViewModel.setFocusBookId(bookInfoId);
+                        mainViewModel.setFocusBook(bookInfoModel);
                         mainViewModel.setNewDestination(
                                 HomeFragmentDirections.actionHomeFragmentToDetailedBookFragment().getActionId()
                         );

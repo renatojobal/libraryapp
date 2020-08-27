@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,24 +11,13 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.renatojobal.libraryutpl.R;
 import com.renatojobal.libraryutpl.databinding.FragmentDetailedBookBinding;
-import com.renatojobal.libraryutpl.databinding.FragmentHomeBinding;
-import com.renatojobal.libraryutpl.databinding.FragmentSearchBookBinding;
 import com.renatojobal.libraryutpl.mainactivity.MainViewModel;
-import com.renatojobal.libraryutpl.mainactivity.fhome.HomeViewModel;
-import com.renatojobal.libraryutpl.mainactivity.fhome.ui.RootRecyclerViewAdapter;
-import com.renatojobal.libraryutpl.mainactivity.fsearchbook.BookFull;
-import com.renatojobal.libraryutpl.mainactivity.fsearchbook.SearchBookFragmentDirections;
-import com.renatojobal.libraryutpl.mainactivity.fsearchbook.ui.SamplesBookLiveDataListAdapter;
 import com.renatojobal.libraryutpl.repository.localdatabase.RoomHelper;
 import com.renatojobal.libraryutpl.repository.model.BookInfoModel;
-
-import java.util.List;
-
-import timber.log.Timber;
+import com.squareup.picasso.Picasso;
 
 public class DetailedBookFragment extends Fragment {
 
@@ -77,20 +65,20 @@ public class DetailedBookFragment extends Fragment {
      * Get info about the focused book available on the main view model and show on the screen
      */
     private void setUpElements() {
-        mainViewModel.getFocusBookId().observe(getViewLifecycleOwner(), new Observer<Integer>() {
+        mainViewModel.getFocusBook().observe(getViewLifecycleOwner(), new Observer<BookInfoModel>() {
             @Override
-            public void onChanged(Integer integer) {
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        if(integer != null){
-                            BookInfoModel bookInfoModel = RoomHelper.getAppDatabaseInstance().bookInfoDao().getBookInfo(integer);
+            public void onChanged(BookInfoModel bookInfoModel) {
+                if(bookInfoModel != null){
 
-                            binding.setTargetBook(bookInfoModel);
+                    binding.setTargetBook(bookInfoModel);
 
-                        }
-                    }
-                }).start();
+                    Picasso
+                            .get()
+                            .load(bookInfoModel.getBookImage())
+                            .fit()
+                            .into(binding.bookImage);
+
+                }
             }
         });
     }

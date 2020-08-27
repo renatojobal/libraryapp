@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.renatojobal.libraryutpl.R;
 import com.renatojobal.libraryutpl.databinding.ItemSampleBookBinding;
 import com.renatojobal.libraryutpl.mainactivity.fsearchbook.BookFull;
+import com.renatojobal.libraryutpl.repository.model.BookInfoModel;
 
 import java.util.List;
 
@@ -32,7 +33,7 @@ public class SamplesBookLiveDataListAdapter
     // Item click listener
     public static interface ItemClickListener{
 
-        void onClickListener(int bookInfoId);
+        void onClickListener(BookInfoModel bookInfo);
     }
 
     ItemClickListener itemClickListener;
@@ -150,7 +151,7 @@ public class SamplesBookLiveDataListAdapter
                 @Override
                 public void onClick(View v) {
                     Timber.d("On item click listener");
-                    itemClickListener.onClickListener(resultView.bookInfo.getBookInfoModelId());
+                    itemClickListener.onClickListener(resultView.bookInfo);
                 }
             });
 

@@ -30,7 +30,7 @@ public class MainViewModel extends AndroidViewModel {
     // we only update this info when the activity start.
     private MutableLiveData<List<List<BookInfoModel>>> recommendedBooks = new MutableLiveData<>();
 
-    private MutableLiveData<Integer> focusBookId = new MutableLiveData<>();
+    private MutableLiveData<BookInfoModel> focusBook = new MutableLiveData<>();
 
     // Instance that will help this view model doing some home fragment stuff
     HomePresenter homePresenter;
@@ -46,7 +46,7 @@ public class MainViewModel extends AndroidViewModel {
 
         homePresenter.getRecommendedBook(recommendedBooks);
 
-        homePresenter.pullHomeContent();
+
     }
 
 
@@ -76,12 +76,12 @@ public class MainViewModel extends AndroidViewModel {
         return recommendedBooks;
     }
 
-    public void setFocusBookId(int focusBookId){
-        this.focusBookId.postValue(focusBookId);
+    public void setFocusBook(BookInfoModel focusBook){
+        this.focusBook.postValue(focusBook);
     }
 
-    public MutableLiveData<Integer> getFocusBookId(){
-        return this.focusBookId;
+    public MutableLiveData<BookInfoModel> getFocusBook(){
+        return this.focusBook;
     }
 
 

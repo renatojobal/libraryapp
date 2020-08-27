@@ -7,10 +7,14 @@ import androidx.lifecycle.MutableLiveData;
 import com.renatojobal.libraryutpl.mainactivity.fsearchbook.BookFull;
 import com.renatojobal.libraryutpl.repository.localdatabase.RoomHelper;
 import com.renatojobal.libraryutpl.repository.model.BookInfoModel;
+import com.renatojobal.libraryutpl.repository.webservice.ApiClient;
+import com.renatojobal.libraryutpl.repository.webservice.GeneralCallback;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Response;
 import timber.log.Timber;
 
 /**
@@ -28,13 +32,28 @@ public class HomePresenter {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                List<BookInfoModel> singleList = RoomHelper.getAppDatabaseInstance().recommendBooksDao().singleResultList();
-
                 List<List<BookInfoModel>> recommendedBooks = new ArrayList<>();
-                for (int i = 0; i < 6; i++) {
-                    recommendedBooks.add(singleList);
+                Timber.i("Collecting recommended books");
 
-                }
+                // Build the service
+                RecommendsRetrofitInterface retrofitInterface = ApiClient.getClient().create(RecommendsRetrofitInterface.class);
+
+                Call<List<BookInfoModel>> call = retrofitInterface.getRecommendedBooks();
+
+                // Enqueue the call
+                call.enqueue(new GeneralCallback<List<BookInfoModel>>(call) {
+                    @Override
+                    public void onFinalResponse(Call<List<BookInfoModel>> call, Response<List<BookInfoModel>> response) {
+
+                        // Save the response into database, in this way the live data of main view model could know about it
+                        recommendedBooks.add(response.body());
+                        targetRecommendedList.postValue(recommendedBooks);
+
+
+
+                    }
+                });
+
 
 
                 targetRecommendedList.postValue(recommendedBooks);
@@ -44,15 +63,6 @@ public class HomePresenter {
 
 
 
-    }
-
-
-    /**
-     * Brings the recommended book from the server
-     */
-    public void pullHomeContent(){
-
-        new Thread(new HomeContentPuller()).start();
     }
 
 

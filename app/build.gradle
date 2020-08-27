@@ -60,6 +60,9 @@ dependencies {
     /** UI */
     implementation "androidx.constraintlayout:constraintlayout:$version_constraint_layout"
     implementation 'androidx.navigation:navigation-ui:2.0.0'
+    implementation "androidx.palette:palette:$version_palette"
+    implementation "com.squareup.picasso:picasso:$version_picasso"
+
     /** Material design */
     implementation "com.google.android.material:material:$version_material"
 

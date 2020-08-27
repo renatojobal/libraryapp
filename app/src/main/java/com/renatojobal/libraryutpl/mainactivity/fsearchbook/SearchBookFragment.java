@@ -21,6 +21,7 @@ import com.renatojobal.libraryutpl.R;
 import com.renatojobal.libraryutpl.databinding.FragmentSearchBookBinding;
 import com.renatojobal.libraryutpl.mainactivity.MainViewModel;
 import com.renatojobal.libraryutpl.mainactivity.fsearchbook.ui.SamplesBookLiveDataListAdapter;
+import com.renatojobal.libraryutpl.repository.model.BookInfoModel;
 
 import java.util.List;
 
@@ -64,9 +65,9 @@ public class SearchBookFragment extends Fragment {
                 searchBookViewModel.getResultBookFullList(),
                 new SamplesBookLiveDataListAdapter.ItemClickListener() {
                     @Override
-                    public void onClickListener(int bookInfoId) {
+                    public void onClickListener(BookInfoModel bookInfoModel) {
                         Timber.d("Triggered the listener");
-                        mainViewModel.setFocusBookId(bookInfoId);
+                        mainViewModel.setFocusBook(bookInfoModel);
                         mainViewModel.setNewDestination(
                                 SearchBookFragmentDirections.actionSearchBookFragmentToDetailedBookFragment().getActionId()
                         );
