@@ -50,19 +50,19 @@
 
             </androidx.cardview.widget.CardView>
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/item_title"
-                android:layout_width="wrap_content"
+                style="@style/TextAppearance.MaterialComponents.Body2"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="@{bookInfoModel.title}"
-                android:textColor="@android:color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/card_view_item_cover_page"
-                tools:text="TextView" />
+                tools:text="Este es el título de un libro un poco largo" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
