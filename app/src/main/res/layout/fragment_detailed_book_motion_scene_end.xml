@@ -40,6 +40,16 @@
             android:paddingBottom="32dp"
             android:text="@string/lorem_ipsum"
             app:lineHeight="26dp" />
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/action_search_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ver disponibilidad"
+            android:layout_marginBottom="16dp"
+            app:cornerRadius="32dp"/>
+
     </LinearLayout>
 
     <LinearLayout
