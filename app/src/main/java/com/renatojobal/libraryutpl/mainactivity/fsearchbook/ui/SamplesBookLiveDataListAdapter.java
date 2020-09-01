@@ -8,6 +8,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.LiveData;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.renatojobal.libraryutpl.R;
@@ -33,7 +34,7 @@ public class SamplesBookLiveDataListAdapter
     // Item click listener
     public static interface ItemClickListener{
 
-        void onClickListener(BookInfoModel bookInfo);
+        void onClickListener(View v, BookInfoModel bookInfo);
     }
 
     ItemClickListener itemClickListener;
@@ -143,7 +144,7 @@ public class SamplesBookLiveDataListAdapter
          * Bind the item to the xml file
          * @param resultView
          */
-        public void bind(BookFull resultView) {
+          public void bind(BookFull resultView) {
             itemBinding.setResultView(resultView);
 
             // Set on click listener to navigate to the detailed book info
@@ -151,10 +152,17 @@ public class SamplesBookLiveDataListAdapter
                 @Override
                 public void onClick(View v) {
                     Timber.d("On item click listener");
-                    itemClickListener.onClickListener(resultView.bookInfo);
+                    itemClickListener.onClickListener(v, resultView.bookInfo);
                 }
             });
 
+            itemBinding.mapButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Timber.d("Map clicked");
+
+                }
+            });
 
         }
 

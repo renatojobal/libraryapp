@@ -9,6 +9,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
@@ -65,12 +66,11 @@ public class SearchBookFragment extends Fragment {
                 searchBookViewModel.getResultBookFullList(),
                 new SamplesBookLiveDataListAdapter.ItemClickListener() {
                     @Override
-                    public void onClickListener(BookInfoModel bookInfoModel) {
+                    public void onClickListener(View v, BookInfoModel bookInfoModel) {
                         Timber.d("Triggered the listener");
                         mainViewModel.setFocusBook(bookInfoModel);
-                        mainViewModel.setNewDestination(
-                                SearchBookFragmentDirections.actionSearchBookFragmentToDetailedBookFragment().getActionId()
-                        );
+                        Timber.wtf("Book info model: "+bookInfoModel);
+                        Navigation.findNavController(v).navigate(R.id.detailedBookFragment);
                     }
                 }
 

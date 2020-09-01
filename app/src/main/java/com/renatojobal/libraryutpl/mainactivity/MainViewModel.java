@@ -77,10 +77,11 @@ public class MainViewModel extends AndroidViewModel {
     }
 
     public void setFocusBook(BookInfoModel focusBook){
-        this.focusBook.postValue(focusBook);
+        Timber.d("Setting a new book: "+focusBook);
+        this.focusBook.setValue(focusBook);
     }
 
-    public MutableLiveData<BookInfoModel> getFocusBook(){
+    public LiveData<BookInfoModel> getFocusBook(){
         return this.focusBook;
     }
 

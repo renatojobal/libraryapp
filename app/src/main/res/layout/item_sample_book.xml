@@ -52,6 +52,7 @@
                     android:layout_height="wrap_content"
                     android:paddingStart="8dp"
                     android:text="@{resultView.bookInfo.title}"
+                    android:textColor="@color/primaryColor"
                     tools:text="Cien años de soledad" />
 
             </LinearLayout>
@@ -138,6 +139,15 @@
                     tools:text="Anaquel 802" />
 
             </LinearLayout>
+
+            <ImageButton
+                android:id="@+id/map_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="Ir al mapa"
+                app:layout_constraintEnd_toEndOf="@+id/linear_layout_shelf"
+                app:layout_constraintTop_toBottomOf="@+id/linear_layout_shelf"
+                app:srcCompat="@drawable/ic_baseline_map_24" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

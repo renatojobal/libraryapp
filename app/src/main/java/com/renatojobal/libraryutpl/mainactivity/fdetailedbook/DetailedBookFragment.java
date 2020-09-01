@@ -19,6 +19,7 @@ import androidx.palette.graphics.Palette;
 import com.renatojobal.libraryutpl.R;
 import com.renatojobal.libraryutpl.databinding.FragmentDetailedBookBinding;
 import com.renatojobal.libraryutpl.mainactivity.MainViewModel;
+import com.renatojobal.libraryutpl.mainactivity.fhome.HomeFragmentDirections;
 import com.renatojobal.libraryutpl.repository.localdatabase.RoomHelper;
 import com.renatojobal.libraryutpl.repository.model.BookInfoModel;
 import com.squareup.picasso.Callback;
@@ -71,7 +72,22 @@ public class DetailedBookFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_detailed_book, container, false);
         setUpElements();
+
+        setUpSearchButton();
+
         return binding.getRoot();
+    }
+
+    private void setUpSearchButton() {
+        binding.actionSearchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Navigate to the search fragment
+                mainViewModel.setNewDestination(
+                        DetailedBookFragmentDirections.actionDetailedBookFragmentToSearchBookFragment().getActionId()
+                );
+            }
+        });
     }
 
     /**
@@ -79,7 +95,7 @@ public class DetailedBookFragment extends Fragment {
      */
     private void setUpElements() {
         BookInfoModel bookInfoModel = mainViewModel.getFocusBook().getValue();
-
+        Timber.v("Bookiesito: "+bookInfoModel);
         binding.setTargetBook(bookInfoModel);
 
         Picasso.get()

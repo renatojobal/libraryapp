@@ -25,20 +25,4 @@ public class HomeViewModel extends ViewModel {
     }
 
 
-    /**
-     * This method will be called by the layout
-     */
-    public void changeSearchClickedValue(Boolean value) {
-
-        this.shouldNavigateToSearch.setValue(value);
-    }
-
-
-    /**
-     * Expose data to the fragment
-     */
-    public MutableLiveData<Boolean> getShouldNavigateToSearch(){
-        return this.shouldNavigateToSearch;
-    }
-
 }

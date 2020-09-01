@@ -27,6 +27,9 @@
         <action
             android:id="@+id/action_searchBookFragment_to_detailedBookFragment"
             app:destination="@id/detailedBookFragment" />
+        <action
+            android:id="@+id/action_searchBookFragment_to_fullscreenFragment"
+            app:destination="@id/fullscreenFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailedBookFragment"
@@ -39,5 +42,14 @@
         <action
             android:id="@+id/action_detailedBookFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/fullscreenFragment"
+        android:name="com.renatojobal.libraryutpl.FullscreenFragment"
+        android:label="fragment_fullscreen"
+        tools:layout="@layout/fragment_fullscreen" >
+        <action
+            android:id="@+id/action_fullscreenFragment_to_searchBookFragment"
+            app:destination="@id/searchBookFragment" />
     </fragment>
 </navigation>

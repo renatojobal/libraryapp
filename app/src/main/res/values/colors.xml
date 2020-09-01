@@ -23,5 +23,6 @@
     <color name="UTPL_blue">#003F72</color>
     <color name="UTPL_yellow">#EAAB00</color>
     <color name="UTPL_red">#A71930</color>
+    <color name="black_overlay">#66000000</color>
 
 </resources>
