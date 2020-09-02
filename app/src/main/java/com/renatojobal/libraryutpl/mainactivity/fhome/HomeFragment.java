@@ -11,6 +11,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -74,12 +75,10 @@ public class HomeFragment extends Fragment {
         rootRecyclerViewAdapter = new RootRecyclerViewAdapter(getContext(), mainViewModel.getRecommendedBooks(),
                 new RootRecyclerViewAdapter.ItemClickListener() {
                     @Override
-                    public void onClickListener(BookInfoModel bookInfoModel) {
+                    public void onClickListener(View v, BookInfoModel bookInfoModel) {
                         Timber.d("Triggered the listener");
                         mainViewModel.setFocusBook(bookInfoModel);
-                        mainViewModel.setNewDestination(
-                                HomeFragmentDirections.actionHomeFragmentToDetailedBookFragment().getActionId()
-                        );
+                        Navigation.findNavController(v).navigate(R.id.detailedBookFragment);
                     }
                 });
         mainViewModel.getRecommendedBooks().observe(getActivity(), new Observer<List<List<BookInfoModel>>>() {
@@ -106,9 +105,7 @@ public class HomeFragment extends Fragment {
 
     private void setUpNavigation() {
         binding.previousSearchView.setOnClickListener(v ->
-                mainViewModel.setNewDestination(
-                        HomeFragmentDirections.actionHomeFragmentToSearchBookFragment().getActionId()
-                ));
+                Navigation.findNavController(binding.getRoot()).navigate(R.id.searchBookFragment));
 
     }
 

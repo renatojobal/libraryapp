@@ -38,7 +38,7 @@ public class RootRecyclerViewAdapter extends RecyclerView.Adapter<RootRecyclerVi
     // Item click listener
     public static interface ItemClickListener{
 
-        void onClickListener(BookInfoModel bookInfoModel);
+        void onClickListener(View v, BookInfoModel bookInfoModel);
     }
 
     ItemClickListener itemClickListener;

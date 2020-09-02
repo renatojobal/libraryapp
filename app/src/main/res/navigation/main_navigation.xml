@@ -27,9 +27,6 @@
         <action
             android:id="@+id/action_searchBookFragment_to_detailedBookFragment"
             app:destination="@id/detailedBookFragment" />
-        <action
-            android:id="@+id/action_searchBookFragment_to_fullscreenFragment"
-            app:destination="@id/fullscreenFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailedBookFragment"
@@ -44,12 +41,18 @@
             app:destination="@id/homeFragment" />
     </fragment>
     <fragment
-        android:id="@+id/fullscreenFragment"
-        android:name="com.renatojobal.libraryutpl.FullscreenFragment"
-        android:label="fragment_fullscreen"
-        tools:layout="@layout/fragment_fullscreen" >
-        <action
-            android:id="@+id/action_fullscreenFragment_to_searchBookFragment"
-            app:destination="@id/searchBookFragment" />
-    </fragment>
+        android:id="@+id/inventaryFragment"
+        android:name="com.renatojobal.libraryutpl.InventaryFragment"
+        android:label="fragment_inventary"
+        tools:layout="@layout/fragment_inventary" />
+    <fragment
+        android:id="@+id/loanFragment"
+        android:name="com.renatojobal.libraryutpl.LoanFragment"
+        android:label="fragment_loan"
+        tools:layout="@layout/fragment_loan" />
+    <fragment
+        android:id="@+id/notificationFragment"
+        android:name="com.renatojobal.libraryutpl.NotificationFragment"
+        android:label="fragment_notification"
+        tools:layout="@layout/fragment_notification" />
 </navigation>

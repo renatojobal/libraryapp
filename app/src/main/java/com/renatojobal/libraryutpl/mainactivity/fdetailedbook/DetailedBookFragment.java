@@ -14,6 +14,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 import androidx.palette.graphics.Palette;
 
 import com.renatojobal.libraryutpl.R;
@@ -83,9 +84,7 @@ public class DetailedBookFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 // Navigate to the search fragment
-                mainViewModel.setNewDestination(
-                        DetailedBookFragmentDirections.actionDetailedBookFragmentToSearchBookFragment().getActionId()
-                );
+                Navigation.findNavController(v).navigate(R.id.searchBookFragment);
             }
         });
     }

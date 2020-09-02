@@ -21,8 +21,6 @@ import timber.log.Timber;
  */
 public class MainViewModel extends AndroidViewModel {
 
-    // To know which activity we have to navigate to
-    private final MutableLiveData<Event<Integer>> newDestination = new MutableLiveData<>();
 
     // To show the books in the home screen
     // We put this variable here instead in the properly fragment view model
@@ -50,23 +48,6 @@ public class MainViewModel extends AndroidViewModel {
     }
 
 
-    /**
-     * Expose the destination
-     * @return newDestination
-     */
-    public LiveData<Event<Integer>> getNewDestination() {
-        return newDestination;
-    }
-
-    /**
-     * Method called inside the fragments and will trigger a navigation to the new destination
-     * @param destinationId
-     */
-    public void setNewDestination(int destinationId) {
-        Timber.d("Setting a new destination");
-        Timber.d("Id: %s", destinationId);
-        newDestination.setValue(new Event<>(destinationId));
-    }
 
     /**
      * Method called by the home fragment
@@ -77,7 +58,7 @@ public class MainViewModel extends AndroidViewModel {
     }
 
     public void setFocusBook(BookInfoModel focusBook){
-        Timber.d("Setting a new book: "+focusBook);
+        Timber.d("Setting a new book: %s", focusBook);
         this.focusBook.setValue(focusBook);
     }
 
