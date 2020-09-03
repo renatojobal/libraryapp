@@ -23,6 +23,7 @@
 
     <LinearLayout
         android:id="@+id/content_layout"
+        android:background="@android:color/white"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
