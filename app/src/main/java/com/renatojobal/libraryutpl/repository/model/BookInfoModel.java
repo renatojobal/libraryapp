@@ -151,16 +151,6 @@ public class BookInfoModel implements Serializable {
 
     @Override
     public String toString() {
-        return "BookInfoModel{" +
-                "bookInfoModelId=" + bookInfoModelId +
-                ", title='" + title + '\'' +
-                ", bookImage='" + bookImage + '\'' +
-                ", bookAbstract='" + bookAbstract + '\'' +
-                ", actualStock=" + actualStock +
-                ", totalStock=" + totalStock +
-                ", publicationDate=" + publicationDate +
-                ", pages=" + pages +
-                ", editorial='" + editorial + '\'' +
-                '}';
+        return title;
     }
 }

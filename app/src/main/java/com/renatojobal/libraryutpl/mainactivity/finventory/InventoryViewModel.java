@@ -5,9 +5,12 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.renatojobal.libraryutpl.repository.model.BookInfoModel;
+import com.renatojobal.libraryutpl.repository.model.SampleBookModel;
 import com.renatojobal.libraryutpl.repository.model.ShelfModel;
 
 import java.util.List;
+
+import timber.log.Timber;
 
 public class InventoryViewModel extends ViewModel {
 
@@ -40,4 +43,13 @@ public class InventoryViewModel extends ViewModel {
     public LiveData<List<BookInfoModel>> getBooks() {
         return books;
     }
+
+
+    /**
+     * Method to save the book on the server
+     */
+    public void saveBookOnTheServer(SampleBookModel targetBook) {
+        inventoryPresenter.saveBookOnServer(targetBook);
+    }
+
 }

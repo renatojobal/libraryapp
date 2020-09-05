@@ -4,7 +4,6 @@ import android.os.Bundle;
 
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
@@ -15,9 +14,8 @@ import android.widget.ArrayAdapter;
 import com.renatojobal.libraryutpl.R;
 import com.renatojobal.libraryutpl.databinding.FragmentInventaryBinding;
 import com.renatojobal.libraryutpl.repository.model.BookInfoModel;
+import com.renatojobal.libraryutpl.repository.model.SampleBookModel;
 import com.renatojobal.libraryutpl.repository.model.ShelfModel;
-
-import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -50,7 +48,38 @@ public class InventoryFragment extends Fragment {
         // Set up the spinner information inside
         setUpSpinners();
 
+        setUpButtonFunctionality();
+
         return binding.getRoot();
+    }
+
+    /**
+     * Method to let the user add the new book into the database
+     */
+    private void setUpButtonFunctionality() {
+        binding.buttonAddBook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                // Get tag
+                String targetTag = binding.etTag.getEditText().getText().toString();
+
+                // Get selected shelf id
+                ShelfModel targetShelfFK = (ShelfModel) binding.spinnerShelfs.getSelectedItem();
+
+                // Get selected book id
+                BookInfoModel targetBookInfoFK = (BookInfoModel) binding.spinnerBooks.getSelectedItem();
+
+                // Create object
+                SampleBookModel targetBook = new SampleBookModel();
+
+                targetBook.setTag(targetTag);
+                targetBook.setFkShelfOwner(targetShelfFK.getShelfModelId());
+                targetBook.setFkBookInfoModel(targetBookInfoFK.getBookInfoModelId());
+
+                inventoryViewModel.saveBookOnTheServer(targetBook);
+            }
+        });
     }
 
     /**

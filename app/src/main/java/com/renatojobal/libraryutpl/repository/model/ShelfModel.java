@@ -79,11 +79,6 @@ public class ShelfModel {
 
     @Override
     public String toString() {
-        return "ShelfModel{" +
-                "shelfModelId=" + shelfModelId +
-                ", code='" + code + '\'' +
-                ", location='" + location + '\'' +
-                ", active=" + active +
-                '}';
+        return "Anaquel "+code+" "+location;
     }
 }
