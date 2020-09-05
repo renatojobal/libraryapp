@@ -12,6 +12,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import timber.log.Timber;
 
 /**
  * ApiClient provides a retrofit instance for make the call to the server
@@ -32,7 +33,7 @@ public class ApiClient {
             Request request = chain.request();
             okhttp3.Response response = chain.proceed(request);
 
-
+            Timber.d("Response code: %s", response.code());
             // Deal with the issues the way we need to
             if (response.code() == 401) {
                 // Unauthorized

@@ -42,17 +42,17 @@
     </fragment>
     <fragment
         android:id="@+id/inventaryFragment"
-        android:name="com.renatojobal.libraryutpl.InventaryFragment"
+        android:name="com.renatojobal.libraryutpl.mainactivity.finventory.InventoryFragment"
         android:label="fragment_inventary"
         tools:layout="@layout/fragment_inventary" />
     <fragment
         android:id="@+id/loanFragment"
-        android:name="com.renatojobal.libraryutpl.LoanFragment"
+        android:name="com.renatojobal.libraryutpl.floan.LoanFragment"
         android:label="fragment_loan"
         tools:layout="@layout/fragment_loan" />
     <fragment
         android:id="@+id/notificationFragment"
-        android:name="com.renatojobal.libraryutpl.NotificationFragment"
+        android:name="com.renatojobal.libraryutpl.mainactivity.fnotification.NotificationFragment"
         android:label="fragment_notification"
         tools:layout="@layout/fragment_notification" />
 </navigation>
