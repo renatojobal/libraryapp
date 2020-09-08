@@ -31,7 +31,7 @@ import com.renatojobal.libraryutpl.repository.model.ShelfModel;
                 BookFull.class
         },
         exportSchema = true,
-        version = 15)
+        version = 16)
 @TypeConverters({DateConverter.class})
 public abstract class AppDatabase extends RoomDatabase {
 

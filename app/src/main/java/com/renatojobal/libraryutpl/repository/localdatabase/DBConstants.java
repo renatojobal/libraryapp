@@ -61,6 +61,14 @@ public class DBConstants {
     public static final String AGENT_TABLE = "agents";
     public static final String AGENT_ID = "agent_id";
 
+    /** Internal Loan model */
+    public static final String INTERNAL_LOAN_TABLE = "internal_loan";
+    public static final String INTERNAL_LOAN_ID = "internal_l_id";
+    public static final String INTERNAL_LOAN_LOAN_TIME = "loan_time";
+    public static final String INTERNAL_LOAN_TIME_RETURNED = "time_returned";
+    public static final String INTERNAL_LOAN_ACTIVE = "il_active";
+    public static final String INTERNAL_LOAN_SINGULAR_BOOK_ID = "il_singular_book_fk";
+
 
     /** External Loan model */
     // Add if needed
