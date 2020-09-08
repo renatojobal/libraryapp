@@ -2,65 +2,78 @@ package com.renatojobal.libraryutpl.mainactivity.fnotification;
 
 import android.os.Bundle;
 
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.renatojobal.libraryutpl.R;
+import com.renatojobal.libraryutpl.databinding.FragmentLoanBinding;
+import com.renatojobal.libraryutpl.databinding.FragmentNotificationBinding;
+import com.renatojobal.libraryutpl.mainactivity.floan.LoanAdapter;
+import com.renatojobal.libraryutpl.mainactivity.floan.LoanViewModel;
+
+import timber.log.Timber;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link NotificationFragment#newInstance} factory method to
- * create an instance of this fragment.
  */
 public class NotificationFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    // Using data binding
+    FragmentNotificationBinding binding;
 
-    public NotificationFragment() {
-        // Required empty public constructor
-    }
+    // Reference to the view model
+    NotificationViewModel notificationViewModel;
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment NotificationFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static NotificationFragment newInstance(String param1, String param2) {
-        NotificationFragment fragment = new NotificationFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+    // Adapter
+    NotificationAdapter notificationAdapter;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+        notificationViewModel = new ViewModelProvider(this).get(NotificationViewModel.class);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_notification, container, false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_notification, container, false);
+
+
+        // Set up the recycler view
+        setUpNotifications();
+
+        return binding.getRoot();
+    }
+
+    private void setUpNotifications() {
+        notificationAdapter = new NotificationAdapter(notificationViewModel.getNotifications());
+
+        binding.recyclerViewNotifications.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        notificationViewModel.getNotifications().observe(getViewLifecycleOwner(), notificationModels -> {
+
+
+            if (notificationModels.isEmpty()) {
+                Timber.d("List result is empty");
+                // If the list is empty
+                binding.recyclerViewNotifications.setVisibility(View.GONE);
+
+            } else {
+                Timber.d("List result is not empty");
+                // If is  not empty
+                binding.recyclerViewNotifications.setVisibility(View.VISIBLE);
+                binding.recyclerViewNotifications.setAdapter(notificationAdapter);
+            }
+
+        });
     }
 }

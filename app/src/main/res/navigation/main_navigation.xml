@@ -47,7 +47,7 @@
         tools:layout="@layout/fragment_inventary" />
     <fragment
         android:id="@+id/loanFragment"
-        android:name="com.renatojobal.libraryutpl.floan.LoanFragment"
+        android:name="com.renatojobal.libraryutpl.mainactivity.floan.LoanFragment"
         android:label="fragment_loan"
         tools:layout="@layout/fragment_loan" />
     <fragment
