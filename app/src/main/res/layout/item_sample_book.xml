@@ -52,7 +52,6 @@
                     android:layout_height="wrap_content"
                     android:paddingStart="8dp"
                     android:text="@{resultView.bookInfo.title}"
-                    android:textColor="@color/primaryColor"
                     tools:text="Cien años de soledad" />
 
             </LinearLayout>
