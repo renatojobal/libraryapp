@@ -17,4 +17,7 @@
     <string name="notification_type_0">Libro prestado</string>
     <string name="notification_type_1">Libro en posición incorrecta</string>
 
+    <string name="active">Sí</string>
+    <string name="unactive">No</string>
+
 </resources>

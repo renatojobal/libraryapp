@@ -28,12 +28,17 @@ public class InternalLoan {
     private Integer internalLoanId;
 
     @ColumnInfo(name = DBConstants.INTERNAL_LOAN_LOAN_TIME)
-    @SerializedName("loan_time")
     private Long loanTime;
 
     @ColumnInfo(name = DBConstants.INTERNAL_LOAN_TIME_RETURNED)
-    @SerializedName("time_returned")
     private Long timeReturned;
+
+    @SerializedName("loan_time")
+    private String loanTimeStringRepresentation;
+
+    @SerializedName("time_returned")
+    private String timeReturnedStringRepresentation;
+
 
     @ColumnInfo(name = DBConstants.INTERNAL_LOAN_ACTIVE)
     @SerializedName("active")
@@ -43,18 +48,12 @@ public class InternalLoan {
     @SerializedName("singular_book")
     private Integer fkSampleBook;
 
-    /**
-     * Constructor
-     * @param internalLoanId
-     * @param loanTime
-     * @param timeReturned
-     * @param active
-     * @param fkSampleBook
-     */
-    public InternalLoan(Integer internalLoanId, Long loanTime, Long timeReturned, Boolean active, Integer fkSampleBook) {
+    public InternalLoan(Integer internalLoanId, Long loanTime, Long timeReturned, String loanTimeStringRepresentation, String timeReturnedStringRepresentation, Boolean active, Integer fkSampleBook) {
         this.internalLoanId = internalLoanId;
         this.loanTime = loanTime;
         this.timeReturned = timeReturned;
+        this.loanTimeStringRepresentation = loanTimeStringRepresentation;
+        this.timeReturnedStringRepresentation = timeReturnedStringRepresentation;
         this.active = active;
         this.fkSampleBook = fkSampleBook;
     }
@@ -81,6 +80,22 @@ public class InternalLoan {
 
     public void setTimeReturned(Long timeReturned) {
         this.timeReturned = timeReturned;
+    }
+
+    public String getLoanTimeStringRepresentation() {
+        return loanTimeStringRepresentation;
+    }
+
+    public void setLoanTimeStringRepresentation(String loanTimeStringRepresentation) {
+        this.loanTimeStringRepresentation = loanTimeStringRepresentation;
+    }
+
+    public String getTimeReturnedStringRepresentation() {
+        return timeReturnedStringRepresentation;
+    }
+
+    public void setTimeReturnedStringRepresentation(String timeReturnedStringRepresentation) {
+        this.timeReturnedStringRepresentation = timeReturnedStringRepresentation;
     }
 
     public Boolean getActive() {

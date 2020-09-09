@@ -42,8 +42,10 @@ public class BookInfoModel implements Serializable {
     private int totalStock;
 
     @ColumnInfo(name = DBConstants.BOOK_INFO_PUBLICATION_DATE)
-    @SerializedName("publication_date")
     private Long publicationDate;
+
+    @SerializedName("publication_date")
+    private String publicationDateStringRepresentation;
 
     @ColumnInfo(name = DBConstants.BOOK_INFO_PAGES)
     @SerializedName("pages")
@@ -53,19 +55,7 @@ public class BookInfoModel implements Serializable {
     @SerializedName("editorial")
     private String editorial;
 
-    /**
-     * Constructor
-     * @param bookInfoModelId
-     * @param title
-     * @param bookImage
-     * @param bookAbstract
-     * @param actualStock
-     * @param totalStock
-     * @param publicationDate
-     * @param pages
-     * @param editorial
-     */
-    public BookInfoModel(Integer bookInfoModelId, String title, String bookImage, String bookAbstract, int actualStock, int totalStock, Long publicationDate, int pages, String editorial) {
+    public BookInfoModel(Integer bookInfoModelId, String title, String bookImage, String bookAbstract, int actualStock, int totalStock, Long publicationDate, String publicationDateStringRepresentation, int pages, String editorial) {
         this.bookInfoModelId = bookInfoModelId;
         this.title = title;
         this.bookImage = bookImage;
@@ -73,6 +63,7 @@ public class BookInfoModel implements Serializable {
         this.actualStock = actualStock;
         this.totalStock = totalStock;
         this.publicationDate = publicationDate;
+        this.publicationDateStringRepresentation = publicationDateStringRepresentation;
         this.pages = pages;
         this.editorial = editorial;
     }
@@ -131,6 +122,14 @@ public class BookInfoModel implements Serializable {
 
     public void setPublicationDate(Long publicationDate) {
         this.publicationDate = publicationDate;
+    }
+
+    public String getPublicationDateStringRepresentation() {
+        return publicationDateStringRepresentation;
+    }
+
+    public void setPublicationDateStringRepresentation(String publicationDateStringRepresentation) {
+        this.publicationDateStringRepresentation = publicationDateStringRepresentation;
     }
 
     public int getPages() {

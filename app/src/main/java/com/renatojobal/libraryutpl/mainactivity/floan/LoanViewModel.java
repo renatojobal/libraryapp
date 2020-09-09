@@ -2,6 +2,7 @@ package com.renatojobal.libraryutpl.mainactivity.floan;
 
 import retrofit2.Call;
 import retrofit2.Response;
+import timber.log.Timber;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -45,6 +46,7 @@ public class LoanViewModel extends ViewModel {
             public void onFinalResponse(Call<List<InternalLoan>> call, Response<List<InternalLoan>> response) {
 
                 if(!response.body().isEmpty()){
+                    Timber.d("Loan response: %s", response.body());
                     internalLoans.postValue(response.body());
                 }
 
