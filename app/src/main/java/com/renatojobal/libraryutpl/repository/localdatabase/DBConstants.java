@@ -69,6 +69,12 @@ public class DBConstants {
     public static final String INTERNAL_LOAN_ACTIVE = "il_active";
     public static final String INTERNAL_LOAN_SINGULAR_BOOK_ID = "il_singular_book_fk";
 
+    /** Notification model */
+    public static final String NOTIFICATION_TABLE = "notification";
+    public static final String NOTIFICATION_ID = "notification_id";
+    public static final String NOTIFICATION_MESSAGE = "n_message";
+    public static final String NOTIFICATION_TYPE = "n_type";
+    public static final String NOTIFICATION_SAMPLE_BOOK_ID = "n_singular_book";
 
     /** External Loan model */
     // Add if needed

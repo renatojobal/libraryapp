@@ -5,9 +5,9 @@
 
     <data>
 
-    <variable
-        name="notification"
-        type="com.renatojobal.libraryutpl.repository.model.NotificationModel" />
+        <variable
+            name="notification"
+            type="com.renatojobal.libraryutpl.repository.model.NotificationModel" />
 
     </data>
 
@@ -20,12 +20,11 @@
         app:cardCornerRadius="38dp">
 
 
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingTop="16dp"
             android:paddingStart="16dp"
+            android:paddingTop="16dp"
             android:paddingEnd="16dp"
             android:paddingBottom="16dp">
 
@@ -52,7 +51,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingStart="8dp"
-                    tools:text="Libro en posición incorrecta" />
+                    android:text="@{notification.notificationType == 0 ? @string/notification_type_0 : @string/notification_type_1}"
+                    tools:text="@string/notification_type_0" />
 
             </LinearLayout>
 
@@ -79,13 +79,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingStart="8dp"
-                    tools:text="CIen años de soledad" />
+                    android:text="@{String.valueOf(notification.fkSampleBook)}"
+                    tools:text="Cien años de soledad" />
 
             </LinearLayout>
-
-
-
-
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
