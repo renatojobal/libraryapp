@@ -14,6 +14,7 @@ import com.renatojobal.libraryutpl.R;
 import com.renatojobal.libraryutpl.databinding.ItemLoanBinding;
 import com.renatojobal.libraryutpl.databinding.ItemNotificationBinding;
 import com.renatojobal.libraryutpl.mainactivity.floan.LoanAdapter;
+import com.renatojobal.libraryutpl.mainactivity.util.DetailedResponse;
 import com.renatojobal.libraryutpl.repository.model.InternalLoan;
 import com.renatojobal.libraryutpl.repository.model.NotificationModel;
 
@@ -22,14 +23,14 @@ import java.util.List;
 public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapter.MyViewHolder> {
 
     // Attributes
-    LiveData<List<NotificationModel>> notificationsList;
+    LiveData<List<DetailedResponse>> notificationsList;
 
 
     /**
      * Constructor
      * @param notificationsList
      */
-    public NotificationAdapter(LiveData<List<NotificationModel>> notificationsList) {
+    public NotificationAdapter(LiveData<List<DetailedResponse>> notificationsList) {
         this.notificationsList = notificationsList;
     }
 
@@ -51,7 +52,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         // - get element from your dataset at this position
-        NotificationModel internalLoan = getItem(position);
+        DetailedResponse internalLoan = getItem(position);
 
         // - replace the contents of the view with that element
         // holder.title.setText(sampleBook.getFkBookInfoModel());
@@ -83,7 +84,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
      * @param position of the item
      * @return the item instance
      */
-    public NotificationModel getItem(int position){
+    public DetailedResponse getItem(int position){
         return notificationsList.getValue().get(position);
     }
 
@@ -107,10 +108,11 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
         /**
          * Bind the item to the xml file
          */
-        public void bind(NotificationModel notificationModel) {
-            itemBinding.setNotification(notificationModel);
+        public void bind(DetailedResponse detailedResponse) {
+            itemBinding.setNotification(detailedResponse.getNotificationInfo());
 
-
+            itemBinding.book.setText(detailedResponse.getBookInfo().getTitle());
+            itemBinding.tag.setText(detailedResponse.getSingularBookInfo().getTag());
 
         }
     }

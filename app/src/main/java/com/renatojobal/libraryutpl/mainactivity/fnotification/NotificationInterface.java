@@ -1,5 +1,6 @@
 package com.renatojobal.libraryutpl.mainactivity.fnotification;
 
+import com.renatojobal.libraryutpl.mainactivity.util.DetailedResponse;
 import com.renatojobal.libraryutpl.repository.model.InternalLoan;
 import com.renatojobal.libraryutpl.repository.model.NotificationModel;
 import com.renatojobal.libraryutpl.repository.webservice.ServiceConstants;
@@ -12,7 +13,7 @@ import retrofit2.http.GET;
 public interface NotificationInterface {
 
 
-    @GET(ServiceConstants.NOTIFICATION_URL)
-    Call<List<NotificationModel>> pullNotifications();
+    @GET(ServiceConstants.INTERNAL_DETAILED_LOAN_URL)
+    Call<List<DetailedResponse>> pullNotifications();
 
 }

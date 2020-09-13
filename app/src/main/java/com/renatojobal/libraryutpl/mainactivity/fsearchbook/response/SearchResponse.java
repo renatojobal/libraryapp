@@ -14,7 +14,7 @@ public class SearchResponse{
     @SerializedName("actual_shelf")
     private ShelfModel actualShelf;
 
-    @SerializedName("singular_book_info")
+    @SerializedName("singular_book")
     private SampleBookModel singularBookInfo;
 
     @SerializedName("authors_info")

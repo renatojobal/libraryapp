@@ -59,10 +59,10 @@ public class NotificationFragment extends Fragment {
 
         binding.recyclerViewNotifications.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        notificationViewModel.getNotifications().observe(getViewLifecycleOwner(), notificationModels -> {
+        notificationViewModel.getNotifications().observe(getViewLifecycleOwner(), detailedResponses -> {
 
 
-            if (notificationModels.isEmpty()) {
+            if (detailedResponses.isEmpty()) {
                 Timber.d("List result is empty");
                 // If the list is empty
                 binding.recyclerViewNotifications.setVisibility(View.GONE);
