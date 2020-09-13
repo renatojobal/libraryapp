@@ -65,10 +65,10 @@ public class LoanFragment extends Fragment {
 
         binding.recyclerViewLoans.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        loanViewModel.getInternalLoans().observe(getViewLifecycleOwner(), internalLoans -> {
+        loanViewModel.getInternalLoans().observe(getViewLifecycleOwner(), detailedResponse -> {
 
 
-            if (internalLoans.isEmpty()) {
+            if (detailedResponse.isEmpty()) {
                 Timber.d("List result is empty");
                 // If the list is empty
                 binding.recyclerViewLoans.setVisibility(View.GONE);

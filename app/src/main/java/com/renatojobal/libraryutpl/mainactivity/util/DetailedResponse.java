@@ -17,7 +17,7 @@ public class DetailedResponse {
     private ShelfModel actualShelf;
 
     @SerializedName("singular_book")
-    private SampleBookModel singularBookInfo;
+    private SampleBookModel singularBook;
 
     @SerializedName("authors_info")
     private AuthorModel authorsInfo;
@@ -26,10 +26,10 @@ public class DetailedResponse {
     private BookInfoModel bookInfo;
 
     @SerializedName("notification")
-    private NotificationModel notificationInfo;
+    private NotificationModel notification;
 
     @SerializedName("internal_loan")
-    private InternalLoan internalLoanInfo;
+    private InternalLoan internalLoan;
 
 
     public ShelfModel getActualShelf() {
@@ -40,12 +40,12 @@ public class DetailedResponse {
         this.actualShelf = actualShelf;
     }
 
-    public SampleBookModel getSingularBookInfo() {
-        return singularBookInfo;
+    public SampleBookModel getSingularBook() {
+        return singularBook;
     }
 
-    public void setSingularBookInfo(SampleBookModel singularBookInfo) {
-        this.singularBookInfo = singularBookInfo;
+    public void setSingularBook(SampleBookModel singularBook) {
+        this.singularBook = singularBook;
     }
 
     public AuthorModel getAuthorsInfo() {
@@ -64,19 +64,19 @@ public class DetailedResponse {
         this.bookInfo = bookInfo;
     }
 
-    public NotificationModel getNotificationInfo() {
-        return notificationInfo;
+    public NotificationModel getNotification() {
+        return notification;
     }
 
-    public void setNotificationInfo(NotificationModel notificationInfo) {
-        this.notificationInfo = notificationInfo;
+    public void setNotification(NotificationModel notification) {
+        this.notification = notification;
     }
 
-    public InternalLoan getInternalLoanInfo() {
-        return internalLoanInfo;
+    public InternalLoan getInternalLoan() {
+        return internalLoan;
     }
 
-    public void setInternalLoanInfo(InternalLoan internalLoanInfo) {
-        this.internalLoanInfo = internalLoanInfo;
+    public void setInternalLoan(InternalLoan internalLoan) {
+        this.internalLoan = internalLoan;
     }
 }

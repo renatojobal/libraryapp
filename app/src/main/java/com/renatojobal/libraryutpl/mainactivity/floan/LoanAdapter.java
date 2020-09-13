@@ -1,7 +1,6 @@
 package com.renatojobal.libraryutpl.mainactivity.floan;
 
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -11,29 +10,24 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.renatojobal.libraryutpl.R;
 import com.renatojobal.libraryutpl.databinding.ItemLoanBinding;
-import com.renatojobal.libraryutpl.databinding.ItemSampleBookBinding;
-import com.renatojobal.libraryutpl.mainactivity.fsearchbook.BookFull;
-import com.renatojobal.libraryutpl.mainactivity.fsearchbook.ui.SamplesBookLiveDataListAdapter;
-import com.renatojobal.libraryutpl.repository.model.BookInfoModel;
+import com.renatojobal.libraryutpl.mainactivity.util.DetailedResponse;
 import com.renatojobal.libraryutpl.repository.model.InternalLoan;
 
 import java.util.List;
-
-import timber.log.Timber;
 
 public class LoanAdapter extends RecyclerView.Adapter<LoanAdapter.MyViewHolder> {
 
 
 
     // Attributes
-    LiveData<List<InternalLoan>> resultViewLiveData; // List of loans
+    LiveData<List<DetailedResponse>> resultViewLiveData; // List of loans
 
 
     /**
      * Constructor
      */
     public LoanAdapter(
-            LiveData<List<InternalLoan>> resultViewLiveData) {
+            LiveData<List<DetailedResponse>> resultViewLiveData) {
         // Provide a suitable constructor (depends on the kind of data set)
         this.resultViewLiveData = resultViewLiveData;
 
@@ -69,11 +63,11 @@ public class LoanAdapter extends RecyclerView.Adapter<LoanAdapter.MyViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         // - get element from your dataset at this position
-        InternalLoan internalLoan = getItem(position);
+        DetailedResponse detailedResponse = getItem(position);
 
         // - replace the contents of the view with that element
         // holder.title.setText(sampleBook.getFkBookInfoModel());
-        holder.bind(internalLoan);
+        holder.bind(detailedResponse);
 
     }
 
@@ -102,7 +96,7 @@ public class LoanAdapter extends RecyclerView.Adapter<LoanAdapter.MyViewHolder> 
      * @param position of the item
      * @return the item instance
      */
-    public InternalLoan getItem(int position){
+    public DetailedResponse getItem(int position){
         return resultViewLiveData.getValue().get(position);
     }
 
@@ -130,10 +124,11 @@ public class LoanAdapter extends RecyclerView.Adapter<LoanAdapter.MyViewHolder> 
         /**
          * Bind the item to the xml file
          */
-        public void bind(InternalLoan internalLoan) {
-            itemBinding.setLoan(internalLoan);
+        public void bind(DetailedResponse detailedResponse) {
+            itemBinding.setLoan(detailedResponse.getInternalLoan());
 
-
+            itemBinding.book.setText(detailedResponse.getBookInfo().getTitle());
+            itemBinding.tag.setText(detailedResponse.getSingularBook().getTag());
 
         }
 

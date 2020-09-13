@@ -1,9 +1,7 @@
 package com.renatojobal.libraryutpl.mainactivity.fnotification;
 
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
@@ -11,12 +9,8 @@ import androidx.lifecycle.LiveData;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.renatojobal.libraryutpl.R;
-import com.renatojobal.libraryutpl.databinding.ItemLoanBinding;
 import com.renatojobal.libraryutpl.databinding.ItemNotificationBinding;
-import com.renatojobal.libraryutpl.mainactivity.floan.LoanAdapter;
 import com.renatojobal.libraryutpl.mainactivity.util.DetailedResponse;
-import com.renatojobal.libraryutpl.repository.model.InternalLoan;
-import com.renatojobal.libraryutpl.repository.model.NotificationModel;
 
 import java.util.List;
 
@@ -109,10 +103,10 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
          * Bind the item to the xml file
          */
         public void bind(DetailedResponse detailedResponse) {
-            itemBinding.setNotification(detailedResponse.getNotificationInfo());
+            itemBinding.setNotification(detailedResponse.getNotification());
 
             itemBinding.book.setText(detailedResponse.getBookInfo().getTitle());
-            itemBinding.tag.setText(detailedResponse.getSingularBookInfo().getTag());
+            itemBinding.tag.setText(detailedResponse.getSingularBook().getTag());
 
         }
     }
