@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -78,6 +79,8 @@ public class InventoryFragment extends Fragment {
                 targetBook.setFkBookInfoModel(targetBookInfoFK.getBookInfoModelId());
 
                 inventoryViewModel.saveBookOnTheServer(targetBook);
+
+                Navigation.findNavController(binding.getRoot()).navigate(R.id.listFragment);
             }
         });
     }

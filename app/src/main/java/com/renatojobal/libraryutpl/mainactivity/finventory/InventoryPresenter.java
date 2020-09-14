@@ -1,11 +1,15 @@
 package com.renatojobal.libraryutpl.mainactivity.finventory;
 
+import android.widget.Toast;
+
 import androidx.lifecycle.MutableLiveData;
 
 import com.google.gson.JsonObject;
+import com.renatojobal.libraryutpl.App;
 import com.renatojobal.libraryutpl.mainactivity.fsearchbook.SearchBookBody;
 import com.renatojobal.libraryutpl.mainactivity.fsearchbook.SearchBookRetrofitInterface;
 import com.renatojobal.libraryutpl.mainactivity.fsearchbook.response.SearchResponse;
+import com.renatojobal.libraryutpl.mainactivity.util.DetailedResponse;
 import com.renatojobal.libraryutpl.repository.model.BookInfoModel;
 import com.renatojobal.libraryutpl.repository.model.SampleBookModel;
 import com.renatojobal.libraryutpl.repository.model.ShelfModel;
@@ -71,9 +75,28 @@ public class InventoryPresenter {
             @Override
             public void onFinalResponse(Call<JsonObject> call, Response<JsonObject> response) {
                 Timber.d("Response: "+response.body());
+                Toast.makeText(App.getContext(), "Libro agregado", Toast.LENGTH_SHORT).show();
             }
         });
 
 
+    }
+
+    /**
+     * Method to pull the singular books
+     * @param singular_books
+     */
+    public void loadSingularBooks(MutableLiveData<List<DetailedResponse>> singular_books) {
+        InventoryRetrofitInterface retrofitInterface = ApiClient.getClient().create(InventoryRetrofitInterface.class);
+
+        Call<List<DetailedResponse>> responseCall = retrofitInterface.pullDetailedSingularBooks();
+
+        responseCall.enqueue(new GeneralCallback<List<DetailedResponse>>(responseCall) {
+            @Override
+            public void onFinalResponse(Call<List<DetailedResponse>> call, Response<List<DetailedResponse>> response) {
+
+                singular_books.postValue(response.body());
+            }
+        });
     }
 }

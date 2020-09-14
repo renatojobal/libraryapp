@@ -128,7 +128,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
 
             case R.id.nav_inventary:
-                navController.navigate(R.id.inventaryFragment);
+                navController.navigate(R.id.listFragment);
                 break;
 
             case R.id.nav_loans:

@@ -1,6 +1,7 @@
 package com.renatojobal.libraryutpl.mainactivity.finventory;
 
 import com.google.gson.JsonObject;
+import com.renatojobal.libraryutpl.mainactivity.util.DetailedResponse;
 import com.renatojobal.libraryutpl.repository.model.BookInfoModel;
 import com.renatojobal.libraryutpl.repository.model.SampleBookModel;
 import com.renatojobal.libraryutpl.repository.model.ShelfModel;
@@ -29,8 +30,16 @@ public interface InventoryRetrofitInterface {
     Call<List<BookInfoModel>> pullBooks();
 
     /**
+     * Pull all the detailed singular books
+     */
+    @GET(ServiceConstants.SINGULAR_BOOK_DETAILED_URL)
+    Call<List<DetailedResponse>> pullDetailedSingularBooks();
+
+    /**
      * Push a new sample book to the server
      */
     @POST(ServiceConstants.SAMPLE_BOOK_URL)
     Call<JsonObject> pushBook(@Body SampleBookModel targetBook);
+
+
 }

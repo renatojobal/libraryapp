@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.renatojobal.libraryutpl.mainactivity.util.DetailedResponse;
 import com.renatojobal.libraryutpl.repository.model.BookInfoModel;
 import com.renatojobal.libraryutpl.repository.model.SampleBookModel;
 import com.renatojobal.libraryutpl.repository.model.ShelfModel;
@@ -19,7 +20,10 @@ public class InventoryViewModel extends ViewModel {
     private MutableLiveData<List<ShelfModel>> shelfs = new MutableLiveData<>();
 
     // To show the books on the spinner
-    private MutableLiveData<List<BookInfoModel>> books= new MutableLiveData<>();
+    private MutableLiveData<List<BookInfoModel>> books = new MutableLiveData<>();
+
+    // TO show the singular books on the list
+    private MutableLiveData<List<DetailedResponse>> singular_books = new MutableLiveData<>();
 
     // Presenter instance
     private InventoryPresenter inventoryPresenter;
@@ -31,6 +35,8 @@ public class InventoryViewModel extends ViewModel {
         inventoryPresenter = new InventoryPresenter();
 
         inventoryPresenter.loadDataToAddBook(shelfs, books);
+
+        inventoryPresenter.loadSingularBooks(singular_books);
     }
 
     /**
@@ -44,6 +50,9 @@ public class InventoryViewModel extends ViewModel {
         return books;
     }
 
+    public LiveData<List<DetailedResponse>> getDetailedSingularBooks(){
+        return this.singular_books;
+    }
 
     /**
      * Method to save the book on the server
@@ -51,5 +60,8 @@ public class InventoryViewModel extends ViewModel {
     public void saveBookOnTheServer(SampleBookModel targetBook) {
         inventoryPresenter.saveBookOnServer(targetBook);
     }
+
+
+
 
 }

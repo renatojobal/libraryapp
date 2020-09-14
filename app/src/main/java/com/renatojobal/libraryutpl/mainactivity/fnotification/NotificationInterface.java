@@ -13,7 +13,7 @@ import retrofit2.http.GET;
 public interface NotificationInterface {
 
 
-    @GET(ServiceConstants.INTERNAL_DETAILED_LOAN_URL)
+    @GET(ServiceConstants.NOTIFICATION_DETAILED_URL)
     Call<List<DetailedResponse>> pullNotifications();
 
 }
