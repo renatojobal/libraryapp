@@ -37,17 +37,28 @@ public class SamplesBookLiveDataListAdapter
         void onClickListener(View v, BookInfoModel bookInfo);
     }
 
+
+    // Item click listener
+    public interface MapButtonListener{
+
+        void onClickListener(View v, BookInfoModel bookInfo);
+    }
+
     ItemClickListener itemClickListener;
+
+    MapButtonListener mapButtonListener;
 
     /**
      * Constructor
      */
     public SamplesBookLiveDataListAdapter(
             LiveData<List<BookFull>> resultViewLiveData,
-            ItemClickListener itemClickListener) {
+            ItemClickListener itemClickListener,
+            MapButtonListener mapButtonListener) {
         // Provide a suitable constructor (depends on the kind of data set)
         this.resultViewLiveData = resultViewLiveData;
         this.itemClickListener = itemClickListener;
+        this.mapButtonListener = mapButtonListener;
     }
 
     /**
@@ -67,7 +78,7 @@ public class SamplesBookLiveDataListAdapter
 
 
         // Return the view holder with the elements attached
-        MyViewHolder viewHolder = new MyViewHolder(binding, itemClickListener);
+        MyViewHolder viewHolder = new MyViewHolder(binding, itemClickListener, mapButtonListener);
         return viewHolder;
     }
 
@@ -130,14 +141,18 @@ public class SamplesBookLiveDataListAdapter
         // Item click listener
         ItemClickListener itemClickListener;
 
+        //
+        MapButtonListener mapButtonListener;
+
         /**
          * Constructor
          * @param itemBinding binding instance
          */
-        public MyViewHolder(ItemSampleBookBinding itemBinding, ItemClickListener itemClickListener) {
+        public MyViewHolder(ItemSampleBookBinding itemBinding, ItemClickListener itemClickListener, MapButtonListener mapButtonListener) {
             super(itemBinding.getRoot());
             this.itemBinding = itemBinding;
             this.itemClickListener = itemClickListener;
+            this.mapButtonListener = mapButtonListener;
         }
 
         /**
@@ -160,9 +175,11 @@ public class SamplesBookLiveDataListAdapter
                 @Override
                 public void onClick(View v) {
                     Timber.d("Map clicked");
-
+                    mapButtonListener.onClickListener(v, resultView.bookInfo);
                 }
             });
+
+
 
         }
 

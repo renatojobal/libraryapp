@@ -69,8 +69,14 @@ public class SearchBookFragment extends Fragment {
                     public void onClickListener(View v, BookInfoModel bookInfoModel) {
                         Timber.d("Triggered the listener");
                         mainViewModel.setFocusBook(bookInfoModel);
-                        Timber.wtf("Book info model: "+bookInfoModel);
                         Navigation.findNavController(v).navigate(R.id.detailedBookFragment);
+                    }
+                },
+                new SamplesBookLiveDataListAdapter.MapButtonListener() {
+                    @Override
+                    public void onClickListener(View v, BookInfoModel bookInfo) {
+                        Timber.d("Triggered the listener");
+                        Navigation.findNavController(v).navigate(R.id.mapFragment);
                     }
                 }
 
@@ -95,8 +101,8 @@ public class SearchBookFragment extends Fragment {
                 }
 
 
-            // Change the result list now
-            fragmentSearchBookBinding.recyclerViewResultList.setAdapter(resultBookLiveDataListAdapter);
+                // Change the result list now
+                fragmentSearchBookBinding.recyclerViewResultList.setAdapter(resultBookLiveDataListAdapter);
             }
         });
 
@@ -118,7 +124,6 @@ public class SearchBookFragment extends Fragment {
         });
 
 
-
         return fragmentSearchBookBinding.getRoot();
 
 
@@ -126,7 +131,7 @@ public class SearchBookFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-         // Change Live Data into the observer if needed
+        // Change Live Data into the observer if needed
         super.onViewCreated(view, savedInstanceState);
 
     }
