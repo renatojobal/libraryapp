@@ -79,4 +79,16 @@ public class DetailedResponse {
     public void setInternalLoan(InternalLoan internalLoan) {
         this.internalLoan = internalLoan;
     }
+
+    @Override
+    public String toString() {
+        return "DetailedResponse{" +
+                "actualShelf=" + actualShelf +
+                ", singularBook=" + singularBook +
+                ", authorsInfo=" + authorsInfo +
+                ", bookInfo=" + bookInfo +
+                ", notification=" + notification +
+                ", internalLoan=" + internalLoan +
+                '}';
+    }
 }

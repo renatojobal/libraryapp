@@ -113,4 +113,17 @@ public class InternalLoan {
     public void setFkSampleBook(Integer fkSampleBook) {
         this.fkSampleBook = fkSampleBook;
     }
+
+    @Override
+    public String toString() {
+        return "InternalLoan{" +
+                "internalLoanId=" + internalLoanId +
+                ", loanTime=" + loanTime +
+                ", timeReturned=" + timeReturned +
+                ", loanTimeStringRepresentation='" + loanTimeStringRepresentation + '\'' +
+                ", timeReturnedStringRepresentation='" + timeReturnedStringRepresentation + '\'' +
+                ", active=" + active +
+                ", fkSampleBook=" + fkSampleBook +
+                '}';
+    }
 }
