@@ -97,10 +97,14 @@ public class DetailedBookFragment extends Fragment {
         Timber.v("Bookiesito: "+bookInfoModel);
         binding.setTargetBook(bookInfoModel);
 
-        Picasso.get()
-                .load(bookInfoModel.getBookImage())
-                .fit()
-                .into(binding.bookImage);
+        try {
+            Picasso.get()
+                    .load(bookInfoModel.getBookImage())
+                    .fit()
+                    .into(binding.bookImage);
+        }catch (Exception e){
+            Timber.e(e);
+        }
 
 
     }

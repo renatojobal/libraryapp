@@ -15,6 +15,7 @@ import com.renatojobal.libraryutpl.R;
 import com.renatojobal.libraryutpl.databinding.ItemSampleBookBinding;
 import com.renatojobal.libraryutpl.mainactivity.fsearchbook.BookFull;
 import com.renatojobal.libraryutpl.repository.model.BookInfoModel;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -162,14 +163,20 @@ public class SamplesBookLiveDataListAdapter
           public void bind(BookFull resultView) {
             itemBinding.setResultView(resultView);
 
+              Picasso.get()
+                      .load(resultView.bookInfo.getBookImage())
+                      .fit()
+                      .into(itemBinding.bookCoverPage);
+
+
             // Set on click listener to navigate to the detailed book info
-            itemBinding.cardViewSampleBook.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Timber.d("On item click listener");
-                    itemClickListener.onClickListener(v, resultView.bookInfo);
-                }
-            });
+//            itemBinding.cardViewSampleBook.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    Timber.d("On item click listener");
+//                    itemClickListener.onClickListener(v, resultView.bookInfo);
+//                }
+//            });
 
             itemBinding.mapButton.setOnClickListener(new View.OnClickListener() {
                 @Override

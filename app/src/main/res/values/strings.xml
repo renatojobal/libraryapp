@@ -5,6 +5,8 @@
 
     <string name="available">Sí disponible</string>
     <string name="not_available">No disponible</string>
+    <string name="not_available_location"> </string>
+    <string name="not_available_shelf"> </string>
     <string name="no_results">Sin resultados</string>
     <string name="default_image">Imagen por defecto</string>
     <string name="book_cover_page">Portada del libro</string>

@@ -20,9 +20,10 @@
         app:cardCornerRadius="38dp">
 
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:orientation="vertical"
             android:paddingStart="16dp"
             android:paddingTop="16dp"
             android:paddingEnd="16dp"
@@ -30,41 +31,11 @@
 
 
             <LinearLayout
-                android:id="@+id/linear_layout_message"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <com.google.android.material.textview.MaterialTextView
-                    style="@style/TextAppearance.MaterialComponents.Subtitle1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Mensaje:" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/message"
-                    style="@style/TextAppearance.MaterialComponents.Subtitle1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="8dp"
-                    android:text="@{notification.notificationType == 0 ? @string/notification_type_0 : @string/notification_type_1}"
-                    tools:text="@string/notification_type_0" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
                 android:id="@+id/linear_layout_book"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linear_layout_message">
+                >
 
                 <com.google.android.material.textview.MaterialTextView
                     style="@style/TextAppearance.MaterialComponents.Subtitle1"
@@ -85,13 +56,37 @@
 
 
             <LinearLayout
+                android:id="@+id/linear_layout_message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textview.MaterialTextView
+                    style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Estado:" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/message"
+                    style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="8dp"
+                    android:text="@{notification.notificationType == 0 ? @string/notification_type_0 : @string/notification_type_1}"
+                    tools:text="@string/notification_type_0" />
+
+            </LinearLayout>
+
+
+
+
+            <LinearLayout
                 android:id="@+id/linear_layout_tag"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linear_layout_book">
+>
 
                 <com.google.android.material.textview.MaterialTextView
                     style="@style/TextAppearance.MaterialComponents.Subtitle1"
@@ -110,7 +105,7 @@
 
             </LinearLayout>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
 
 
     </androidx.cardview.widget.CardView>

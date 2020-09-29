@@ -14,142 +14,147 @@
         android:id="@+id/card_view_sample_book"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
+        android:layout_marginHorizontal="8dp"
+
         android:layout_marginTop="14dp"
         app:cardBackgroundColor="@{resultView.sampleBook.state == 1 ? @color/bookAvailableColor : @color/bookNotAvailableColor}"
         app:cardCornerRadius="38dp"
         tools:cardBackgroundColor="@color/rainBlue">
 
-
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingTop="16dp"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:paddingBottom="16dp">
+            android:orientation="horizontal"
+            android:padding="16dp">
 
 
             <LinearLayout
-                android:id="@+id/linear_layout_title"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="@+id/linear_layout_location"
-                app:layout_constraintStart_toStartOf="@+id/linear_layout_location"
-                app:layout_constraintTop_toTopOf="parent">
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-                <com.google.android.material.textview.MaterialTextView
-                    style="@style/TextAppearance.MaterialComponents.Subtitle1"
+
+                <LinearLayout
+                    android:id="@+id/linear_layout_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        android:text="Título:" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/title"
+                        style="@style/TextAppearance.MaterialComponents.Headline6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="8dp"
+                        android:text="@{resultView.bookInfo.title}"
+                        tools:text="Cien años de soledad" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/linear_layout_location"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        android:text="Localización:" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/location"
+                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="8dp"
+                        android:text="@{resultView.sampleBook.state == 1 ? resultView.actualShelf.location : @string/not_available_location}"
+                        tools:text="Anaquel 802, Planta baja" />
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/linear_layout_shelf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        android:text="Anaquel:" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/shelf"
+                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="8dp"
+                        android:text="@{resultView.sampleBook.state == 1 ? resultView.actualShelf.code : @string/not_available_shelf}"
+                        tools:text="Anaquel 802" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linear_layout_availability"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        android:text="Disponible:" />
+
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/book"
+                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="8dp"
+                        android:text="@{resultView.sampleBook.state == 1 ? @string/available : @string/not_available}"
+                        tools:text="Sí" />
+
+                </LinearLayout>
+
+                <ImageButton
+                    android:layout_gravity="center_horizontal"
+                    android:id="@+id/map_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Título:" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/title"
-                    style="@style/TextAppearance.MaterialComponents.Subtitle1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="8dp"
-                    android:text="@{resultView.bookInfo.title}"
-                    tools:text="Cien años de soledad" />
+                    android:background="@null"
+                    android:contentDescription="Ir al mapa"
+                    app:srcCompat="@drawable/ic_baseline_map_24" />
 
             </LinearLayout>
 
-
-            <LinearLayout
-                android:id="@+id/linear_layout_availability"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linear_layout_title">
-
-                <com.google.android.material.textview.MaterialTextView
-                    style="@style/TextAppearance.MaterialComponents.Subtitle1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Disponible:" />
+            <ImageView
+                android:id="@+id/book_cover_page"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="3" />
 
 
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/book"
-                    style="@style/TextAppearance.MaterialComponents.Subtitle1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="8dp"
-                    android:text="@{resultView.sampleBook.state == 1 ? @string/available : @string/not_available}"
-                    tools:text="Sí" />
+        </LinearLayout>
 
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/linear_layout_location"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linear_layout_availability">
-
-                <com.google.android.material.textview.MaterialTextView
-                    style="@style/TextAppearance.MaterialComponents.Subtitle1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Localización:" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/location"
-                    style="@style/TextAppearance.MaterialComponents.Subtitle1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="8dp"
-                    android:text="@{resultView.sampleBook.state == 1 ? resultView.actualShelf.location : @string/not_available}"
-                    tools:text="Anaquel 802, Planta baja" />
-
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/linear_layout_shelf"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linear_layout_location">
-
-                <com.google.android.material.textview.MaterialTextView
-                    style="@style/TextAppearance.MaterialComponents.Subtitle1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Anaquel:" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/shelf"
-                    style="@style/TextAppearance.MaterialComponents.Subtitle1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="8dp"
-                    android:text="@{resultView.sampleBook.state == 1 ? resultView.actualShelf.code : @string/not_available}"
-                    tools:text="Anaquel 802" />
-
-            </LinearLayout>
-
-            <ImageButton
-                android:id="@+id/map_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@null"
-                android:contentDescription="Ir al mapa"
-                app:layout_constraintEnd_toEndOf="@+id/linear_layout_shelf"
-                app:layout_constraintTop_toBottomOf="@+id/linear_layout_shelf"
-                app:srcCompat="@drawable/ic_baseline_map_24" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
 

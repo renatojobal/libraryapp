@@ -27,6 +27,9 @@
         <action
             android:id="@+id/action_searchBookFragment_to_detailedBookFragment"
             app:destination="@id/detailedBookFragment" />
+        <action
+            android:id="@+id/action_searchBookFragment_to_mapFragment"
+            app:destination="@id/mapFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailedBookFragment"
@@ -66,5 +69,13 @@
     <fragment
         android:id="@+id/mapFragment"
         android:name="com.renatojobal.libraryutpl.mainactivity.fmap.MapFragment"
-        android:label="MapFragment" />
+        android:label="MapFragment" >
+        <action
+            android:id="@+id/action_mapFragment_to_detailedMapFragment"
+            app:destination="@id/detailedMapFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailedMapFragment"
+        android:name="com.renatojobal.libraryutpl.mainactivity.fdetailedmap.DetailedMapFragment"
+        android:label="DetailedMapFragment" />
 </navigation>
