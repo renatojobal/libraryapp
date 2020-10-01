@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import com.renatojobal.libraryutpl.R;
 import com.renatojobal.libraryutpl.databinding.FragmentLoanBinding;
 import com.renatojobal.libraryutpl.repository.model.InternalLoan;
+import com.renatojobal.libraryutpl.repository.model.SampleBookModel;
 
 import java.util.List;
 
@@ -34,6 +35,7 @@ public class LoanFragment extends Fragment {
 
     // Adapter
     LoanAdapter loanAdapter;
+    Adapter adapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -61,11 +63,15 @@ public class LoanFragment extends Fragment {
      */
     private void setUpInternalLoans() {
 
+        // Change this adapter
+        adapter = new Adapter(loanViewModel.getSingularBookStatistics());
         loanAdapter = new LoanAdapter(loanViewModel.getInternalLoans());
 
         binding.recyclerViewLoans.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        loanViewModel.getInternalLoans().observe(getViewLifecycleOwner(), detailedResponse -> {
+
+
+        loanViewModel.getSingularBookStatistics().observe(getViewLifecycleOwner(), detailedResponse -> {
 
 
             if (detailedResponse.isEmpty()) {
@@ -77,7 +83,7 @@ public class LoanFragment extends Fragment {
                 Timber.d("List result is not empty");
                 // If is  not empty
                 binding.recyclerViewLoans.setVisibility(View.VISIBLE);
-                binding.recyclerViewLoans.setAdapter(loanAdapter);
+                binding.recyclerViewLoans.setAdapter(adapter);
             }
 
         });

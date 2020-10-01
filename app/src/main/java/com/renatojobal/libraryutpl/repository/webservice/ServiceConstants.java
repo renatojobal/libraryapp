@@ -17,4 +17,5 @@ public class ServiceConstants {
     public static final String INTERNAL_DETAILED_LOAN_URL = "/api/movilapp/get_all_detailed_internal_loans/";
     public static final String NOTIFICATION_DETAILED_URL = "/api/movilapp/get_all_detailed_notifications/";
     public static final String SINGULAR_BOOK_DETAILED_URL = "/api/movilapp/get_all_detailed_singular_books/";
+    public static final String SINGULAR_BOOK_STATISTICS_URL = "/api/movilapp/get_singular_book_statistic/";
 }

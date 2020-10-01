@@ -21,23 +21,21 @@
 
 
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:paddingTop="16dp"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
-            android:paddingBottom="16dp">
+            android:paddingBottom="16dp"
+            android:orientation="vertical">
 
 
             <LinearLayout
                 android:id="@+id/linear_layout_book"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                android:orientation="horizontal">
 
                 <com.google.android.material.textview.MaterialTextView
                     style="@style/TextAppearance.MaterialComponents.Subtitle1"
@@ -52,19 +50,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingStart="8dp"
-                    tools:text="2" />
+                    tools:text="Cien años de soledad" />
 
             </LinearLayout>
 
 
             <LinearLayout
                 android:id="@+id/linear_layout_tag"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linear_layout_book">
+                android:orientation="horizontal">
 
                 <com.google.android.material.textview.MaterialTextView
                     style="@style/TextAppearance.MaterialComponents.Subtitle1"
@@ -84,92 +79,57 @@
             </LinearLayout>
 
 
+
+
             <LinearLayout
-                android:id="@+id/linear_layout_loan_time"
-                android:layout_width="0dp"
+                android:id="@+id/linear_layout_total_internal_loans"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linear_layout_tag">
+                android:orientation="horizontal">
 
                 <com.google.android.material.textview.MaterialTextView
                     style="@style/TextAppearance.MaterialComponents.Subtitle1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Tiempo prestado:" />
+                    android:text="Contador prestamos internos: " />
 
 
                 <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/loan_time"
+                    android:id="@+id/total_internal_loans"
                     style="@style/TextAppearance.MaterialComponents.Subtitle1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingStart="8dp"
-                    android:text="@{loan.loanTimeStringRepresentation}"
-                    tools:text="..." />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/linear_layout_time_returned"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.516"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linear_layout_loan_time">
-
-                <com.google.android.material.textview.MaterialTextView
-                    style="@style/TextAppearance.MaterialComponents.Subtitle1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Tiempo retornado:" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/time_returned"
-                    style="@style/TextAppearance.MaterialComponents.Subtitle1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="8dp"
-                    android:text="@{loan.timeReturnedStringRepresentation}"
-                    tools:text="..." />
+                    tools:text="56" />
 
             </LinearLayout>
 
 
             <LinearLayout
-                android:id="@+id/linear_layout_active"
-                android:layout_width="0dp"
+                android:id="@+id/linear_layout_total_external_loans"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linear_layout_time_returned">
+                android:orientation="horizontal">
 
                 <com.google.android.material.textview.MaterialTextView
                     style="@style/TextAppearance.MaterialComponents.Subtitle1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Activo" />
+                    android:text="Contador prestamos externos: " />
 
 
                 <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/active"
+                    android:id="@+id/total_external_loans"
                     style="@style/TextAppearance.MaterialComponents.Subtitle1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingStart="8dp"
-                    android:text="@{loan.active ? @string/active : @string/unactive}"
-                    tools:text="Sí" />
+                    tools:text="15" />
 
             </LinearLayout>
 
 
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
 
 
     </androidx.cardview.widget.CardView>

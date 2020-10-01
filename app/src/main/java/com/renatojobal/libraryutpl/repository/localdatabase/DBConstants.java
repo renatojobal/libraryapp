@@ -22,6 +22,9 @@ public class DBConstants {
     public static final String SAMPLE_BOOK_SHELF_OWNER_ID = "shelf_owner_fk";
     public static final String SAMPLE_BOOK_ACTUAL_SHELF_ID = "actual_shelf_fk";
     public static final String SAMPLE_BOOK_BOOK_INFO_ID = "book_info_fk";
+    public static final String SAMPLE_BOOK_BOOK_INFO__TITLE = "book_info__title";
+    public static final String SAMPLE_BOOK_TOTAL_INTERNAL_LOANS = "total_internal_loans";
+    public static final String SAMPLE_BOOK_TOTAL_EXTERNAL_LOANS = "total_external_loans";
 
     /** BookInfo model */
     public static final String BOOK_INFO_TABLE = "book_infos";

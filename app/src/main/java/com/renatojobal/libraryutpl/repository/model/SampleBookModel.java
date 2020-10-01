@@ -70,6 +70,19 @@ public class SampleBookModel implements Serializable {
     @ColumnInfo(name = DBConstants.SAMPLE_BOOK_BOOK_INFO_ID)
     private Integer fkBookInfoModel;
 
+    @SerializedName(DBConstants.SAMPLE_BOOK_BOOK_INFO__TITLE)
+    @ColumnInfo(name = DBConstants.SAMPLE_BOOK_BOOK_INFO__TITLE)
+    private String bookInfoTitle;
+
+    @SerializedName(DBConstants.SAMPLE_BOOK_TOTAL_INTERNAL_LOANS)
+    @ColumnInfo(name = DBConstants.SAMPLE_BOOK_TOTAL_INTERNAL_LOANS)
+    private Integer totalInternalLoans;
+
+    @SerializedName(DBConstants.SAMPLE_BOOK_TOTAL_EXTERNAL_LOANS)
+    @ColumnInfo(name = DBConstants.SAMPLE_BOOK_TOTAL_EXTERNAL_LOANS)
+    private Integer totalExternalLoans;
+
+
 
     // Getter and setters
     @NonNull
@@ -135,6 +148,30 @@ public class SampleBookModel implements Serializable {
 
     public void setFkBookInfoModel(Integer fkBookInfoModel) {
         this.fkBookInfoModel = fkBookInfoModel;
+    }
+
+    public String getBookInfoTitle() {
+        return bookInfoTitle;
+    }
+
+    public void setBookInfoTitle(String bookInfoTitle) {
+        this.bookInfoTitle = bookInfoTitle;
+    }
+
+    public Integer getTotalInternalLoans() {
+        return totalInternalLoans;
+    }
+
+    public void setTotalInternalLoans(Integer totalInternalLoans) {
+        this.totalInternalLoans = totalInternalLoans;
+    }
+
+    public Integer getTotalExternalLoans() {
+        return totalExternalLoans;
+    }
+
+    public void setTotalExternalLoans(Integer totalExternalLoans) {
+        this.totalExternalLoans = totalExternalLoans;
     }
 
     @Override
