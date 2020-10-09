@@ -43,10 +43,9 @@
                     android:orientation="horizontal">
 
                     <com.google.android.material.textview.MaterialTextView
-                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                        style="@style/TextAppearance.MaterialComponents.Headline6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:visibility="gone"
                         android:text="Título:" />
 
                     <com.google.android.material.textview.MaterialTextView
@@ -68,10 +67,9 @@
                     android:orientation="horizontal">
 
                     <com.google.android.material.textview.MaterialTextView
-                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                        style="@style/TextAppearance.MaterialComponents.Subtitle2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:visibility="gone"
                         android:text="Localización:" />
 
                     <com.google.android.material.textview.MaterialTextView
@@ -94,10 +92,9 @@
                     android:orientation="horizontal">
 
                     <com.google.android.material.textview.MaterialTextView
-                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                        style="@style/TextAppearance.MaterialComponents.Subtitle2"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:visibility="gone"
+                        android:layout_height="22dp"
                         android:text="Anaquel:" />
 
                     <com.google.android.material.textview.MaterialTextView
@@ -118,11 +115,10 @@
                     android:orientation="horizontal">
 
                     <com.google.android.material.textview.MaterialTextView
-                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                        style="@style/TextAppearance.MaterialComponents.Subtitle2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:visibility="gone"
-                        android:text="Disponible:" />
+                        android:text="Disponibilidad:" />
 
 
                     <com.google.android.material.textview.MaterialTextView
@@ -136,14 +132,33 @@
 
                 </LinearLayout>
 
-                <ImageButton
-                    android:layout_gravity="center_horizontal"
-                    android:id="@+id/map_button"
-                    android:layout_width="wrap_content"
+
+                <LinearLayout
+                    android:id="@+id/linear_layout_map"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@null"
-                    android:contentDescription="Ir al mapa"
-                    app:srcCompat="@drawable/ic_baseline_map_24" />
+                    android:orientation="horizontal">
+
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/map_text"
+                        style="@style/TextAppearance.MaterialComponents.Subtitle2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Visualizar en el mapa" />
+
+                    <ImageButton
+                        android:id="@+id/map_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:contentDescription="Ir al mapa"
+                        app:srcCompat="@drawable/ic_baseline_location_on_24" />
+
+
+
+                </LinearLayout>
+
 
             </LinearLayout>
 
