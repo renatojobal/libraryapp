@@ -1,6 +1,7 @@
 package com.renatojobal.libraryutpl.mainactivity.fnotification;
 
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.renatojobal.libraryutpl.R;
 import com.renatojobal.libraryutpl.databinding.ItemNotificationBinding;
 import com.renatojobal.libraryutpl.mainactivity.util.DetailedResponse;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -20,12 +22,19 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     LiveData<List<DetailedResponse>> notificationsList;
 
 
+    // Filters
+    Boolean notReturned = true;
+    Boolean incorrectPosition = true;
+
+
     /**
      * Constructor
      * @param notificationsList
      */
-    public NotificationAdapter(LiveData<List<DetailedResponse>> notificationsList) {
+    public NotificationAdapter(LiveData<List<DetailedResponse>> notificationsList, Boolean notReturned, Boolean incorrectPosition) {
         this.notificationsList = notificationsList;
+        this.notReturned = notReturned;
+        this.incorrectPosition = incorrectPosition;
     }
 
     @NonNull
@@ -103,6 +112,22 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
          * Bind the item to the xml file
          */
         public void bind(DetailedResponse detailedResponse) {
+
+            if(!notReturned && detailedResponse.getNotification().getNotificationType() == 0){
+
+                itemBinding.cardViewLoan.setVisibility(View.GONE);
+            }
+
+            if(!incorrectPosition && detailedResponse.getNotification().getNotificationType() == 2){
+                itemBinding.cardViewLoan.setVisibility(View.GONE);
+            }
+
+
+            Picasso.get()
+                    .load(detailedResponse.getBookInfo().getBookImage())
+                    .fit()
+                    .into(itemBinding.bookCoverPage);
+
             itemBinding.setNotification(detailedResponse.getNotification());
 
             itemBinding.book.setText(detailedResponse.getBookInfo().getTitle());

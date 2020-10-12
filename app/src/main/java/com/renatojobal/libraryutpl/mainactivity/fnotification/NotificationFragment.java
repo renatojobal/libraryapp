@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 
 import com.renatojobal.libraryutpl.R;
 import com.renatojobal.libraryutpl.databinding.FragmentLoanBinding;
@@ -34,6 +35,11 @@ public class NotificationFragment extends Fragment {
     // Adapter
     NotificationAdapter notificationAdapter;
 
+    // Filters
+    Boolean notReturned = true;
+    Boolean incorrectPosition = true;
+
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -51,11 +57,42 @@ public class NotificationFragment extends Fragment {
         // Set up the recycler view
         setUpNotifications();
 
+
+        binding.switchNotReturned.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                notReturned = isChecked;
+                notificationAdapter = new NotificationAdapter(notificationViewModel.getNotifications(),
+                        notReturned, incorrectPosition);
+                binding.recyclerViewNotifications.setAdapter(null);
+                binding.recyclerViewNotifications.setLayoutManager(null);
+                binding.recyclerViewNotifications.setAdapter(notificationAdapter);
+                binding.recyclerViewNotifications.setLayoutManager(new LinearLayoutManager(getContext()));
+                notificationAdapter.notifyDataSetChanged();
+            }
+        });
+
+        binding.switchIncorrectPosition.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                incorrectPosition = isChecked;
+                notificationAdapter = new NotificationAdapter(notificationViewModel.getNotifications(),
+                        notReturned, incorrectPosition);
+                binding.recyclerViewNotifications.setAdapter(null);
+                binding.recyclerViewNotifications.setLayoutManager(null);
+                binding.recyclerViewNotifications.setAdapter(notificationAdapter);
+                binding.recyclerViewNotifications.setLayoutManager(new LinearLayoutManager(getContext()));
+                notificationAdapter.notifyDataSetChanged();
+            }
+        });
+
+
         return binding.getRoot();
     }
 
     private void setUpNotifications() {
-        notificationAdapter = new NotificationAdapter(notificationViewModel.getNotifications());
+        notificationAdapter = new NotificationAdapter(notificationViewModel.getNotifications(),
+                notReturned, incorrectPosition);
 
         binding.recyclerViewNotifications.setLayoutManager(new LinearLayoutManager(getContext()));
 
@@ -76,4 +113,7 @@ public class NotificationFragment extends Fragment {
 
         });
     }
+
+
+
 }
