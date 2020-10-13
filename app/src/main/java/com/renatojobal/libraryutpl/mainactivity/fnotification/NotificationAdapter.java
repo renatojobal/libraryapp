@@ -14,12 +14,13 @@ import com.renatojobal.libraryutpl.databinding.ItemNotificationBinding;
 import com.renatojobal.libraryutpl.mainactivity.util.DetailedResponse;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapter.MyViewHolder> {
 
     // Attributes
-    LiveData<List<DetailedResponse>> notificationsList;
+    ArrayList<DetailedResponse> notificationsList;
 
 
     // Filters
@@ -31,10 +32,9 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
      * Constructor
      * @param notificationsList
      */
-    public NotificationAdapter(LiveData<List<DetailedResponse>> notificationsList, Boolean notReturned, Boolean incorrectPosition) {
+    public NotificationAdapter(ArrayList notificationsList) {
         this.notificationsList = notificationsList;
-        this.notReturned = notReturned;
-        this.incorrectPosition = incorrectPosition;
+
     }
 
     @NonNull
@@ -69,7 +69,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
      */
     @Override
     public long getItemId(int position) {
-        return notificationsList.getValue().indexOf(position);
+        return notificationsList.indexOf(position);
     }
 
 
@@ -79,7 +79,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
      */
     @Override
     public int getItemCount() {
-        return notificationsList.getValue().size();
+        return notificationsList.size();
     }
 
     /**
@@ -88,7 +88,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
      * @return the item instance
      */
     public DetailedResponse getItem(int position){
-        return notificationsList.getValue().get(position);
+        return notificationsList.get(position);
     }
 
 
@@ -113,14 +113,6 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
          */
         public void bind(DetailedResponse detailedResponse) {
 
-            if(!notReturned && detailedResponse.getNotification().getNotificationType() == 0){
-
-                itemBinding.cardViewLoan.setVisibility(View.GONE);
-            }
-
-            if(!incorrectPosition && detailedResponse.getNotification().getNotificationType() == 2){
-                itemBinding.cardViewLoan.setVisibility(View.GONE);
-            }
 
 
             Picasso.get()

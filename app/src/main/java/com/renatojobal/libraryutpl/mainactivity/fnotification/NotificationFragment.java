@@ -13,10 +13,7 @@ import android.view.ViewGroup;
 import android.widget.CompoundButton;
 
 import com.renatojobal.libraryutpl.R;
-import com.renatojobal.libraryutpl.databinding.FragmentLoanBinding;
 import com.renatojobal.libraryutpl.databinding.FragmentNotificationBinding;
-import com.renatojobal.libraryutpl.mainactivity.floan.LoanAdapter;
-import com.renatojobal.libraryutpl.mainactivity.floan.LoanViewModel;
 
 import timber.log.Timber;
 
@@ -62,13 +59,8 @@ public class NotificationFragment extends Fragment {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 notReturned = isChecked;
-                notificationAdapter = new NotificationAdapter(notificationViewModel.getNotifications(),
-                        notReturned, incorrectPosition);
-                binding.recyclerViewNotifications.setAdapter(null);
-                binding.recyclerViewNotifications.setLayoutManager(null);
-                binding.recyclerViewNotifications.setAdapter(notificationAdapter);
-                binding.recyclerViewNotifications.setLayoutManager(new LinearLayoutManager(getContext()));
-                notificationAdapter.notifyDataSetChanged();
+
+                notificationViewModel.updateFilteredNotifications(notReturned, incorrectPosition);
             }
         });
 
@@ -76,13 +68,8 @@ public class NotificationFragment extends Fragment {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 incorrectPosition = isChecked;
-                notificationAdapter = new NotificationAdapter(notificationViewModel.getNotifications(),
-                        notReturned, incorrectPosition);
-                binding.recyclerViewNotifications.setAdapter(null);
-                binding.recyclerViewNotifications.setLayoutManager(null);
-                binding.recyclerViewNotifications.setAdapter(notificationAdapter);
-                binding.recyclerViewNotifications.setLayoutManager(new LinearLayoutManager(getContext()));
-                notificationAdapter.notifyDataSetChanged();
+
+                notificationViewModel.updateFilteredNotifications(notReturned, incorrectPosition);
             }
         });
 
@@ -91,12 +78,11 @@ public class NotificationFragment extends Fragment {
     }
 
     private void setUpNotifications() {
-        notificationAdapter = new NotificationAdapter(notificationViewModel.getNotifications(),
-                notReturned, incorrectPosition);
+
 
         binding.recyclerViewNotifications.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        notificationViewModel.getNotifications().observe(getViewLifecycleOwner(), detailedResponses -> {
+        notificationViewModel.getFilteredNotifications().observe(getViewLifecycleOwner(), detailedResponses -> {
 
 
             if (detailedResponses.isEmpty()) {
@@ -106,7 +92,13 @@ public class NotificationFragment extends Fragment {
 
             } else {
                 Timber.d("List result is not empty");
+                notificationAdapter = new NotificationAdapter(notificationViewModel.getFilteredNotifications().getValue());
+                Timber.d(notificationViewModel.getFilteredNotifications().getValue()+"");
                 // If is  not empty
+
+                binding.switchIncorrectPosition.setEnabled(true);
+                binding.switchNotReturned.setEnabled(true);
+
                 binding.recyclerViewNotifications.setVisibility(View.VISIBLE);
                 binding.recyclerViewNotifications.setAdapter(notificationAdapter);
             }
