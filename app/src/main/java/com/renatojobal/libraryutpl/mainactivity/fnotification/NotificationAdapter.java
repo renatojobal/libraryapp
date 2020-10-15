@@ -124,6 +124,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
             itemBinding.book.setText(detailedResponse.getBookInfo().getTitle());
             itemBinding.tag.setText(detailedResponse.getSingularBook().getTag());
+            itemBinding.location.setText(detailedResponse.getActualShelf().getLocation());
 
         }
     }
