@@ -73,9 +73,26 @@
         <action
             android:id="@+id/action_mapFragment_to_detailedMapFragment"
             app:destination="@id/detailedMapFragment" />
+        <argument
+            android:name="location"
+            app:argType="string" />
+        <argument
+            android:name="area"
+            app:argType="string" />
+        <argument android:name="shelf"
+            app:argType="string" />
+        <argument android:name="section"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/detailedMapFragment"
         android:name="com.renatojobal.libraryutpl.mainactivity.fdetailedmap.DetailedMapFragment"
-        android:label="DetailedMapFragment" />
+        android:label="DetailedMapFragment" >
+        <argument
+            android:name="shelf"
+            app:argType="string" />
+        <argument
+            android:name="section"
+            app:argType="string" />
+    </fragment>
 </navigation>
