@@ -30,6 +30,15 @@ public class DetailedMapFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        DetailedMapFragmentArgs arguments = DetailedMapFragmentArgs.fromBundle(getArguments());
+
+        binding.mapSection.setText(arguments.getSection());
+        binding.mapShelf.setText(arguments.getShelf());
+
+
+
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_detailed_map, container, false);
     }

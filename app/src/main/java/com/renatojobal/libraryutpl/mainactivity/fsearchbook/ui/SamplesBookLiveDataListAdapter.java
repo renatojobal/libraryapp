@@ -42,7 +42,7 @@ public class SamplesBookLiveDataListAdapter
     // Item click listener
     public interface MapButtonListener{
 
-        void onClickListener(View v, BookInfoModel bookInfo);
+        void onClickListener(View v, BookFull bookFull);
     }
 
     ItemClickListener itemClickListener;
@@ -182,7 +182,7 @@ public class SamplesBookLiveDataListAdapter
                 @Override
                 public void onClick(View v) {
                     Timber.d("Map clicked");
-                    mapButtonListener.onClickListener(v, resultView.bookInfo);
+                    mapButtonListener.onClickListener(v, resultView);
                 }
             });
 

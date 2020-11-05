@@ -53,6 +53,8 @@ public class DBConstants {
     public static final String SHELF_CODE = "shelf_code";
     public static final String SHELF_LOCATION = "location";
     public static final String SHELF_ACTIVE = "shelf_active";
+    public static final String SHELF_AREA = "shelf_area";
+    public static final String SHELF_SECTION = "shelf_section";
 
     /** Author-BookInfo model */
     public static final String MM_AUTHOR_BOOK_INFO_TABLE = "author_book_info";

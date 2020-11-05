@@ -74,9 +74,21 @@ public class SearchBookFragment extends Fragment {
                 },
                 new SamplesBookLiveDataListAdapter.MapButtonListener() {
                     @Override
-                    public void onClickListener(View v, BookInfoModel bookInfo) {
+                    public void onClickListener(View v, BookFull bookFull) {
                         Timber.d("Triggered the listener");
-                        Navigation.findNavController(v).navigate(R.id.mapFragment);
+
+
+
+                        Navigation
+                                .findNavController(v)
+                                .navigate(
+                                        SearchBookFragmentDirections
+                                                .actionSearchBookFragmentToMapFragment(
+                                                        bookFull.actualShelf.getLocation(),
+                                                        bookFull.actualShelf.getArea(),
+                                                        bookFull.actualShelf.toString(),
+                                                        bookFull.actualShelf.getSection()
+                                                ));
                     }
                 }
 

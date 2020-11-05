@@ -7,11 +7,13 @@ import androidx.room.PrimaryKey;
 import com.google.gson.annotations.SerializedName;
 import com.renatojobal.libraryutpl.repository.localdatabase.DBConstants;
 
+import java.io.Serializable;
+
 /**
  * Shelf model
  */
 @Entity(tableName = DBConstants.SHELF_TABLE)
-public class ShelfModel {
+public class ShelfModel implements Serializable {
 
 
     @PrimaryKey
@@ -31,18 +33,21 @@ public class ShelfModel {
     @ColumnInfo(name = DBConstants.SHELF_ACTIVE)
     private boolean active;
 
-    /**
-     * Full params constructor
-     * @param shelfModelId
-     * @param code
-     * @param location
-     * @param active
-     */
-    public ShelfModel(Integer shelfModelId, String code, String location, boolean active) {
+    @SerializedName("area")
+    @ColumnInfo(name = DBConstants.SHELF_AREA)
+    private String area;
+
+    @SerializedName("section")
+    @ColumnInfo(name = DBConstants.SHELF_SECTION)
+    private String section;
+
+    public ShelfModel(Integer shelfModelId, String code, String location, boolean active, String area, String section) {
         this.shelfModelId = shelfModelId;
         this.code = code;
         this.location = location;
         this.active = active;
+        this.area = area;
+        this.section = section;
     }
 
     public Integer getShelfModelId() {
@@ -75,6 +80,22 @@ public class ShelfModel {
 
     public void setActive(boolean active) {
         this.active = active;
+    }
+
+    public String getArea() {
+        return area;
+    }
+
+    public void setArea(String area) {
+        this.area = area;
+    }
+
+    public String getSection() {
+        return section;
+    }
+
+    public void setSection(String section) {
+        this.section = section;
     }
 
     @Override

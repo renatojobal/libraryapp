@@ -41,12 +41,24 @@ public class MapFragment extends Fragment {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_map, container, false);
 
+        MapFragmentArgs arguments = MapFragmentArgs.fromBundle(getArguments());
+
         binding.imageView5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.findNavController(v).navigate(R.id.detailedMapFragment);
+                Navigation
+                        .findNavController(v)
+                        .navigate(MapFragmentDirections
+                        .actionMapFragmentToDetailedMapFragment(
+                                arguments.getShelf(),
+                                arguments.getSection()));
             }
         });
+
+
+
+        binding.mapArea.setText(arguments.getArea());
+        binding.mapLocation.setText(arguments.getLocation());
 
 
         // Returning the view

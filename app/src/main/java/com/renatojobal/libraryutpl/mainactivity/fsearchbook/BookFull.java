@@ -10,6 +10,8 @@ import com.renatojobal.libraryutpl.repository.model.BookInfoModel;
 import com.renatojobal.libraryutpl.repository.model.SampleBookModel;
 import com.renatojobal.libraryutpl.repository.model.ShelfModel;
 
+import java.io.Serializable;
+
 import timber.log.Timber;
 
 
@@ -20,7 +22,7 @@ import timber.log.Timber;
 @DatabaseView("SELECT * " +
         "FROM " + DBConstants.BOOK_INFO_TABLE + ", " + DBConstants.SAMPLE_BOOK_TABLE + " " +
         "WHERE " + DBConstants.SAMPLE_BOOK_BOOK_INFO_ID + " = " + DBConstants.BOOK_INFO_ID + ";")
-public class BookFull {
+public class BookFull implements Serializable {
 
 
     @Embedded()
