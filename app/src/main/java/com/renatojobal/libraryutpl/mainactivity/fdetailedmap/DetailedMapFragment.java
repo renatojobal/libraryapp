@@ -2,6 +2,7 @@ package com.renatojobal.libraryutpl.mainactivity.fdetailedmap;
 
 import android.os.Bundle;
 
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -31,6 +32,10 @@ public class DetailedMapFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        // Binding
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_detailed_map, container, false);
+
+
         DetailedMapFragmentArgs arguments = DetailedMapFragmentArgs.fromBundle(getArguments());
 
         binding.mapSection.setText(arguments.getSection());
@@ -40,6 +45,6 @@ public class DetailedMapFragment extends Fragment {
 
 
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_detailed_map, container, false);
+        return binding.getRoot();
     }
 }

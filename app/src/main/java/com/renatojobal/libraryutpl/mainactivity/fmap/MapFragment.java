@@ -43,6 +43,9 @@ public class MapFragment extends Fragment {
 
         MapFragmentArgs arguments = MapFragmentArgs.fromBundle(getArguments());
 
+        binding.mapArea.setText(arguments.getArea());
+        binding.mapLocation.setText(arguments.getLocation());
+
         binding.imageView5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,10 +58,6 @@ public class MapFragment extends Fragment {
             }
         });
 
-
-
-        binding.mapArea.setText(arguments.getArea());
-        binding.mapLocation.setText(arguments.getLocation());
 
 
         // Returning the view

@@ -10,8 +10,9 @@
         android:layout_height="match_parent"
         android:backgroundTint="#FFFFFF">
 
+
         <LinearLayout
-            android:backgroundTint="@android:color/darker_gray"
+
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -20,18 +21,21 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
+                android:textColor="@android:color/white"
                 android:id="@+id/textView8"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Previsualizador Sector Biblioteca" />
 
             <TextView
+                android:textColor="@android:color/white"
                 android:id="@+id/textView9"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Ubicación:" />
 
             <TextView
+                android:textColor="@android:color/white"
                 android:id="@+id/map_location"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -39,11 +43,13 @@
                 android:text="TextView" />
 
             <TextView
+                android:textColor="@android:color/white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Área:" />
 
             <TextView
+                android:textColor="@android:color/white"
                 android:id="@+id/map_area"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
